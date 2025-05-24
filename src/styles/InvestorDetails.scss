@@ -1,0 +1,200 @@
+// InvestorDetails.scss
+$primary-dark: #1a2333;
+$sidebar-bg: #0f172a;
+$card-bg: #1e2a44;
+$text-color: #ffffff;
+$button-bg: #10b981;
+$secondary-button-bg: #f59e0b;
+$border-radius: 8px;
+$white-border: #ffffff;
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: $primary-dark;
+  color: $text-color;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: $sidebar-bg;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .logo {
+    text-align: center;
+    padding: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #facc15;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 10px 15px;
+      color: $text-color;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+
+      &:hover {
+        background: #2d3748;
+      }
+
+      &.active {
+        background: #2d3748;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .logout {
+    margin-top: auto;
+    padding: 10px 15px;
+    color: #ef4444;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      background: #2d3748;
+    }
+  }
+}
+
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    input {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      border-radius: $border-radius;
+      background: #2d3748;
+      color: $text-color;
+    }
+
+    button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: $border-radius;
+      background: $button-bg;
+      color: $text-color;
+      cursor: pointer;
+
+      &.secondary {
+        background: $secondary-button-bg;
+      }
+    }
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .name {
+      font-weight: bold;
+    }
+
+    .role {
+      font-size: 0.9rem;
+    }
+  }
+
+  .info-section {
+    background: $card-bg;
+    padding: 15px;
+    border-radius: $border-radius;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .info-content {
+      p {
+        margin: 5px 0;
+      }
+    }
+
+    .table-container {
+      overflow-x: auto;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+
+        th, td {
+          padding: 10px;
+          border: 1px solid $white-border; /* Updated to use white border */
+          text-align: left;
+        }
+
+        th {
+          background: #2d3748;
+        }
+
+        td {
+          background: $card-bg;
+        }
+      }
+    }
+
+    .sub-section {
+      margin-top: 20px;
+
+      h3 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+    }
+
+    .divider {
+      height: 1px;
+      background: #4b5563;
+      margin: 20px 0;
+    }
+  }
+
+  .welcome {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.9rem;
+    color: #9ca3af;
+  }
+}

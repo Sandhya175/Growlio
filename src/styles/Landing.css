@@ -1,0 +1,9 @@
+.landing {
+  width: 100%;
+  min-height: 100vh; /* Fallback for non-Tailwind environments */
+  background-color: #1a202c; /* Example dark background matching your design */
+}
+
+main {
+  min-height: 100%; /* Ensure main takes full height of parent */
+}/*# sourceMappingURL=Landing.css.map */

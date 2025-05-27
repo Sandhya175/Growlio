@@ -396,7 +396,7 @@ const FamilyMemberDetailsForm = () => {
           <div className="flex justify-center pt-6">
             <button
               className="bg-[#3B9B8F] text-[#E6E6E6] font-medium px-8 py-3 rounded-md hover:bg-[#2f7a6f] transition-colors"
-              onClick={() => navigate("/primary-information")}
+              onClick={() => navigate("/family-information")}
             >
               Record Details
             </button>

@@ -41,7 +41,6 @@ import LinkedBankAccounts from './pages/LinkedBankAccounts';
 import RDConfirmation from "./pages/RDConfirmation";
 import MyBankInvestments from "./pages/MyBankInvestments";
 import WithdrawalSuccessPage from "./pages/WithdrawalSuccessPage";
-import WithdrawnInvestments from './pages/WithdrawnInvestments';
 import MyBankInvestmentsFD from "./pages/MyBankInvestmentsFD";
 import MutualFundHoldings from "./pages/MutualFundHoldings";
 import RedeemedFunds from "./pages/RedeemedFunds";
@@ -83,6 +82,9 @@ import NewFutureAndOption from './pages/newfutureandoption';
 import FODetailsTable from "./pages/FODetailsTable";
 import Taxation from './pages/Taxation';
 import Stocksaleinformation from './pages/Stocksaleinformation';
+import ShortTermCapitalGain from "./pages/ShortTermCapitalGain";
+import STCGDetails from './pages/STCGDetails';
+
 
 
 function App() {
@@ -171,10 +173,10 @@ function App() {
       <Route path="/fo-details-table" element={<FODetailsTable />} />
       <Route path="/taxation" element={<Taxation />} />
       <Route path="/stocksale-information" element={<Stocksaleinformation />} />
+      <Route path="/short-term-capital-gain" element={<ShortTermCapitalGain />} />
+      <Route path="/stcg-details" element={<STCGDetails />} />
+    
 
-
-
-     
 
 
     </Routes>

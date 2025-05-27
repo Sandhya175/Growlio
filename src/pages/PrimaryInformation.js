@@ -1,93 +1,223 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
-import { FaEye, FaEyeSlash, FaEdit, FaTrash,FaUserLock } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaEdit, FaTrash,FaUserLock,FaUser } from "react-icons/fa";
+import { MdEdit, MdDelete, MdVisibility, MdVisibilityOff } from "react-icons/md";
 
-const stockInfoData = [
+const stockData = [
   {
     email: "bd@gmail.com",
     loginId: "bankimdoshi",
     password: "********",
-    dematNo: "7903883890360",
-    tradingNo: "342432222222",
-    nominee: "Mrs. XYZ Doshi",
-    relation: "GrandSon",
-    dob: "09/08/1987",
-    share: "30%",
-    address: "A/85 Apt, Ghatkopar",
-    guardian: "Mr. Bankim Doshi",
+    dematAccount: "7593838039030",
+    tradingAccount: "342422222222",
+    nomineeName: "Mrs. XYZ Doshi",
+    relationWithAccountHolder: "GrandSon",
+    nomineeDob: "09/08/1967",
+    percentageShare: "30%",
+    nomineeAddress: "ANS Apt, Ghatkopar",
+    guardianName: "Mr. Bankim Doshi",
     relationWithNominee: "GrandFather",
-    contact: "+91 7984342211",
+    contactNumber: "+91 7983948211",
+    guardianAddress: "ANS Apt, Ghatkopar"
   },
-   {
+  {
     email: "bd@gmail.com",
     loginId: "bankimdoshi",
     password: "********",
-    dematNo: "7903883890360",
-    tradingNo: "342432222222",
-    nominee: "Mrs. XYZ Doshi",
-    relation: "GrandSon",
-    dob: "09/08/1987",
-    share: "30%",
-    address: "A/85 Apt, Ghatkopar",
-    guardian: "Mr. Bankim Doshi",
+    dematAccount: "7593838039030",
+    tradingAccount: "342422222222",
+    nomineeName: "Mrs. XYZ Doshi",
+    relationWithAccountHolder: "GrandSon",
+    nomineeDob: "09/08/1967",
+    percentageShare: "30%",
+    nomineeAddress: "ANS Apt, Ghatkopar",
+    guardianName: "Mr. Bankim Doshi",
     relationWithNominee: "GrandFather",
-    contact: "+91 7984342211",
+    contactNumber: "+91 7983948211",
+    guardianAddress: "ANS Apt, Ghatkopar"
   },
-   {
+  {
     email: "bd@gmail.com",
     loginId: "bankimdoshi",
     password: "********",
-    dematNo: "7903883890360",
-    tradingNo: "342432222222",
-    nominee: "Mrs. XYZ Doshi",
-    relation: "GrandSon",
-    dob: "09/08/1987",
-    share: "30%",
-    address: "A/85 Apt, Ghatkopar",
-    guardian: "Mr. Bankim Doshi",
+    dematAccount: "7593838039030",
+    tradingAccount: "342422222222",
+    nomineeName: "Mrs. XYZ Doshi",
+    relationWithAccountHolder: "GrandSon",
+    nomineeDob: "09/08/1967",
+    percentageShare: "30%",
+    nomineeAddress: "ANS Apt, Ghatkopar",
+    guardianName: "Mr. Bankim Doshi",
     relationWithNominee: "GrandFather",
-    contact: "+91 7984342211",
+    contactNumber: "+91 7983948211",
+    guardianAddress: "ANS Apt, Ghatkopar"
   },
-   {
+  {
     email: "bd@gmail.com",
     loginId: "bankimdoshi",
-    password: "********",
-    dematNo: "7903883890360",
-    tradingNo: "342432222222",
-    nominee: "Mrs. XYZ Doshi",
-    relation: "GrandSon",
-    dob: "09/08/1987",
-    share: "30%",
-    address: "A/85 Apt, Ghatkopar",
-    guardian: "Mr. Bankim Doshi",
+    password: "4578655",
+    dematAccount: "7593838039030",
+    tradingAccount: "342422222222",
+    nomineeName: "Mrs. XYZ Doshi",
+    relationWithAccountHolder: "GrandSon",
+    nomineeDob: "09/08/1967",
+    percentageShare: "30%",
+    nomineeAddress: "ANS Apt, Ghatkopar",
+    guardianName: "Mr. Bankim Doshi",
     relationWithNominee: "GrandFather",
-    contact: "+91 7984342211",
+    contactNumber: "+91 7983948211",
+    guardianAddress: "ANS Apt, Ghatkopar"
   }
-  
 ];
 
-const StockMarketIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="white"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="inline-block"
-  >
-    <rect x="1" y="3" width="22" height="18" rx="2" ry="2" />
-    <polyline points="3 17 8 12 13 16 18 8 21 12" />
-  </svg>
-);
+const mutualfundData = [
+  {
+    email: "bd@gmail.com",
+    loginId: "bankimdoshi",
+    password: "********",
+    dematAccount: "7593838039030",
+    tradingAccount: "342422222222",
+    nomineeName: "Mrs. XYZ Doshi",
+    relationWithAccountHolder: "GrandSon",
+    nomineeDob: "09/08/1967",
+    percentageShare: "30%",
+    nomineeAddress: "ANS Apt, Ghatkopar",
+    guardianName: "Mr. Bankim Doshi",
+    relationWithNominee: "GrandFather",
+    contactNumber: "+91 7983948211",
+    guardianAddress: "ANS Apt, Ghatkopar"
+  },
+  {
+    email: "bd@gmail.com",
+    loginId: "bankimdoshi",
+    password: "********",
+    dematAccount: "7593838039030",
+    tradingAccount: "342422222222",
+    nomineeName: "Mrs. XYZ Doshi",
+    relationWithAccountHolder: "GrandSon",
+    nomineeDob: "09/08/1967",
+    percentageShare: "30%",
+    nomineeAddress: "ANS Apt, Ghatkopar",
+    guardianName: "Mr. Bankim Doshi",
+    relationWithNominee: "GrandFather",
+    contactNumber: "+91 7983948211",
+    guardianAddress: "ANS Apt, Ghatkopar"
+  },
+  {
+    email: "bd@gmail.com",
+    loginId: "bankimdoshi",
+    password: "********",
+    dematAccount: "7593838039030",
+    tradingAccount: "342422222222",
+    nomineeName: "Mrs. XYZ Doshi",
+    relationWithAccountHolder: "GrandSon",
+    nomineeDob: "09/08/1967",
+    percentageShare: "30%",
+    nomineeAddress: "ANS Apt, Ghatkopar",
+    guardianName: "Mr. Bankim Doshi",
+    relationWithNominee: "GrandFather",
+    contactNumber: "+91 7983948211",
+    guardianAddress: "ANS Apt, Ghatkopar"
+  },
+  {
+    email: "bd@gmail.com",
+    loginId: "bankimdoshi",
+    password: "4578655",
+    dematAccount: "7593838039030",
+    tradingAccount: "342422222222",
+    nomineeName: "Mrs. XYZ Doshi",
+    relationWithAccountHolder: "GrandSon",
+    nomineeDob: "09/08/1967",
+    percentageShare: "30%",
+    nomineeAddress: "ANS Apt, Ghatkopar",
+    guardianName: "Mr. Bankim Doshi",
+    relationWithNominee: "GrandFather",
+    contactNumber: "+91 7983948211",
+    guardianAddress: "ANS Apt, Ghatkopar"
+  }
+];
+
+const insuranceData = [
+  {
+    email: "bd@gmail.com",
+    loginId: "bankimdoshi",
+    password: "********",
+    dematAccount: "7593838039030",
+    tradingAccount: "342422222222",
+    nomineeName: "Mrs. XYZ Doshi",
+    relationWithAccountHolder: "GrandSon",
+    nomineeDob: "09/08/1967",
+    percentageShare: "30%",
+    nomineeAddress: "ANS Apt, Ghatkopar",
+    guardianName: "Mr. Bankim Doshi",
+    relationWithNominee: "GrandFather",
+    contactNumber: "+91 7983948211",
+    guardianAddress: "ANS Apt, Ghatkopar"
+  },
+  {
+    email: "bd@gmail.com",
+    loginId: "bankimdoshi",
+    password: "********",
+    dematAccount: "7593838039030",
+    tradingAccount: "342422222222",
+    nomineeName: "Mrs. XYZ Doshi",
+    relationWithAccountHolder: "GrandSon",
+    nomineeDob: "09/08/1967",
+    percentageShare: "30%",
+    nomineeAddress: "ANS Apt, Ghatkopar",
+    guardianName: "Mr. Bankim Doshi",
+    relationWithNominee: "GrandFather",
+    contactNumber: "+91 7983948211",
+    guardianAddress: "ANS Apt, Ghatkopar"
+  },
+  {
+    email: "bd@gmail.com",
+    loginId: "bankimdoshi",
+    password: "********",
+    dematAccount: "7593838039030",
+    tradingAccount: "342422222222",
+    nomineeName: "Mrs. XYZ Doshi",
+    relationWithAccountHolder: "GrandSon",
+    nomineeDob: "09/08/1967",
+    percentageShare: "30%",
+    nomineeAddress: "ANS Apt, Ghatkopar",
+    guardianName: "Mr. Bankim Doshi",
+    relationWithNominee: "GrandFather",
+    contactNumber: "+91 7983948211",
+    guardianAddress: "ANS Apt, Ghatkopar"
+  },
+  {
+    email: "bd@gmail.com",
+    loginId: "bankimdoshi",
+    password: "4578655",
+    dematAccount: "7593838039030",
+    tradingAccount: "342422222222",
+    nomineeName: "Mrs. XYZ Doshi",
+    relationWithAccountHolder: "GrandSon",
+    nomineeDob: "09/08/1967",
+    percentageShare: "30%",
+    nomineeAddress: "ANS Apt, Ghatkopar",
+    guardianName: "Mr. Bankim Doshi",
+    relationWithNominee: "GrandFather",
+    contactNumber: "+91 7983948211",
+    guardianAddress: "ANS Apt, Ghatkopar"
+  }
+];
 
 const PrimaryInformation = () => {
   const [selectedInvestor, setSelectedInvestor] = useState("Bankim Doshi");
   const [passwordVisibility, setPasswordVisibility] = useState({});
   const [uploadedFiles, setUploadedFiles] = useState({});
   const [username, setUsername] = useState('');
+
+const [visiblePasswords, setVisiblePasswords] = useState({});
+
+const togglePasswordVisibility = (idx) => {
+  setVisiblePasswords((prev) => ({
+    ...prev,
+    [idx]: !prev[idx],
+  }));
+};
 
   const investorRoles = {
     "Bankim Doshi": "Primary Member",
@@ -128,22 +258,20 @@ useEffect(() => {
   return (
     <div className="min-h-screen bg-[#0D1520] text-white flex">
       <Sidebar />
-      <div className="flex-1 flex flex-col ml-60">
-        {/* Topbar */}
-        <div className="px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center sticky top-0 z-50">
-
-  <div className="flex items-center gap-4">
-    <p className="text-white text-lg">Welcome Bankim Doshi!</p>
-    <img
-      src="https://i.pravatar.cc/60?img=1"
-      className="w-12 h-12 rounded-full border-2 border-white"
-      alt="Profile"
-    />
-  </div>
-</div>
-
+      <div className="flex-1 flex flex-col ml-60 h-screen overflow-y-auto">
+       
+      {/* Topbar */}
+         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
+          <div className="flex items-center gap-4">
+            <p className="text-white text-lg">Welcome {username}!</p>
+              <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
+          </div>
+        </div>
         <div className="p-8">
           <h1 className="text-2xl font-bold mb-6">PRIMARY MEMBER INFORMATION</h1>
+
 
           <div className="mb-6">
             {/* Search and dropdown section */}
@@ -217,37 +345,209 @@ useEffect(() => {
             />
           </Section>
    
-   
+<div className="mt-4">
+  <h3 className="text-lg font-semibold mb-2">Stock Information</h3>
+  <div className="overflow-x-auto bg-[#1B2735] rounded-lg border p-2 max-h-96 overflow-y-auto">
+  <div className="min-w-[900px]">
+    <table className="w-full text-sm text-left">
+    <thead className="bg-[#16202C] text-gray-400">
+      <tr>
+        <th className="py-2 px-3 whitespace-nowrap">Email ID</th>
+        <th className="py-2 px-3 whitespace-nowrap">Login ID</th>
+        <th className="py-2 px-3 whitespace-nowrap">Password</th>
+        <th className="py-2 px-3 whitespace-nowrap">Demat A/c No.</th>
+        <th className="py-2 px-3 whitespace-nowrap">Trading A/c No.</th>
+        <th className="py-2 px-3 whitespace-nowrap">Nominee Name</th>
+        <th className="py-2 px-3 whitespace-nowrap">Relation to A/c Holder</th>
+        <th className="py-2 px-3 whitespace-nowrap">DOB (Nominee)</th>
+        <th className="py-2 px-3 whitespace-nowrap">Share (%)</th>
+        <th className="py-2 px-3 whitespace-nowrap">Nominee Address</th>
+        <th className="py-2 px-3 whitespace-nowrap">Guardian Name</th>
+        <th className="py-2 px-3 whitespace-nowrap">Relation to Nominee</th>
+        <th className="py-2 px-3 whitespace-nowrap">Contact No.</th>
+        <th className="py-2 px-3 whitespace-nowrap">Guardian Address</th>
+        <th className="py-2 px-3 whitespace-nowrap">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {stockData.map((item, idx) => (
+        <tr key={idx} className="border-b border-gray-700 hover:bg-[#23304a]">
+          <td className="py-2 px-3 whitespace-nowrap">{item.email}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.loginId}</td>
+          <td className="py-2 px-3 whitespace-nowrap flex items-center gap-2">
+  {visiblePasswords[idx] ? item.password : '********'}
+  {visiblePasswords[idx] ? (
+    <MdVisibilityOff
+      className="cursor-pointer text-gray-400 hover:text-blue-400"
+      onClick={() => togglePasswordVisibility(idx)}
+    />
+  ) : (
+    <MdVisibility
+      className="cursor-pointer text-gray-400 hover:text-blue-400"
+      onClick={() => togglePasswordVisibility(idx)}
+    />
+  )}
+</td>
 
-          <Section title="Stock Market Information" icon={<StockMarketIcon />}>
-            <Table
-              headers={["Email ID", "Login ID", "Password", "Demat A/C No.", "Trading A/C No."]}
-              rows={[
-                ["bd1@gmail.com", "bankim1", <PasswordCell key="stock" show={passwordVisibility.stock} toggle={() => togglePassword("stock")} />, "987654342316898", "TR9876542"]
-              ]}
-            />
-          </Section>
+          <td className="py-2 px-3 whitespace-nowrap">{item.dematAccount}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.tradingAccount}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.nomineeName}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.relationWithAccountHolder}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.nomineeDob}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.percentageShare}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.nomineeAddress}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.guardianName}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.relationWithNominee}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.contactNumber}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.guardianAddress}</td>
+          <td className="py-2 px-3 whitespace-nowrap flex gap-3 justify-center text-gray-400">
+            <MdEdit className="hover:text-blue-400 cursor-pointer" />
+            <MdDelete className="text-red-500 hover:text-red-400 cursor-pointer" />
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
 
-          <Section title="Mutual Funds Information" icon="📊">
-            <Table
-              headers={["Email ID", "Login ID", "Password", "Demat A/C No.", "Broker Details"]}
-              rows={[
-                ["bd1@gmail.com", "bankim1", <PasswordCell key="mutual" show={passwordVisibility.mutual} toggle={() => togglePassword("mutual")} />, "98765434237658908", "Groww - BR123458"]
-              ]}
-            />
-          </Section>
 
-          <Section title="Bank Information" icon="🏦" viewAll>
-            <Table
-              headers={["Bank Name", "Branch Name", "Account No.", "IFSC Code", "Net Banking Email ID", "Password"]}
-              rows={[
-                ["IDFC First Bank", "Ghatkopar West", "7239189830", "8428021", "bd1@gmail.com", <PasswordCell key="bank1" show={passwordVisibility.bank1} toggle={() => togglePassword("bank1")} />],
-                ["Federal Bank", "Kandivali East", "7239189830", "8428021", "bd2@gmail.com", <PasswordCell key="bank2" show={passwordVisibility.bank2} toggle={() => togglePassword("bank2")} />],
-                ["Kalyan Janata", "Mulund", "7239189830", "8428021", "bd3@gmail.com", <PasswordCell key="bank3" show={passwordVisibility.bank3} toggle={() => togglePassword("bank3")} />]
-              ]}
-            />
-          </Section>
+<div className="mt-6">
+  <h3 className="text-lg font-semibold mb-2">Mutual Fund Information</h3>
+  <div className="overflow-x-auto bg-[#1B2735] rounded-lg border p-2 max-h-96 overflow-y-auto">
+  <div className="min-w-[900px]">
+    <table className="w-full text-sm text-left">
+    <thead className="bg-[#16202C] text-gray-400">
+      <tr>
+        <th className="py-2 px-3 whitespace-nowrap">Email ID</th>
+        <th className="py-2 px-3 whitespace-nowrap">Login ID</th>
+        <th className="py-2 px-3 whitespace-nowrap">Password</th>
+        <th className="py-2 px-3 whitespace-nowrap">Demat A/c No.</th>
+        <th className="py-2 px-3 whitespace-nowrap">Trading A/c No.</th>
+        <th className="py-2 px-3 whitespace-nowrap">Nominee Name</th>
+        <th className="py-2 px-3 whitespace-nowrap">Relation to A/c Holder</th>
+        <th className="py-2 px-3 whitespace-nowrap">DOB (Nominee)</th>
+        <th className="py-2 px-3 whitespace-nowrap">Share (%)</th>
+        <th className="py-2 px-3 whitespace-nowrap">Nominee Address</th>
+        <th className="py-2 px-3 whitespace-nowrap">Guardian Name</th>
+        <th className="py-2 px-3 whitespace-nowrap">Relation to Nominee</th>
+        <th className="py-2 px-3 whitespace-nowrap">Contact No.</th>
+        <th className="py-2 px-3 whitespace-nowrap">Guardian Address</th>
+        <th className="py-2 px-3 whitespace-nowrap">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {mutualfundData.map((item, idx) => (
+        <tr key={idx} className="border-b border-gray-700 hover:bg-[#23304a]">
+          <td className="py-2 px-3 whitespace-nowrap">{item.email}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.loginId}</td>
+          <td className="py-2 px-3 whitespace-nowrap flex items-center gap-2">
+  {visiblePasswords[idx] ? item.password : '********'}
+  {visiblePasswords[idx] ? (
+    <MdVisibilityOff
+      className="cursor-pointer text-gray-400 hover:text-blue-400"
+      onClick={() => togglePasswordVisibility(idx)}
+    />
+  ) : (
+    <MdVisibility
+      className="cursor-pointer text-gray-400 hover:text-blue-400"
+      onClick={() => togglePasswordVisibility(idx)}
+    />
+  )}
+</td>
 
+          <td className="py-2 px-3 whitespace-nowrap">{item.dematAccount}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.tradingAccount}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.nomineeName}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.relationWithAccountHolder}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.nomineeDob}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.percentageShare}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.nomineeAddress}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.guardianName}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.relationWithNominee}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.contactNumber}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.guardianAddress}</td>
+          <td className="py-2 px-3 whitespace-nowrap flex gap-3 justify-center text-gray-400">
+            <MdEdit className="hover:text-blue-400 cursor-pointer" />
+            <MdDelete className="text-red-500 hover:text-red-400 cursor-pointer" />
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+
+<div className="mt-6">
+  <h3 className="text-lg font-semibold mb-2">Insurance Information</h3>
+  <div className="overflow-x-auto bg-[#1B2735] rounded-lg border p-2 max-h-96 overflow-y-auto">
+  <div className="min-w-[900px]">
+    <table className="w-full text-sm text-left">
+    <thead className="bg-[#16202C] text-gray-400">
+      <tr>
+        <th className="py-2 px-3 whitespace-nowrap">Email ID</th>
+        <th className="py-2 px-3 whitespace-nowrap">Login ID</th>
+        <th className="py-2 px-3 whitespace-nowrap">Password</th>
+        <th className="py-2 px-3 whitespace-nowrap">Demat A/c No.</th>
+        <th className="py-2 px-3 whitespace-nowrap">Trading A/c No.</th>
+        <th className="py-2 px-3 whitespace-nowrap">Nominee Name</th>
+        <th className="py-2 px-3 whitespace-nowrap">Relation to A/c Holder</th>
+        <th className="py-2 px-3 whitespace-nowrap">DOB (Nominee)</th>
+        <th className="py-2 px-3 whitespace-nowrap">Share (%)</th>
+        <th className="py-2 px-3 whitespace-nowrap">Nominee Address</th>
+        <th className="py-2 px-3 whitespace-nowrap">Guardian Name</th>
+        <th className="py-2 px-3 whitespace-nowrap">Relation to Nominee</th>
+        <th className="py-2 px-3 whitespace-nowrap">Contact No.</th>
+        <th className="py-2 px-3 whitespace-nowrap">Guardian Address</th>
+        <th className="py-2 px-3 whitespace-nowrap">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {insuranceData.map((item, idx) => (
+        <tr key={idx} className="border-b border-gray-700 hover:bg-[#23304a]">
+          <td className="py-2 px-3 whitespace-nowrap">{item.email}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.loginId}</td>
+          <td className="py-2 px-3 whitespace-nowrap flex items-center gap-2">
+  {visiblePasswords[idx] ? item.password : '********'}
+  {visiblePasswords[idx] ? (
+    <MdVisibilityOff
+      className="cursor-pointer text-gray-400 hover:text-blue-400"
+      onClick={() => togglePasswordVisibility(idx)}
+    />
+  ) : (
+    <MdVisibility
+      className="cursor-pointer text-gray-400 hover:text-blue-400"
+      onClick={() => togglePasswordVisibility(idx)}
+    />
+  )}
+</td>
+
+          <td className="py-2 px-3 whitespace-nowrap">{item.dematAccount}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.tradingAccount}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.nomineeName}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.relationWithAccountHolder}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.nomineeDob}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.percentageShare}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.nomineeAddress}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.guardianName}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.relationWithNominee}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.contactNumber}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{item.guardianAddress}</td>
+          <td className="py-2 px-3 whitespace-nowrap flex gap-3 justify-center text-gray-400">
+            <MdEdit className="hover:text-blue-400 cursor-pointer" />
+            <MdDelete className="text-red-500 hover:text-red-400 cursor-pointer" />
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+
+          <div className="mt-6"></div>
         <Section title="National Identity Documents Information" icon="🪪">
   <SubSection title="Passport Details" color="#00E396">
     <div className="bg-[#1B2735] p-6 rounded-lg text-white mt-2">
@@ -355,7 +655,7 @@ useEffect(() => {
 </Section>
 
 
-          <Section title="Vehicle Information" icon="🚗">
+          <Section title="Vehicle Information" icon="🚗" viewAll>
             <Table
               headers={["Vehicle Type", "Brand Name", "Registration Number", "Registration Date", "Insurance Policy Number", "Upload PDF"]}
               rows={[

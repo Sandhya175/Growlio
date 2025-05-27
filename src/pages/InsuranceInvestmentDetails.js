@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
-import { FaDownload } from "react-icons/fa";
+import {FaUser,FaDownload} from "react-icons/fa";
+import { MdEdit, MdDelete } from "react-icons/md";
 
 const InsuranceInvestmentDetails = () => {
-  const handleDownloadPDF = () => {
-    alert("Download PDF clicked!");
-  };
+
+const [username, setUsername] = useState('');
+useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+          setUsername(storedUsername);
+        }
+      }, []);
 
   return (
     <div className="flex w-screen max-w-full bg-gray-900 text-white h-screen overflow-hidden">
@@ -19,18 +25,30 @@ const InsuranceInvestmentDetails = () => {
         {/* Sticky Topbar */}
         <div className="sticky top-0 z-40 bg-gray-800 shadow-md px-8 py-6 flex justify-end items-center">
           <div className="flex items-center gap-4">
-            <p className="text-white text-lg">Welcome Bankim Doshi!</p>
-            <img
-              src="https://i.pravatar.cc/60?img=1"
-              className="w-12 h-12 rounded-full border-2 border-white"
-              alt="Profile"
-            />
+            <p className="text-white text-lg">Welcome {username}!</p>
+              <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
           </div>
         </div>
 
         {/* Page Content */}
         <div className="p-10">
           <h1 className="text-2xl font-bold mb-6">INSURANCE INVESTMENT DETAILS</h1>
+
+ <div className="mb-6">
+            <select className="w-96 p-3 bg-[#1B2735] text-white rounded">
+              <option>Mr. Bankim Doshi</option>
+              <option>Mrs. Nita Doshi</option>
+              <option>Mr. Rashesh Doshi</option>
+              <option>Mrs. Jagruti Doshi</option>
+              <option>Bankim Doshi HUF</option>
+              <option>Rashesh Doshi HUF</option>
+              <option>Mrs. Pritika Doshi</option>
+              <option>Mr. Krishna Doshi</option>
+              <option>Talent Corner HR Services Pvt Ltd.</option>
+            </select>
+          </div>
 
           {/* Filters */}
           <div className="flex gap-6 mb-6">
@@ -73,64 +91,309 @@ const InsuranceInvestmentDetails = () => {
             </div>
           </div>
 
-          {/* Download PDF Button */}
-          <div className="flex justify-end mb-2">
-            <button
-              onClick={handleDownloadPDF}
-              className="flex items-center gap-2 bg-[#2f3e54] hover:bg-[#3f5066] text-red-400 font-medium px-4 py-2 rounded-md"
-              title="Download PDF"
-            >
-              <FaDownload size={16} />
-              PDF
-            </button>
-          </div>
+{/* Full Account Details Table */}
+<h2 className="text-xl font-semibold mb-4 text-gray-200">Account Details</h2>
+<div className="bg-[#1B2735] rounded-lg mb-8 overflow-x-auto">
+  <table className="w-full text-xs text-left min-w-[1400px] text-gray-300">
+    <thead className="bg-[#16202C] text-gray-400">
+      <tr>
+        <th className="py-2 px-3 whitespace-nowrap">Name of Investor</th>
+        <th className="py-2 px-3 whitespace-nowrap">Type of Insurance</th>
+        <th className="py-2 px-3 whitespace-nowrap">Insurance Company</th>
+        <th className="py-2 px-3 whitespace-nowrap">Policy Number</th>
+        <th className="py-2 px-3 whitespace-nowrap">Policy Term</th>
+        <th className="py-2 px-3 whitespace-nowrap">Type of Life Cover</th>
+        <th className="py-2 px-3 whitespace-nowrap">Coverage Amt</th>
+        <th className="py-2 px-3 whitespace-nowrap">Maturity Value</th>
+        <th className="py-2 px-3 whitespace-nowrap">Premium Amt</th>
+        <th className="py-2 px-3 whitespace-nowrap">Frequency of Payment</th>
+        <th className="py-2 px-3 whitespace-nowrap">Payment Mode</th>
+        <th className="py-2 px-3 whitespace-nowrap">Policy Start Date</th>
+        <th className="py-2 px-3 whitespace-nowrap">Policy Expiry Date</th>
+        <th className="py-2 px-3 whitespace-nowrap">Claim Settlement Date</th>
+        <th className="py-2 px-3 whitespace-nowrap">Login ID</th>
+        <th className="py-2 px-3 whitespace-nowrap">Password</th>
+        <th className="py-2 px-3 whitespace-nowrap">Registered Email ID</th>
+        <th className="py-2 px-3 whitespace-nowrap">Insurance Portal URL</th>
+        <th className="py-2 px-3 whitespace-nowrap">Customer ID</th>
+        <th className="py-2 px-3 whitespace-nowrap">Agent Contact</th>
+        <th className="py-2 px-3 whitespace-nowrap">Bank Name</th>
+        <th className="py-2 px-3 whitespace-nowrap">Account Number</th>
+        <th className="py-2 px-3 whitespace-nowrap">Account Type</th>
+        <th className="py-2 px-3 whitespace-nowrap">Status</th>
+        <th className="py-2 px-3 whitespace-nowrap">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {[
+        {
+          investor: "Mr. Bankim Doshi",
+          type: "Life",
+          company: "XYZ Ltd",
+          policyNo: "740181910",
+          term: "20",
+          cover: "Term Endowment",
+          coverage: "₹ 80,000.00",
+          maturity: "₹ 1,00,000.00",
+          premium: "₹ 5000",
+          frequency: "Monthly",
+          mode: "Bank Transfer",
+          start: "09/08/2023",
+          expiry: "09/08/2024",
+          claim: "09/08/2024",
+          login: "bankimd1",
+          password: "**********",
+          email: "bd@gmail.com",
+          url: "https://insuranceportal",
+          customerId: "7498129829810",
+          agent: "+91 8976543322",
+          bank: "Axis Bank",
+          accNo: "7498129829810",
+          accType: "Savings",
+          status: "ACTIVE"
+        },
+        {
+          investor: "Mr. Bankim Doshi",
+          type: "Life",
+          company: "XYZ Ltd",
+          policyNo: "740181910",
+          term: "20",
+          cover: "Term Endowment",
+          coverage: "₹ 80,000.00",
+          maturity: "₹ 1,00,000.00",
+          premium: "₹ 5000",
+          frequency: "Monthly",
+          mode: "Bank Transfer",
+          start: "09/08/2023",
+          expiry: "09/08/2024",
+          claim: "09/08/2024",
+          login: "bankimd1",
+          password: "**********",
+          email: "bd@gmail.com",
+          url: "https://insuranceportal",
+          customerId: "7498129829810",
+          agent: "+91 8976543322",
+          bank: "Axis Bank",
+          accNo: "7498129829810",
+          accType: "Savings",
+          status: "INACTIVE"
+        },
+        {
+          investor: "Mr. Bankim Doshi",
+          type: "Life",
+          company: "XYZ Ltd",
+          policyNo: "740181910",
+          term: "20",
+          cover: "Term Endowment",
+          coverage: "₹ 80,000.00",
+          maturity: "₹ 1,00,000.00",
+          premium: "₹ 5000",
+          frequency: "Monthly",
+          mode: "Bank Transfer",
+          start: "09/08/2023",
+          expiry: "09/08/2024",
+          claim: "09/08/2024",
+          login: "bankimd1",
+          password: "**********",
+          email: "bd@gmail.com",
+          url: "https://insuranceportal",
+          customerId: "7498129829810",
+          agent: "+91 8976543322",
+          bank: "Axis Bank",
+          accNo: "7498129829810",
+          accType: "Savings",
+          status: "ACTIVE"
+        },
+        {
+          investor: "Mr. Bankim Doshi",
+          type: "Life",
+          company: "XYZ Ltd",
+          policyNo: "740181910",
+          term: "20",
+          cover: "Term Endowment",
+          coverage: "₹ 80,000.00",
+          maturity: "₹ 1,00,000.00",
+          premium: "₹ 5000",
+          frequency: "Monthly",
+          mode: "Bank Transfer",
+          start: "09/08/2023",
+          expiry: "09/08/2024",
+          claim: "09/08/2024",
+          login: "bankimd1",
+          password: "**********",
+          email: "bd@gmail.com",
+          url: "https://insuranceportal",
+          customerId: "7498129829810",
+          agent: "+91 8976543322",
+          bank: "Axis Bank",
+          accNo: "7498129829810",
+          accType: "Savings",
+          status: "ACTIVE"
+        }
+      ].map((acc, idx) => (
+        <tr key={idx} className="border-b border-gray-700 hover:bg-[#23304a]">
+          <td className="py-2 px-3 whitespace-nowrap">{acc.investor}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.type}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.company}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.policyNo}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.term}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.cover}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.coverage}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.maturity}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.premium}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.frequency}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.mode}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.start}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.expiry}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.claim}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.login}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.password}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.email}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.url}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.customerId}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.agent}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.bank}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.accNo}</td>
+          <td className="py-2 px-3 whitespace-nowrap">{acc.accType}</td>
+          <td className="py-2 px-3 whitespace-nowrap font-semibold text-green-400">{acc.status}</td>
+          <td className="py-2 px-3 whitespace-nowrap flex gap-3 justify-center text-gray-400">
+            <MdEdit className="hover:text-blue-400 cursor-pointer" />
+            <MdDelete className="text-red-500 hover:text-red-400 cursor-pointer" />
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
 
-          {/* Table Section */}
-          <div className="bg-[#1B2735] p-6 rounded-lg">
-            <div className="grid grid-cols-7 font-semibold border-b border-gray-600 pb-2 mb-2">
-              <div>Insurance Type</div>
-              <div>Company Name</div>
-              <div>Premium Amt.</div>
-              <div>Payment Frequency</div>
-              <div>Start Date</div>
-              <div>Nominee Name</div>
-              <div>Status</div>
+{/* Nominee Details Table */}
+<h2 className="text-xl font-semibold mb-4 text-gray-200">Nominee Details</h2>
+<div className="bg-[#1B2735] rounded-lg mb-8 overflow-x-auto">
+  <table className="w-full text-sm text-left text-gray-300">
+    <thead className="bg-[#16202C] text-gray-400">
+      <tr>
+        <th className="p-4">Nominee Name</th>
+        <th className="p-4">Relationship with Acc Holder</th>
+        <th className="p-4">DOB</th>
+        <th className="p-4">Percentage Share</th>
+        <th className="p-4">Address</th>
+        <th className="p-4">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {[
+        { name: "Mrs. Nita Doshi", relation: "Wife", dob: "09/07/1998", share: "50%", address: "Aditi Apt, Ghatkopar (W)" },
+        { name: "Mr. Rashesh Doshi", relation: "Son", dob: "09/07/1998", share: "20%", address: "Aditi Apt, Ghatkopar (W)" },
+         { name: "Mr. Rashesh Doshi", relation: "Son", dob: "09/07/1998", share: "20%", address: "Aditi Apt, Ghatkopar (W)" },
+          { name: "Mr. Rashesh Doshi", relation: "Son", dob: "09/07/1998", share: "20%", address: "Aditi Apt, Ghatkopar (W)" },
+         { name: "Mr. Rashesh Doshi", relation: "Son", dob: "09/07/1998", share: "20%", address: "Aditi Apt, Ghatkopar (W)" },
+        { name: "Mrs. Nita Doshi", relation: "Wife", dob: "09/07/1998", share: "20%", address: "Aditi Apt, Ghatkopar (W)" },
+        { name: "Mrs. Jagruti Doshi", relation: "Daughter", dob: "09/07/1998", share: "20%", address: "Aditi Apt, Ghatkopar (W)" },
+        { name: "Mrs. Jagruti Doshi", relation: "Daughter", dob: "09/07/1998", share: "20%", address: "Aditi Apt, Ghatkopar (W)" },
+      ].map((nominee, idx) => (
+        <tr key={idx} className="border-b border-gray-700 hover:bg-[#23304a]">
+          <td className="p-4">{nominee.name}</td>
+          <td className="p-4">{nominee.relation}</td>
+          <td className="p-4">{nominee.dob}</td>
+          <td className="p-4">{nominee.share}</td>
+          <td className="p-4">{nominee.address}</td>
+          <td className="p-4 flex gap-3 text-gray-400">
+            <MdEdit className="hover:text-blue-400 cursor-pointer" />
+            <MdDelete className="hover:text-red-400 cursor-pointer" />
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+{/* Guardian Details Table */}
+<h2 className="text-xl font-semibold mb-4">Guardian Details (if Nominee is a minor)</h2>
+<div className="bg-[#1B2735] rounded-lg mb-8 overflow-x-auto">
+  <table className="w-full text-sm text-left">
+    <thead className="bg-[#16202C] text-gray-400">
+      <tr>
+        <th className="p-4">Name of Guardian</th>
+        <th className="p-4">Relationship with Nominee</th>
+        <th className="p-4">Contact No. of Guardian</th>
+        <th className="p-4">Address</th>
+        <th className="p-4">Share of Nomination</th>
+        <th className="p-4">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="border-b border-gray-700">
+        <td className="p-4">Mrs. Nita Doshi</td>
+        <td className="p-4">Wife</td>
+        <td className="p-4">+91 7888989877</td>
+        <td className="p-4">Aditi Apt, Ghatkopar (W)</td>
+         <td className="p-4">60%</td>
+        <td className="p-4 flex gap-3">
+          <MdEdit className="hover:text-blue-400 cursor-pointer" />
+          <MdDelete className="hover:text-red-400 cursor-pointer" />
+        </td>
+      </tr>
+      <tr className="border-b border-gray-700">
+        <td className="p-4">Mr. Rashesh Doshi</td>
+        <td className="p-4">Son</td>
+        <td className="p-4">+91 7888989877</td>
+        <td className="p-4">Aditi Apt, Ghatkopar (W)</td>
+        <td className="p-4">
+  <label className="text-white-400 font-medium">
+    20%
+    <input
+      type="file"
+      accept=".pdf,.jpg,.jpeg,.png"
+      className="hidden"
+      onChange={(e) => {
+        if (e.target.files.length > 0) {
+          alert(`Selected file: ${e.target.files[0].name}`);
+        }
+      }}
+    />
+  </label>
+</td>
+        <td className="p-4 flex gap-3">
+          <MdEdit className="hover:text-blue-400 cursor-pointer" />
+          <MdDelete className="hover:text-red-400 cursor-pointer" />
+        </td>
+      </tr>
+      <tr className="border-b border-gray-700">
+        <td className="p-4">Mr. Rashesh Doshi</td>
+        <td className="p-4">Son</td>
+        <td className="p-4">+91 7888989877</td>
+        <td className="p-4">Aditi Apt, Ghatkopar (W)</td>
+        <td className="p-4 "> 20% </td>
+        <td className="p-4 flex gap-3">
+          <MdEdit className="hover:text-blue-400 cursor-pointer" />
+          <MdDelete className="hover:text-red-400 cursor-pointer" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+ {/* Documents */}
+          <h2 className="text-xl font-semibold mb-4">Documents</h2>
+          <div className="bg-[#1B2735] rounded-lg p-6 mb-8">
+            <div className="mb-4">
+              <button className="flex items-center gap-2 w-96 bg-[#0D1520] border border-gray-700 p-3 rounded mb-3">
+                <FaDownload />
+                Nomineeid.pdf
+              </button>
+               <button className="flex items-center gap-2 w-96 bg-[#0D1520] border border-gray-700 p-3 rounded mb-3">
+                <FaDownload />
+                insurancedoc.pdf
+              </button>
             </div>
-
-            {[
-              ["Life Insurance", "XYZ Co.", "₹ 4528.67", "Annually", "02/09/2024", "Mrs. Nita Doshi", "ACTIVE"],
-              ["Vehicle Insurance", "XYZ Co.", "₹ 4528.67", "Annually", "02/09/2024", "Mrs. Nita Doshi", "INACTIVE"],
-              ["Home Insurance", "PQR Co.", "₹ 4528.67", "Annually", "02/09/2024", "Mrs. Nita Doshi", "ACTIVE"],
-              ["Business Insurance", "ABC Co.", "₹ 4528.67", "Monthly", "02/09/2024", "Self", "ACTIVE"],
-              ["Accident Insurance", "SSN Co.", "₹ 4528.67", "Annually", "02/09/2024", "Mrs. Nita Doshi", "ACTIVE"],
-              ["Property Insurance", "DEF Co.", "₹ 4528.67", "Annually", "02/09/2024", "Mrs. Nita Doshi", "ACTIVE"],
-              ["Travel Insurance", "XYZ Co.", "₹ 4528.67", "Annually", "02/09/2024", "Self", "INACTIVE"],
-              ["Health Insurance", "DEF Co.", "₹ 4528.67", "Annually", "02/09/2024", "Mrs. Nita Doshi", "ACTIVE"]
-            ].map(([type, company, amount, frequency, date, nominee, status], i) => (
-              <div key={i} className="grid grid-cols-7 py-2 border-t border-gray-700 text-sm items-center">
-                <div>{type}</div>
-                <div>{company}</div>
-                <div>{amount}</div>
-                <div>{frequency}</div>
-                <div>{date}</div>
-                <div>{nominee}</div>
-                <div>
-                  <span
-                    className={`inline-block w-20 text-center px-2 py-1 rounded text-xs font-bold ${
-                      status === "ACTIVE" ? "bg-green-600" : "bg-red-600"
-                    }`}
-                  >
-                    {status}
-                  </span>
-                </div>
-              </div>
-            ))}
           </div>
+     
 
+         
           {/* Footer Buttons */}
           <div className="flex justify-center gap-4 mt-8">
             <button className="bg-[#3B9B8F] hover:bg-[#2f7a6f] px-6 py-3 rounded-md font-semibold text-white">
-              Record More Investments
+              Download PDF
             </button>
             <button className="bg-transparent border border-white text-white px-6 py-2 rounded-md font-semibold">
               Go to Insurance Dashboard

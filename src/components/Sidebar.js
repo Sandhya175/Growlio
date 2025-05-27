@@ -72,10 +72,6 @@ function Sidebar() {
             <i className="fa-solid fa-wrench mr-3"></i> Taxation
           </Link>
 
-          <Link to="/investments" className={`flex items-center px-6 py-2 hover:bg-[#334155] hover:text-[#7effef] transition-colors duration-200 ${isActive('/investments') ? 'bg-[#334155] text-[#7effef]' : ''}`}>
-            <i className="fa-solid fa-wallet mr-3"></i> My Investments
-          </Link>
-
           <Link to="/reports" className={`flex items-center px-6 py-2 hover:bg-[#334155] hover:text-[#7effef] transition-colors duration-200 ${isActive('/reports') ? 'bg-[#334155] text-[#7effef]' : ''}`}>
             <i className="fa-solid fa-chart-pie mr-3"></i> Reports
           </Link>

@@ -22,9 +22,6 @@ const BankDetails = () => {
     navigate("/add-fixed-deposit");
   };
 
-  const handleNewBankWithdrawal = () => {
-    navigate("/add-bank-withdrawal");
-  };
 
   return (
     <div className="min-h-screen bg-[#0D1520] text-white flex">

@@ -65,10 +65,13 @@ useEffect(() => {
 
             {/* Grid of Tiles: 2 per row = 3 rows */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className={tileClass}>
-                <FaChartBar className="text-3xl mb-2" />
-                Short-Term Capital Gain
-              </div>
+              <button
+      onClick={() => navigate("/short-term-capital-gain")}
+      className={tileClass + " cursor-pointer text-left w-full"}
+    >
+      <FaChartBar className="text-3xl mb-2" />
+      Short-Term Capital Gain
+    </button>
               <div className={tileClass}>
                 <LineChart className="text-3xl mb-2" />
                 Long-Term Capital Gain

@@ -72,8 +72,18 @@ const PpfPartialWithdrawalForm = () => {
               <h3 className="text-xl font-semibold mb-4">PPF Account Details</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div className="flex flex-col">
-                  <label className="mb-1 text-sm font-medium">PPF Account Number</label>
-                  <input className="bg-[#1B2735] text-white p-3 rounded-lg" />
+                  <label className="mb-1 text-sm font-medium">PPF Account Name</label>
+                   <select className=" p-3 bg-[#1B2735] text-white rounded">
+              <option>Mr. Bankim Doshi</option>
+              <option>Mrs. Nita Doshi</option>
+              <option>Mr. Rashesh Doshi</option>
+              <option>Mrs. Jagruti Doshi</option>
+              <option>Bankim Doshi HUF</option>
+              <option>Rashesh Doshi HUF</option>
+              <option>Mrs. Pritika Doshi</option>
+              <option>Mr. Krishna Doshi</option>
+              <option>Talent Corner HR Services Pvt Ltd.</option>
+            </select>
                 </div>
                 <div className="flex flex-col">
                   <label className="mb-1 text-sm font-medium">Branch Name</label>
@@ -114,54 +124,75 @@ const PpfPartialWithdrawalForm = () => {
             <div>
               <h3 className="text-xl font-semibold mb-4">Address Details</h3>
               <label className="mb-1 text-sm font-medium">Residential Address</label>
-              <textarea readOnly rows={3} value={formData.address} className="bg-[#1B2735] text-white w-full p-3 rounded-lg" />
+              <textarea className="bg-[#1B2735] text-white w-full p-3 rounded-lg" />
             </div>
 
-            {/* Withdrawal Request */}
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Withdraw Request Details</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div className="flex flex-col">
-                  <label className="mb-1 text-sm font-medium">Amount to be Withdrawn (₹)</label>
-                  <input
-                    className="bg-[#1B2735] text-white p-3 rounded-lg"
-                    value={formData.withdrawAmount}
-                    onChange={(e) =>
-                      setFormData({ ...formData, withdrawAmount: e.target.value })
-                    }
-                  />
-                </div>
+            {/* Withdraw Request Section */}
+<div>
+  <h3 className="text-xl font-semibold mb-4 text-white">Withdraw Request Details</h3>
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
 
-                <div className="flex flex-col">
-                  <label className="mb-1 text-sm font-medium">Reason for Withdrawal</label>
-                  {formData.withdrawReason === "Others (please specify)" ? (
-                    <input
-                      className="bg-[#1B2735] text-white p-3 rounded-lg"
-                      placeholder="Please specify your reason"
-                      value={formData.otherReason}
-                      onChange={(e) =>
-                        setFormData({ ...formData, otherReason: e.target.value })
-                      }
-                    />
-                  ) : (
-                    <select
-                      className="bg-[#1B2735] text-white p-3 rounded-lg"
-                      value={formData.withdrawReason}
-                      onChange={(e) =>
-                        setFormData({ ...formData, withdrawReason: e.target.value })
-                      }
-                    >
-                      <option>Education</option>
-                      <option>Medical Emergency</option>
-                      <option>Marriage</option>
-                      <option>Home</option>
-                      <option>Renovation</option>
-                      <option>Others (please specify)</option>
-                    </select>
-                  )}
-                </div>
-              </div>
-            </div>
+    {/* Amount */}
+    <div className="flex flex-col">
+      <label className="mb-1 text-sm font-medium">Amount to be Withdrawn (₹)</label>
+      <input
+        className="bg-[#1B2735] text-white p-3 rounded-lg"
+        type="number"
+        value={formData.withdrawAmount}
+        onChange={(e) =>
+          setFormData({ ...formData, withdrawAmount: e.target.value })
+        }
+      />
+    </div>
+
+    {/* Reason for Withdrawal */}
+    <div className="flex flex-col">
+      <label className="mb-1 text-sm font-medium">Reason for Withdrawal</label>
+      <select
+        className="bg-[#1B2735] text-white p-3 rounded-lg"
+        value={formData.withdrawReason}
+        onChange={(e) =>
+          setFormData({ ...formData, withdrawReason: e.target.value })
+        }
+      >
+        <option value="">Select Reason</option>
+        <option value="Education">Education</option>
+        <option value="Medical Emergency">Medical Emergency</option>
+        <option value="Marriage">Marriage</option>
+        <option value="Home">Home</option>
+        <option value="Renovation">Renovation</option>
+        <option value="Others (please specify)">Others (please specify)</option>
+      </select>
+    </div>
+
+    {/* Specify Other Reason */}
+    <div className="flex flex-col">
+      <label className="mb-1 text-sm font-medium">Specify Other Reason (if selected)</label>
+      <input
+        className="bg-[#1B2735] text-white p-3 rounded-lg"
+        placeholder="Enter other reason"
+        value={formData.otherReason}
+        disabled={formData.withdrawReason !== "Others (please specify)"}
+        onChange={(e) =>
+          setFormData({ ...formData, otherReason: e.target.value })
+        }
+      />
+    </div>
+
+    {/* Date of Withdrawal */}
+    <div className="flex flex-col">
+      <label className="mb-1 text-sm font-medium">Date of Withdrawal</label>
+      <input
+        type="date"
+        className="bg-[#1B2735] text-white p-3 rounded-lg"
+        value={formData.withdrawDate}
+        onChange={(e) =>
+          setFormData({ ...formData, withdrawDate: e.target.value })
+        }
+      />
+    </div>
+  </div>
+</div>
 
             {/* Bank Details */}
             <div>

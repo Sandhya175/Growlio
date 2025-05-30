@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar";
 import {FaUser,FaDownload} from "react-icons/fa";
 import { MdEdit, MdDelete } from "react-icons/md";
 
-const CommodityInvestment = () => {
+const Healthinsuranceinvestmentdetails = () => {
 
 const [username, setUsername] = useState('');
 useEffect(() => {
@@ -11,20 +11,22 @@ useEffect(() => {
         if (storedUsername) {
           setUsername(storedUsername);
         }
-      }, []); 
+      }, []);
 
   return (
-    <div className="min-h-screen bg-[#0D1520] text-white flex">
-      {/* Sidebar */}
-      <Sidebar />
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+    <div className="flex w-screen max-w-full bg-gray-900 text-white h-screen overflow-hidden">
+      {/* Fixed Sidebar */}
+      <div className="fixed top-0 left-0 h-full w-60 bg-gray-800 z-50">
+        <Sidebar />
+      </div>
 
-        {/* Topbar */}
-         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
+      {/* Main Content */}
+      <div className="flex flex-col flex-1 ml-60 h-full overflow-y-auto">
+        {/* Sticky Topbar */}
+        <div className="sticky top-0 z-40 bg-gray-800 shadow-md px-8 py-6 flex justify-end items-center">
           <div className="flex items-center gap-4">
             <p className="text-white text-lg">Welcome {username}!</p>
-            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
               <FaUser className="text-2xl" />
             </div>
           </div>
@@ -32,7 +34,7 @@ useEffect(() => {
 
         {/* Page Content */}
         <div className="p-10">
-          <h1 className="text-2xl font-bold mb-6">COMMODITY INVESTMENT DETAILS</h1>
+          <h1 className="text-2xl font-bold mb-6">HELATH INSURANCE INVESTMENT DETAILS</h1>
 
  <div className="mb-6">
             <select className="w-96 p-3 bg-[#1B2735] text-white rounded">
@@ -66,25 +68,25 @@ useEffect(() => {
 
             {/* Filter by Insurance Type */}
             <div className="flex flex-col">
-              <label className="text-sm text-gray-400 mb-1">Filter by Ivestor</label>
-              <select className="w-96 p-3 bg-[#1B2735] text-white rounded">
-              <option>Mr. Bankim Doshi</option>
-              <option>Mrs. Nita Doshi</option>
-              <option>Mr. Rashesh Doshi</option>
-              <option>Mrs. Jagruti Doshi</option>
-              <option>Bankim Doshi HUF</option>
-              <option>Rashesh Doshi HUF</option>
-              <option>Mrs. Pritika Doshi</option>
-              <option>Mr. Krishna Doshi</option>
-              <option>Talent Corner HR Services Pvt Ltd.</option>
-            </select>
+              <label className="text-sm text-gray-400 mb-1">Filter by Insurance Company</label>
+              <select className="bg-[#1B2735] text-white p-3 rounded-lg min-w-[22rem]">
+                <option>XYZ Ltd</option>
+              </select>
             </div>
 
             {/* Filter by Nominee Name */}
             <div className="flex flex-col">
-              <label className="text-sm text-gray-400 mb-1">Filter by Stoarage Type </label>
+              <label className="text-sm text-gray-400 mb-1">Filter by Type of Insurance</label>
               <select className="bg-[#1B2735] text-white p-3 rounded-lg min-w-[22rem]">
-                <option>All Types</option>
+                <option>Life</option>
+                <option>Health</option>
+                <option>Vehicle</option>
+                <option>Property</option>
+                <option>Travel</option>
+                <option>Business</option>
+                <option>Home</option>
+                <option>Accident</option>
+                <option>Other</option>
               </select>
             </div>
           </div>
@@ -264,16 +266,128 @@ useEffect(() => {
   </table>
 </div>
 
+{/* Nominee Details Table */}
+<h2 className="text-xl font-semibold mb-4 text-gray-200">Nominee Details</h2>
+<div className="bg-[#1B2735] rounded-lg mb-8 overflow-x-auto">
+  <table className="w-full text-sm text-left text-gray-300">
+    <thead className="bg-[#16202C] text-gray-400">
+      <tr>
+        <th className="p-4">Nominee Name</th>
+        <th className="p-4">Relationship with Acc Holder</th>
+        <th className="p-4">DOB</th>
+        <th className="p-4">Percentage Share</th>
+        <th className="p-4">Address</th>
+        <th className="p-4">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {[
+        { name: "Mrs. Nita Doshi", relation: "Wife", dob: "09/07/1998", share: "50%", address: "Aditi Apt, Ghatkopar (W)" },
+        { name: "Mr. Rashesh Doshi", relation: "Son", dob: "09/07/1998", share: "20%", address: "Aditi Apt, Ghatkopar (W)" },
+         { name: "Mr. Rashesh Doshi", relation: "Son", dob: "09/07/1998", share: "20%", address: "Aditi Apt, Ghatkopar (W)" },
+          { name: "Mr. Rashesh Doshi", relation: "Son", dob: "09/07/1998", share: "20%", address: "Aditi Apt, Ghatkopar (W)" },
+         { name: "Mr. Rashesh Doshi", relation: "Son", dob: "09/07/1998", share: "20%", address: "Aditi Apt, Ghatkopar (W)" },
+        { name: "Mrs. Nita Doshi", relation: "Wife", dob: "09/07/1998", share: "20%", address: "Aditi Apt, Ghatkopar (W)" },
+        { name: "Mrs. Jagruti Doshi", relation: "Daughter", dob: "09/07/1998", share: "20%", address: "Aditi Apt, Ghatkopar (W)" },
+        { name: "Mrs. Jagruti Doshi", relation: "Daughter", dob: "09/07/1998", share: "20%", address: "Aditi Apt, Ghatkopar (W)" },
+      ].map((nominee, idx) => (
+        <tr key={idx} className="border-b border-gray-700 hover:bg-[#23304a]">
+          <td className="p-4">{nominee.name}</td>
+          <td className="p-4">{nominee.relation}</td>
+          <td className="p-4">{nominee.dob}</td>
+          <td className="p-4">{nominee.share}</td>
+          <td className="p-4">{nominee.address}</td>
+          <td className="p-4 flex gap-3 text-gray-400">
+            <MdEdit className="hover:text-blue-400 cursor-pointer" />
+            <MdDelete className="hover:text-red-400 cursor-pointer" />
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+{/* Guardian Details Table */}
+<h2 className="text-xl font-semibold mb-4">Guardian Details (if Nominee is a minor)</h2>
+<div className="bg-[#1B2735] rounded-lg mb-8 overflow-x-auto">
+  <table className="w-full text-sm text-left">
+    <thead className="bg-[#16202C] text-gray-400">
+      <tr>
+        <th className="p-4">Name of Guardian</th>
+        <th className="p-4">Relationship with Nominee</th>
+        <th className="p-4">Contact No. of Guardian</th>
+        <th className="p-4">Address</th>
+        <th className="p-4">Share of Nomination</th>
+        <th className="p-4">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="border-b border-gray-700">
+        <td className="p-4">Mrs. Nita Doshi</td>
+        <td className="p-4">Wife</td>
+        <td className="p-4">+91 7888989877</td>
+        <td className="p-4">Aditi Apt, Ghatkopar (W)</td>
+         <td className="p-4">60%</td>
+        <td className="p-4 flex gap-3">
+          <MdEdit className="hover:text-blue-400 cursor-pointer" />
+          <MdDelete className="hover:text-red-400 cursor-pointer" />
+        </td>
+      </tr>
+      <tr className="border-b border-gray-700">
+        <td className="p-4">Mr. Rashesh Doshi</td>
+        <td className="p-4">Son</td>
+        <td className="p-4">+91 7888989877</td>
+        <td className="p-4">Aditi Apt, Ghatkopar (W)</td>
+        <td className="p-4">
+  <label className="text-white-400 font-medium">
+    20%
+    <input
+      type="file"
+      accept=".pdf,.jpg,.jpeg,.png"
+      className="hidden"
+      onChange={(e) => {
+        if (e.target.files.length > 0) {
+          alert(`Selected file: ${e.target.files[0].name}`);
+        }
+      }}
+    />
+  </label>
+</td>
+        <td className="p-4 flex gap-3">
+          <MdEdit className="hover:text-blue-400 cursor-pointer" />
+          <MdDelete className="hover:text-red-400 cursor-pointer" />
+        </td>
+      </tr>
+      <tr className="border-b border-gray-700">
+        <td className="p-4">Mr. Rashesh Doshi</td>
+        <td className="p-4">Son</td>
+        <td className="p-4">+91 7888989877</td>
+        <td className="p-4">Aditi Apt, Ghatkopar (W)</td>
+        <td className="p-4 "> 20% </td>
+        <td className="p-4 flex gap-3">
+          <MdEdit className="hover:text-blue-400 cursor-pointer" />
+          <MdDelete className="hover:text-red-400 cursor-pointer" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
  {/* Documents */}
           <h2 className="text-xl font-semibold mb-4">Documents</h2>
           <div className="bg-[#1B2735] rounded-lg p-6 mb-8">
             <div className="mb-4">
               <button className="flex items-center gap-2 w-96 bg-[#0D1520] border border-gray-700 p-3 rounded mb-3">
                 <FaDownload />
-                Proof_of_purchase.pdf
+                Nomineeid.pdf
+              </button>
+               <button className="flex items-center gap-2 w-96 bg-[#0D1520] border border-gray-700 p-3 rounded mb-3">
+                <FaDownload />
+                insurancedoc.pdf
               </button>
             </div>
           </div>
+     
 
          
           {/* Footer Buttons */}
@@ -282,7 +396,7 @@ useEffect(() => {
               Download PDF
             </button>
             <button className="bg-transparent border border-white text-white px-6 py-2 rounded-md font-semibold">
-              Go to Commodities Dashboard
+              Go to Insurance Dashboard
             </button>
           </div>
         </div>
@@ -291,4 +405,4 @@ useEffect(() => {
   );
 };
 
-export default CommodityInvestment;
+export default Healthinsuranceinvestmentdetails;

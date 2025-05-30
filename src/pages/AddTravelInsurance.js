@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash ,FaUser} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -15,19 +15,27 @@ const  AddTravelInsurance = () => {
   e.preventDefault();
   setShowModal(true); 
 };
-
+const [username, setUsername] = useState('');
+useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+          setUsername(storedUsername);
+        }
+      }, []);
   return (
-    <div className="flex w-screen max-w-full overflow-x-hidden bg-gray-900 text-white min-h-screen">
+    <div className="min-h-screen bg-[#0D1520] text-white flex">
+      {/* Sidebar */}
       <Sidebar />
-      <div className="flex flex-col flex-1 bg-gray-900 overflow-x-hidden ml-60">
-        <div className="px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center">
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+
+        {/* Topbar */}
+         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
           <div className="flex items-center gap-4">
-            <p className="text-white text-lg">Welcome Bankim Doshi!</p>
-            <img
-              src="https://i.pravatar.cc/60?img=1"
-              className="w-12 h-12 rounded-full border-2 border-white"
-              alt="Profile"
-            />
+            <p className="text-white text-lg">Welcome {username}!</p>
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
           </div>
         </div>
 
@@ -307,19 +315,25 @@ const  AddTravelInsurance = () => {
               }
             `}</style>
 
-  <h2 className="col-span-3 text-lg font-semibold mt-4">Policy Dates</h2>
+ {/* Policy Dates */}
+<section>
+  <h2 className="text-xl font-semibold mb-4">Policy Dates</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
     <div className="flex flex-col">
       <label className="mb-1 text-sm font-medium">Policy Start Date</label>
-      <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+      <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg w-96" />
     </div>
     <div className="flex flex-col">
-      <label className="mb-1 text-sm font-medium">Policy End Date</label>
-      <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+      <label className="mb-1 text-sm font-medium">Policy Expiry Date</label>
+      <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg w-96" />
     </div>
     <div className="flex flex-col">
       <label className="mb-1 text-sm font-medium">Claim Settlement Date</label>
-      <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+      <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg w-96" />
     </div>
+  </div>
+</section>
+
   
 
 {/* Access Details */}
@@ -468,7 +482,7 @@ const  AddTravelInsurance = () => {
           className="bg-teal-400 text-[#0f172a] font-semibold px-6 py-2 rounded hover:bg-teal-300"
           onClick={() => {
             setShowModal(false);
-            navigate("/insurance-investment-details");
+            navigate("/travel-insurance-details");
           }}
           
         >

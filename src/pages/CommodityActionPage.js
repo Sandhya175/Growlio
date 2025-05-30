@@ -50,7 +50,7 @@ const CommodityActionPage = () => {
           {/* Buttons */}
           <div className="flex flex-col gap-6 px-4 max-w-md">
             <button
-              className="bg-[#2d2f3a] hover:bg-[#3a3c4b] text-white px-6 py-6 rounded-xl text-lg text-left shadow w-full"
+              className="bg-[#2d2f3a] hover:bg-[#3a3c4b] text-white px-6 py-10 rounded-xl text-lg text-left shadow w-full"
             
               onClick={() => navigate("/new-commodity-investment")}
 
@@ -59,7 +59,7 @@ const CommodityActionPage = () => {
             </button>
 
             <button
-              className="bg-[#2d2f3a] hover:bg-[#3a3c4b] text-white px-6 py-6 rounded-xl text-lg text-left shadow w-full"
+              className="bg-[#2d2f3a] hover:bg-[#3a3c4b] text-white px-6 py-10 rounded-xl text-lg text-left shadow w-full"
               onClick={() => navigate("/commodity-sale")}
 
             >

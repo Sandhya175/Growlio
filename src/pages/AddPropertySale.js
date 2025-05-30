@@ -44,11 +44,22 @@ const AddPropertySale = () => {
           <form className="max-w-full" onSubmit={handleRecordInvestment}>
             {/* Ownership Exit Details */}
             <h2 className="text-lg font-semibold mb-6">Ownership Exit Details</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-              <div>
-                <label className="block text-sm mb-2">Name of Seller</label>
-                <input type="text" className="bg-[#1B2735] w-full rounded px-4 py-2" />
-              </div>
+           
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 w-full">
+  <div className="w-full">
+    <label className="block mb-2">Name of Seller</label>
+    <select className="w-full p-2 bg-[#1B2735] text-white rounded">
+      <option>Mr. Bankim Doshi</option>
+      <option>Mrs. Nita Doshi</option>
+      <option>Mr. Rashesh Doshi</option>
+      <option>Mrs. Jagruti Doshi</option>
+      <option>Bankim Doshi HUF</option>
+      <option>Rashesh Doshi HUF</option>
+      <option>Mrs. Pritika Doshi</option>
+      <option>Mr. Krishna Doshi</option>
+      <option>Talent Corner HR Services Pvt Ltd.</option>
+    </select>
+  </div>
               <div>
                 <label className="block text-sm mb-2">Property Type</label>
                 <select className="bg-[#1B2735] w-full rounded px-4 py-2">

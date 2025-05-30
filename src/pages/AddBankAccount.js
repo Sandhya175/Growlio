@@ -52,7 +52,6 @@ const [guardianPhone, setGuardianPhone] = useState('');
     <div className="min-h-screen bg-[#0D1520] text-white flex">
       {/* Sidebar */}
       <Sidebar />
-
       {/* Main Content */}
       <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
 

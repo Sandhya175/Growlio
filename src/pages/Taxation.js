@@ -72,26 +72,43 @@ useEffect(() => {
       <FaChartBar className="text-3xl mb-2" />
       Short-Term Capital Gain
     </button>
-              <div className={tileClass}>
-                <LineChart className="text-3xl mb-2" />
-                Long-Term Capital Gain
-              </div>
-              <div className={tileClass}>
-                <FaReceipt className="text-3xl mb-2" />
-                GST
-              </div>
-              <div className={tileClass}>
-                <FaTags className="text-3xl mb-2" />
-                TDS
-              </div>
-              <div className={tileClass}>
-                <FaCoins className="text-3xl mb-2" />
-                Dividends
-              </div>
-              <div className={tileClass}>
-                <FaFileInvoiceDollar className="text-3xl mb-2" />
-                Income Tax
-              </div>
+              <button
+      onClick={() => navigate("/record-long-term-capital-gain")}
+      className={tileClass + " cursor-pointer text-left w-full"}
+    >
+      <LineChart className="text-3xl mb-2" />
+      Long-Term Capital Gain
+    </button>
+              <button
+      onClick={() => navigate("/record-gst")}
+      className={tileClass + " cursor-pointer text-left w-full"}
+    >
+      <FaReceipt className="text-3xl mb-2" />
+      GST
+    </button>
+               <button
+      onClick={() => navigate("/tds-entry")}
+      className={tileClass + " cursor-pointer text-left w-full"}
+    >
+      <FaTags className="text-3xl mb-2" />
+      TDS
+    </button>
+    <button
+      onClick={() => navigate("/dividend-form")}
+      className={tileClass + " cursor-pointer text-left w-full"}
+    >
+      <FaCoins classname="text-3xl mb-2" />
+       Dividends
+    </button>
+             
+                <button
+      onClick={() => navigate("/incometax")}
+      className={tileClass + " cursor-pointer text-left w-full"}
+    >
+      <FaFileInvoiceDollar className="text-3xl mb-2" />
+      Income Tax
+    </button>
+          
             </div>
           </div>
         </div>

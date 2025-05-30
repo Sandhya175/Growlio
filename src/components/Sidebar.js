@@ -9,6 +9,10 @@ function Sidebar() {
   const isActive = (path) => location.pathname === path;
   const isMasterDataSection = ['/investor-details', '/instrument-setup'].includes(location.pathname);
 
+  const [isAddOnsOpen, setIsAddOnsOpen] = useState(false);
+const isAddOnsSection = location.pathname.startsWith('/comparison-study'); 
+
+
   const handleLogout = () => {
     // You can add actual logout logic here
     window.location.href = '/login';
@@ -76,9 +80,33 @@ function Sidebar() {
             <i className="fa-solid fa-chart-pie mr-3"></i> Reports
           </Link>
 
-            <Link to="/add-ons" className={`flex items-center px-6 py-2 hover:bg-[#334155] hover:text-[#7effef] transition-colors duration-200 ${isActive('/add-ons') ? 'bg-[#334155] text-[#7effef]' : ''}`}>
-             <i className="fa-solid fa-plus mr-3"></i>  Add-ons
-          </Link>
+          {/* Add-ons with Dropdown */}
+<div className="px-6">
+  <button
+    onClick={() => setIsAddOnsOpen(!isAddOnsOpen)}
+    className={`flex items-center w-full py-2 hover:bg-[#334155] hover:text-[#7effef] transition-colors duration-200 ${
+      isAddOnsSection ? 'bg-[#334155] text-[#7effef]' : ''
+    }`}
+  >
+    <i className="fa-solid fa-plus mr-3"></i>
+    Add-ons
+    <i className={`fa-solid ml-auto ${isAddOnsOpen ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
+  </button>
+
+  {isAddOnsOpen && (
+    <div className="ml-6 mt-2 space-y-2 text-sm">
+      <Link
+        to="/comparison-study"
+        className={`flex items-center hover:underline hover:text-[#7effef] transition-colors duration-200 ${
+          isActive('/comparison-study') ? 'text-[#7effef]' : ''
+        }`}
+      >
+        <i className="fa-solid fa-chart-column mr-2"></i> Comparison Study
+      </Link>
+    </div>
+  )}
+</div>
+
 
         </nav>
       </div>

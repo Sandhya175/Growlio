@@ -1,6 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef ,useEffect} from "react";
 import Sidebar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
+import { FaUser } from 'react-icons/fa';
 
 const CommoditySalePage = () => {
   const [invoiceFile, setInvoiceFile] = useState(null);
@@ -10,7 +11,13 @@ const CommoditySalePage = () => {
 
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
-
+   const [username, setUsername] = useState('');
+ useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+          setUsername(storedUsername);
+        }
+      }, []);
 
   const handleFileChange = (e) => {
     setInvoiceFile(e.target.files[0]);
@@ -24,80 +31,91 @@ const CommoditySalePage = () => {
 
   return (
     <>
-      <div className="flex w-screen max-w-full overflow-x-hidden bg-gray-900 text-white min-h-screen">
-        <Sidebar />
+   <div className="min-h-screen bg-[#0D1520] text-white flex">
+      {/* Sidebar */}
+      <Sidebar />
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
 
-        <div className="flex flex-col flex-1 bg-gray-900 overflow-x-hidden">
-          {/* Topbar */}
-          <div className="px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center">
-            <div className="flex items-center gap-4">
-              <p className="text-white text-lg">Welcome Bankim Doshi</p>
-              <img
-                src="https://i.pravatar.cc/60?img=1"
-                className="w-12 h-12 rounded-full border-2 border-white"
-                alt="Profile"
-              />
+        {/* Topbar */}
+         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
+          <div className="flex items-center gap-4">
+            <p className="text-white text-lg">Welcome {username}!</p>
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
             </div>
           </div>
+        </div>
 
           {/* Main Content */}
-          <div className="pl-64 pr-8 pt-10">
+          <div className="pl-6 pr-10 pt-15">
             <div className="flex items-center mb-10 px-4">
               <h1 className="text-3xl font-bold">ADD NEW SALE/DISPOSAL INFORMATION</h1>
             </div>
 
-            <form className="flex flex-col gap-6 px-4 max-w-4xl">
-              <h2 className="text-2xl font-semibold mb-2">Commodity Details</h2>
+              <h2 className="text-2xl font-semibold mb-6 text-white">Commodity Details</h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block mb-2 text-white">Date of Sale</label>
-                  <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg w-full" />
-                </div>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div>
+      <label className="block mb-2 text-white">Date of Sale</label>
+      <input
+        type="date"
+        className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
+      />
+    </div>
 
-                <div>
-                  <label className="block mb-2 text-white">Quantity Sold</label>
-                  <input
-                    type="number"
-                    className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
-                    value={quantity}
-                    onChange={(e) => setQuantity(e.target.value)}
-                  />
-                </div>
+    <div>
+      <label className="block mb-2 text-white">Quantity Sold</label>
+      <input
+        type="number"
+        className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
+        value={quantity}
+        onChange={(e) => setQuantity(e.target.value)}
+      />
+    </div>
 
-                <div>
-                  <label className="block mb-2 text-white">Sell Price Per Unit (In ₹)</label>
-                  <input
-                    type="number"
-                    className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
-                    value={sellPrice}
-                    onChange={(e) => setSellPrice(e.target.value)}
-                  />
-                </div>
+    <div>
+      <label className="block mb-2 text-white">Sell Price Per Unit (In ₹)</label>
+      <input
+        type="number"
+        className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
+        value={sellPrice}
+        onChange={(e) => setSellPrice(e.target.value)}
+      />
+    </div>
 
-                <div>
-                  <label className="block mb-2 text-white">Sale Value</label>
-                  <input
-                    type="text"
-                    value={saleValue}
-                    className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
-                    readOnly
-                  />
-                </div>
+    <div>
+      <label className="block mb-2 text-white">Sale Value</label>
+      <input
+        type="text"
+        value={saleValue}
+        className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
+        readOnly
+      />
+    </div>
 
-                <div>
-                  <label className="block mb-2 text-white">Buyer/Platform Name</label>
-                  <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg w-full" />
-                </div>
+    <div>
+      <label className="block mb-2 text-white">Buyer/Platform Name</label>
+      <input
+        type="text"
+        className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
+      />
+    </div>
 
-                <div>
-                  <label className="block mb-2 text-white">Charges (if any)</label>
-                  <input type="number" className="bg-[#1B2735] text-white p-3 rounded-lg w-full" />
-                </div>
-              </div>
+    <div>
+      <label className="block mb-2 text-white">Charges (if any)</label>
+      <input
+        type="number"
+        className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
+      />
+    </div>
+  </div>
+
+              
 
               {/* Upload Documents */}
               <h2 className="text-2xl font-semibold mt-8 mb-2">Upload Documents</h2>
+               <label className="text-gray-400">Upload Sale Invoice (PDF/Image)</label>
               <div
                 onClick={handleUploadClick}
                 className="flex flex-col items-center justify-center bg-[#1B2735] rounded-xl p-10 border-2 border-dashed border-gray-600 cursor-pointer hover:bg-[#233040] transition"
@@ -111,7 +129,7 @@ const CommoditySalePage = () => {
                 />
                 <div className="flex flex-col items-center">
                   <div className="text-5xl text-[#2CD3C6] mb-2">+</div>
-                  <p className="text-gray-400">Upload Sale Invoice (PDF/Image)</p>
+               
                 </div>
                 {invoiceFile && <p className="mt-4 text-sm text-white">{invoiceFile.name}</p>}
               </div>
@@ -124,7 +142,7 @@ const CommoditySalePage = () => {
               >
                 Record Sale Details
               </button>
-            </form>
+           
           </div>
         </div>
       </div>

@@ -68,7 +68,15 @@ useEffect(() => {
 
             {/* Filter by Insurance Type */}
             <div className="flex flex-col">
-              <label className="text-sm text-gray-400 mb-1">Filter by Insurance Type</label>
+              <label className="text-sm text-gray-400 mb-1">Filter by Insurance Company</label>
+              <select className="bg-[#1B2735] text-white p-3 rounded-lg min-w-[22rem]">
+                <option>XYZ Ltd</option>
+              </select>
+            </div>
+
+            {/* Filter by Nominee Name */}
+            <div className="flex flex-col">
+              <label className="text-sm text-gray-400 mb-1">Filter by Type of Insurance</label>
               <select className="bg-[#1B2735] text-white p-3 rounded-lg min-w-[22rem]">
                 <option>Life</option>
                 <option>Health</option>
@@ -79,14 +87,6 @@ useEffect(() => {
                 <option>Home</option>
                 <option>Accident</option>
                 <option>Other</option>
-              </select>
-            </div>
-
-            {/* Filter by Nominee Name */}
-            <div className="flex flex-col">
-              <label className="text-sm text-gray-400 mb-1">Filter by Nominee Name</label>
-              <select className="bg-[#1B2735] text-white p-3 rounded-lg min-w-[22rem]">
-                <option>All Nominees</option>
               </select>
             </div>
           </div>

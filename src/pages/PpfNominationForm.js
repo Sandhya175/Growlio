@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const PpfNominationForm = () => {
   const [formData, setFormData] = useState({
@@ -48,7 +50,7 @@ const PpfNominationForm = () => {
     setShowPopup(true);
     // You can also add API submission code here
   };
-
+ const [guardianPhone, setGuardianPhone] = useState("");
   return (
     <div className="flex w-screen max-w-full overflow-x-hidden bg-gray-900 text-white min-h-screen">
       <Sidebar />
@@ -75,10 +77,22 @@ const PpfNominationForm = () => {
               <h3 className="text-xl font-semibold mb-4">Account Holder Details</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {/* Account holder inputs */}
-                <div className="flex flex-col">
-                  <label className="mb-1 text-sm font-medium">Account Holder Name</label>
-                  <input value={formData.name} readOnly className="bg-[#1B2735] text-white p-3 rounded-lg" />
-                </div>
+               
+                  <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-medium">Account Holders Name</label>
+            <select className=" p-3 bg-[#1B2735] text-white rounded">
+              <option>Mr. Bankim Doshi</option>
+              <option>Mrs. Nita Doshi</option>
+              <option>Mr. Rashesh Doshi</option>
+              <option>Mrs. Jagruti Doshi</option>
+              <option>Bankim Doshi HUF</option>
+              <option>Rashesh Doshi HUF</option>
+              <option>Mrs. Pritika Doshi</option>
+              <option>Mr. Krishna Doshi</option>
+              <option>Talent Corner HR Services Pvt Ltd.</option>
+            </select>
+          </div>
+               
                 <div className="flex flex-col">
                   <label className="mb-1 text-sm font-medium">Date of Birth</label>
                   <input type="date" value={formData.dob} readOnly className="bg-[#1B2735] text-white p-3 rounded-lg" />
@@ -134,39 +148,132 @@ const PpfNominationForm = () => {
               </div>
             </div>
 
-            {/* Nominee Details */}
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Nominee Details</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div className="flex flex-col">
-                  <label className="mb-1 text-sm font-medium">Relationship</label>
-                  <input
-                    value={formData.relationship}
-                    onChange={e => setFormData({ ...formData, relationship: e.target.value })}
-                    className="bg-[#1B2735] text-white p-3 rounded-lg"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label className="mb-1 text-sm font-medium">Nominee Date of Birth</label>
-                  <input
-                    type="date"
-                    value={formData.nomineeDob}
-                    onChange={e => setFormData({ ...formData, nomineeDob: e.target.value })}
-                    className="bg-[#1B2735] text-white p-3 rounded-lg"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label className="mb-1 text-sm font-medium">Percentage of Share</label>
-                  <input
-                    type="number"
-                    value={formData.share}
-                    onChange={e => setFormData({ ...formData, share: e.target.value })}
-                    className="bg-[#1B2735] text-white p-3 rounded-lg"
-                  />
-                </div>
-              </div>
-            </div>
+            {/* Nominee & Guardian Details */}
+ <div>
+      {/* Header with "Nominee Details" and "Add Nominee" Button */}
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-semibold">Nominee Details</h2>
+         <button className="flex items-center gap-2 bg-orange-400 hover:bg-orange-300 text-black font-medium px-4 py-2 rounded">
+          <span className="text-xl">+</span>
+          Add Nominee
+        </button>
+      </div>
+  
+      {/* Nominee Fields */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="flex flex-col">
+          <label className="mb-1 text-sm font-medium">Nominee Name</label>
+          <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+        </div>
+        <div className="flex flex-col">
+          <label className="mb-1 text-sm font-medium">Relationship with Account Holder</label>
+          <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+        </div>
+        <div className="flex flex-col">
+          <label className="mb-1 text-sm font-medium">Date of Birth</label>
+          <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+        </div>
+      </div>
 
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="flex flex-col">
+          <label className="mb-1 text-sm font-medium">Percentage of Share</label>
+          <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+        </div>
+      </div>
+
+      {/* Address */}
+      <div className="mt-4">
+        <label className="mb-1 text-sm font-medium">Address</label>
+        <textarea className="bg-[#1B2735] text-white p-3 rounded-lg w-full h-24"></textarea>
+      </div>
+</div>
+
+<div className="mt-10">
+   <h2 className="text-xl font-semibold mb-4">Guardian Details (if nominee is a minor)</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="flex flex-col">
+            <label className="mb-1 text-sm font-medium">Name of Guardian</label>
+            <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+          </div>
+          <div className="flex flex-col">
+            <label className="mb-1 text-sm font-medium">Relationship with Nominee</label>
+            <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+          </div>
+    <div className="flex flex-col">
+            <label className="mb-1 text-sm font-medium">Contact Number of Guardian</label>
+          <PhoneInput
+  country="in"
+  value={guardianPhone}
+  onChange={setGuardianPhone}
+  inputProps={{
+    name: 'guardianPhone',
+    required: true,
+    className: 'bg-[#1B2735] text-white rounded-lg w-full',
+  }}
+  containerClass="w-full mb-4"
+  buttonClass="!bg-[#1B2735] !border-none !rounded-l-lg"
+  dropdownClass="custom-dropdown"
+  inputStyle={{
+    borderRadius: 0,
+    border: 'none',
+    width: '100%',
+    backgroundColor: '#1B2735',
+    padding: '0.75rem',
+    color: 'white'
+  }}
+  enableSearch={true}
+/>
+
+<style>
+{`
+  .flag-dropdown {
+    background-color: #1B2735 !important;
+    border: none !important;
+  }
+
+  .flag-dropdown .selected-flag {
+    background-color: #1B2735 !important;
+  }
+
+  .flag-dropdown .selected-flag .flag {
+    background-color: transparent !important;
+  }
+
+  /* White background for the dropdown list */
+  .custom-dropdown {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  .custom-dropdown .country {
+    color: black !important;
+  }
+
+  .custom-dropdown .country:hover,
+  .custom-dropdown .country.highlight {
+    background-color: #f0f0f0 !important;
+  }
+
+  /* Optional: Style search input inside dropdown */
+  .custom-dropdown input {
+    background-color: #fff !important;
+    color: #000 !important;
+    border: 1px solid #ccc;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 6px;
+  }
+`}
+</style>
+    </div>
+  </div>
+
+  <div className="mt-4">
+    <label className="mb-1 text-sm font-medium">Address</label>
+    <textarea className="bg-[#1B2735] text-white p-3 rounded-lg w-full h-24"></textarea>
+  </div>
+</div>
             {/* Upload Documents */}
             <div>
               <h3 className="text-xl font-semibold mb-4">Upload Documents</h3>

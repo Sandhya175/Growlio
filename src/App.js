@@ -40,7 +40,6 @@ import HomePage from './pages/HomePage';
 import LinkedBankAccounts from './pages/LinkedBankAccounts';
 import RDConfirmation from "./pages/RDConfirmation";
 import MyBankInvestments from "./pages/MyBankInvestments";
-import WithdrawalSuccessPage from "./pages/WithdrawalSuccessPage";
 import MyBankInvestmentsFD from "./pages/MyBankInvestmentsFD";
 import MutualFundHoldings from "./pages/MutualFundHoldings";
 import RedeemedFunds from "./pages/RedeemedFunds";
@@ -84,8 +83,25 @@ import Taxation from './pages/Taxation';
 import Stocksaleinformation from './pages/Stocksaleinformation';
 import ShortTermCapitalGain from "./pages/ShortTermCapitalGain";
 import STCGDetails from './pages/STCGDetails';
-
-
+import Healthinsuranceinvestmentdetails from './pages/Healthinsuranceinvestmentdetails';
+import Vehicleinsuranceinvestmentdetails from './pages/Vehicleinsuranceinvestmentdetails';
+import Propertyinsuranceinvestmentdetails from './pages/Propertyinsuranceinvestmentdetails';
+import Travelinsuranceinvestmentdetails from './pages/Travelinsuranceinvestmentdetails';
+import Businessinsuranceinvestmentdetails from './pages/Businessinsuranceinvestmentdetails';
+import Homeinsuranceinvestmentdetails from './pages/Homeinsuranceinvestmentdetails';
+import Accidentinsuranceinvestmentdetails from './pages/Accidentinsuranceinvestmentdetails';
+import Otherinsuranceinvestmentdetails from './pages/Otherinsuranceinvestmentdetails';
+import RecordLongTermCapitalGain from './pages/RecordLongTermCapitalGain';
+import Comparisonstudy from "./pages/Comparisonstudy"; 
+import RecordGST from './pages/RecordGST';
+import TDSentry from './pages/TDSentry';
+import LTGCRecords from './pages/LTGCRecords';
+import GSTRecords from './pages/GSTRecords';
+import TDSRecords from './pages/TDSRecords';
+import Dividenddetails from './pages/Dividenddetails';
+import IncomTaxForm from './pages/IncomTaxForm';
+import DividendForm from './pages/DividendForm';
+import Incometaxrecords from './pages/Incometaxrecords';
 
 function App() {
   return (
@@ -130,7 +146,6 @@ function App() {
       <Route path="/home" element={<HomePage />} />
       <Route path="/rd-confirmation" element={<RDConfirmation />} />
       <Route path="/my-bank-investments" element={<MyBankInvestments />} />
-      <Route path="/withdrawal-success" element={<WithdrawalSuccessPage />} />
       <Route path="/my-bank-investments/fd" element={<MyBankInvestmentsFD />} />
       <Route path="/mutual-fund-holdings" element={<MutualFundHoldings />} />
       <Route path="/redeemed-funds" element={<RedeemedFunds />} />
@@ -175,8 +190,25 @@ function App() {
       <Route path="/stocksale-information" element={<Stocksaleinformation />} />
       <Route path="/short-term-capital-gain" element={<ShortTermCapitalGain />} />
       <Route path="/stcg-details" element={<STCGDetails />} />
-    
-
+      <Route path="/health-insurance-details" element={<Healthinsuranceinvestmentdetails />} />
+      <Route path="/vehicle-insurance-details" element={<Vehicleinsuranceinvestmentdetails />} />
+      <Route path="/property-insurance-details" element={<Propertyinsuranceinvestmentdetails />} />
+      <Route path="/travel-insurance-details" element={<Travelinsuranceinvestmentdetails />} />
+      <Route path="/business-insurance-details" element={<Businessinsuranceinvestmentdetails />} />
+      <Route path="/home-insurance-details" element={<Homeinsuranceinvestmentdetails />} />
+      <Route path="/accident-insurance-details" element={<Accidentinsuranceinvestmentdetails />} />
+      <Route path="/other-insurance-details" element={<Otherinsuranceinvestmentdetails />} />
+      <Route path="/record-long-term-capital-gain" element={<RecordLongTermCapitalGain />} />
+      <Route path="/comparison-study" element={<Comparisonstudy />} />
+      <Route path="/record-gst" element={<RecordGST />} />
+      <Route path="/tds-entry" element={<TDSentry />} />
+      <Route path="/ltgc-record" element={<LTGCRecords />} />
+      <Route path="/gst-records" element={<GSTRecords />} />
+      <Route path="/tds-records" element={<TDSRecords />} />
+      <Route path="/dividend-details" element={<Dividenddetails />} />
+      <Route path="/incometax" element={<IncomTaxForm />} />
+      <Route path="/dividend-form" element={<DividendForm />} />
+      <Route path="/income-tax-records" element={<Incometaxrecords />} />
 
 
     </Routes>

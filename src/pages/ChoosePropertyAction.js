@@ -76,11 +76,11 @@ const ChoosePropertyAction = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-col gap-6 max-w-xl w-full">
-            <button
-              onClick={() => handleSelect("sale")}
-              className={buttonStyle("sale")}
+           <button
+              onClick={() => handleSelect("purchase")}
+              className={buttonStyle("purchase")}
             >
-              New Property Sale
+              New Property Purchase
             </button>
 
             <button
@@ -89,13 +89,13 @@ const ChoosePropertyAction = () => {
             >
               New Rental Agreement Details
             </button>
-
-            <button
-              onClick={() => handleSelect("purchase")}
-              className={buttonStyle("purchase")}
+             <button
+              onClick={() => handleSelect("sale")}
+              className={buttonStyle("sale")}
             >
-              New Property Purchase
+              New Property Sale
             </button>
+            
           </div>
         </div>
       </div>

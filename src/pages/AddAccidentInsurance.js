@@ -1,34 +1,45 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState ,useEffect} from "react";
 import Sidebar from "../components/Sidebar";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash ,FaUser} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const AddAccidentInsurance = () => {
   const insuranceFileRef = useRef(null);
   const medicalFileRef = useRef(null);
   const proofFileRef = useRef(null);
+      const [guardianPhone, setGuardianPhone] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showModal, setShowModal] = useState(false);
    const navigate = useNavigate();
   const handleInsuranceFileClick = () => insuranceFileRef.current.click();
   const handleMedicalFileClick = () => medicalFileRef.current.click();
   const handleProofFileClick = () => proofFileRef.current.click();
+  const [username, setUsername] = useState('');
+  useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+          setUsername(storedUsername);
+        }
+      }, []);
 
   return (
     <div className="min-h-screen bg-[#0D1520] text-white flex">
+      {/* Sidebar */}
       <Sidebar />
-      <div className="flex-1 flex flex-col ml-60">
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+
         {/* Topbar */}
-        <div className="px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center sticky top-0 z-50">
-  <div className="flex items-center gap-4">
-    <p className="text-white text-lg">Welcome Bankim Doshi!</p>
-    <img
-      src="https://i.pravatar.cc/60?img=1"
-      className="w-12 h-12 rounded-full border-2 border-white"
-      alt="Profile"
-    />
-  </div>
-</div>
+         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
+          <div className="flex items-center gap-4">
+            <p className="text-white text-lg">Welcome {username}!</p>
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
+          </div>
+        </div>
 
 
         {/* Page Content */}
@@ -39,35 +50,74 @@ const AddAccidentInsurance = () => {
   e.preventDefault();
   setShowModal(true);
 }}>
+           
             {/* Policy Overview */}
 <section>
-  <h2 className="text-lg font-semibold mb-6">Policy Overview</h2>
+  <h2 className="text-xl font-semibold mb-4">Policy Overview</h2>
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
     {[
-      "Name of Investor", "Type of Insurance", "Insurance Company Name", 
-      "Occupation", "Date of Birth", "Gender", 
-      "Policy Number", "Policy Term (in Years)"
-    ].map((label) => (
-      <div key={label}>
-        <label className="block text-sm mb-2">{label}</label>
-        {["Insurance Company Name", "Policy Term (in Years)", "Gender"].includes(label) ? (
-          <select className="bg-[#1B2735] w-full rounded px-4 py-2 text-white">
-            {label === "Insurance Company Name" && <option>Insurance Companies</option>}
-            {label === "Policy Term (in Years)" &&
-              Array.from({ length: 151 }, (_, i) => 1900 + i).map((year) => (
-                <option key={year}>{year}</option>
-              ))}
-            {label === "Gender" &&
-              ["Male", "Female", "Other"].map((opt) => (
-                <option key={opt}>{opt}</option>
-              ))}
-          </select>
-        ) : (
+      "Name of Investor",
+      "Type of Insurance",
+      "Insurance Company Name",
+      "Occupation",
+      "Date Of Birth",
+      "Gender",
+      "Policy Number",
+      "Policy Term (in Years)"
+    ].map((label, index) => (
+      <div className="flex flex-col" key={index}>
+        <label className="mb-1 text-sm font-medium">{label}</label>
+        
+        {label === "Name of Investor" ? (
+  
+    <select className="w-full p-3 bg-[#1B2735] text-white rounded">
+      <option>Mr. Bankim Doshi</option>
+      <option>Mrs. Nita Doshi</option>
+      <option>Mr. Rashesh Doshi</option>
+      <option>Mrs. Jagruti Doshi</option>
+      <option>Bankim Doshi HUF</option>
+      <option>Rashesh Doshi HUF</option>
+      <option>Mrs. Pritika Doshi</option>
+      <option>Mr. Krishna Doshi</option>
+      <option>Talent Corner HR Services Pvt Ltd.</option>
+    </select>
+ 
+        ): label === "Type of Insurance" ? (
           <input
-            type={label === "Date of Birth" ? "date" : "text"}
-            defaultValue={label === "Type of Insurance" ? "Accident Insurance" : ""}
-            className="bg-[#1B2735] w-full rounded px-4 py-2 text-white"
+            value="Accident Insurance"
+            disabled
+            className="bg-[#1B2735] text-white p-3 rounded-lg w-full cursor-not-allowed"
           />
+           ) : label === "Insurance Company Name" ? (
+          <select className="bg-[#1B2735] text-white p-3 rounded-lg w-full">
+            <option>Insurance Companies</option>
+          </select>
+        ) : label === "Date Of Birth" ? (
+<input
+  type="date"
+  className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
+/>
+
+        ) : label === "Gender" ? (
+          <select className="bg-[#1B2735] text-white p-3 rounded-lg w-full">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        ) : label === "Policy Term (in Years)" ? (
+          <select className="bg-[#1B2735] text-white p-3 rounded-lg w-full">
+            <option>Select Year</option>
+            {Array.from({ length: 51 }, (_, i) => 2000 + i).map((year) => (
+              <option key={year}>{year}</option>
+            ))}
+          </select>
+        ) : label === "Business Address" ? (
+          <textarea
+            rows={3}
+            className="bg-[#1B2735] text-white p-3 rounded-lg w-full resize-none"
+          ></textarea>
+        ) : (
+          <input className="bg-[#1B2735] text-white p-3 rounded-lg w-full" />
         )}
       </div>
     ))}
@@ -75,28 +125,45 @@ const AddAccidentInsurance = () => {
 </section>
 
             {/* Coverage & Benefits */}
-            <section>
-              <h2 className="text-lg font-semibold mb-6">Coverage & Benefits</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {[
-                  "Type of Coverage", "Accidental Death Benefit", "Medical Expenses Coverage",
-                  "Disability Benefit (Partial)", "Disability Benefit (Total)", "Hospitalization Expenses",
-                  "Permanent Disability Cover", "Temporary Disability Cover"
-                ].map((label) => (
-                  <div key={label}>
-                    <label className="block text-sm mb-2">{label}</label>
-                    {label.includes("Cover") ? (
-                      <select className="bg-[#1B2735] w-full rounded px-4 py-2">
-                        <option>Yes</option>
-                        <option>No</option>
-                      </select>
-                    ) : (
-                      <input type="text" className="bg-[#1B2735] w-full rounded px-4 py-2" />
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
+<section>
+  <h2 className="text-lg font-semibold mb-6">Coverage & Benefits</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {[
+      "Type of Coverage",
+      "Accidental Death Benefit",
+      "Medical Expenses Coverage",
+      "Disability Benefit (Partial)",
+      "Disability Benefit (Total)",
+      "Hospitalization Expenses",
+      "Permanent Disability Cover",
+      "Temporary Disability Cover"
+    ].map((label) => (
+      <div key={label}>
+        <label className="block text-sm mb-2 text-white">{label}</label>
+
+        {label === "Type of Coverage" ? (
+          <select className="bg-[#1B2735] w-full rounded px-4 py-2 text-white">
+            <option>Accidental death and dismemberment (AD&D)</option>
+            <option>Medical expense coverage</option>
+            <option>Disability benefits</option>
+            <option>Hospital income benefits</option>
+          </select>
+        ) : label === "Permanent Disability Cover" || label === "Temporary Disability Cover" ? (
+          <select className="bg-[#1B2735] w-full rounded px-4 py-2 text-white">
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        ) : (
+          <input
+            type="text"
+            className="bg-[#1B2735] w-full rounded px-4 py-2 text-white"
+           
+          />
+        )}
+      </div>
+    ))}
+  </div>
+</section>
 
             {/* Premium & Payment */}
             <section>
@@ -124,39 +191,153 @@ const AddAccidentInsurance = () => {
               </div>
             </section>
 
-            {/* Nominee Details */}
-            <section>
-              <h2 className="text-lg font-semibold mb-6">Nominee Details</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                  <label className="block text-sm mb-2">Nominee Name (Optional)</label>
-                  <input type="text" className="bg-[#1B2735] w-full rounded px-4 py-2" />
-                </div>
-                <div>
-                  <label className="block text-sm mb-2">Relationship to Policyholder</label>
-                  <input type="text" className="bg-[#1B2735] w-full rounded px-4 py-2" />
-                </div>
-                <div>
-                  <label className="block text-sm mb-2">Insurance Agent/Advisor Contact</label>
-                  <input type="text" className="bg-[#1B2735] w-full rounded px-4 py-2" />
-                </div>
+            {/* Nominee & Guardian Section */}
+            <div className="col-span-3 mt-10">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-semibold">Nominee Details</h2>
+                <button className="flex items-center gap-2 bg-orange-400 hover:bg-orange-300 text-black font-medium px-4 py-2 rounded">
+                  <span className="text-xl">+</span>
+                  Add Nominee
+                </button>
               </div>
-            </section>
 
-            {/* Policy Dates */}
-            <section>
-              <h2 className="text-lg font-semibold mb-6">Policy Dates</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                  <label className="block text-sm mb-2">Policy Start Date</label>
-                  <input type="date" className="bg-[#1B2735] w-full rounded px-4 py-2" />
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-medium">Nominee Name</label>
+                  <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
                 </div>
-                <div>
-                  <label className="block text-sm mb-2">Policy Expiry Date</label>
-                  <input type="date" className="bg-[#1B2735] w-full rounded px-4 py-2" />
+                <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-medium">Relationship with Account Holder</label>
+                  <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+                </div>
+                <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-medium">Date of Birth</label>
+                  <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg" />
                 </div>
               </div>
-            </section>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+                <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-medium">Percentage of Share</label>
+                  <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <label className="mb-1 text-sm font-medium">Address</label>
+                <textarea className="bg-[#1B2735] text-white p-3 rounded-lg w-full h-24"></textarea>
+              </div>
+
+              <div className="mt-10">
+                <h2 className="text-xl font-semibold mb-4">Guardian Details (if nominee is a minor)</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="flex flex-col">
+                    <label className="mb-1 text-sm font-medium">Name of Guardian</label>
+                    <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="mb-1 text-sm font-medium">Relationship with Nominee</label>
+                    <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="mb-1 text-sm font-medium">Contact Number of Guardian</label>
+                    <PhoneInput
+                      country="in"
+                      value={guardianPhone}
+                      onChange={setGuardianPhone}
+                      inputProps={{
+                        name: "guardianPhone",
+                        required: true,
+                        className: "bg-[#1B2735] text-white rounded-lg w-full",
+                      }}
+                      containerClass="w-full mb-4"
+                      buttonClass="!bg-[#1B2735] !border-none !rounded-l-lg"
+                      dropdownClass="custom-dropdown"
+                      inputStyle={{
+                        borderRadius: 0,
+                        border: "none",
+                        width: "100%",
+                        backgroundColor: "#1B2735",
+                        padding: "0.75rem",
+                        color: "white",
+                      }}
+                      enableSearch={true}
+                    />
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <label className="mb-1 text-sm font-medium">Address</label>
+                  <textarea className="bg-[#1B2735] text-white p-3 rounded-lg w-full h-24"></textarea>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <h2 className="text-xl font-semibold mb-4">Upload Documents</h2>
+                <label className="block mb-2 text-sm font-medium">Nominee's ID Proof (PDF/Image)</label>
+                <label className="relative flex flex-col items-center justify-center bg-[#2C3A4B] border-2 border-dashed border-gray-600 h-48 rounded-lg cursor-pointer hover:bg-[#364759] transition">
+                  <input type="file" accept=".pdf, image/*" hidden />
+                  <div className="text-4xl text-[#3B9B8F] font-bold mb-2">+</div>
+                  <div className="text-gray-300">Click to Upload</div>
+                </label>
+              </div>
+            </div>
+
+            <style>{`
+              .flag-dropdown {
+                background-color: #1B2735 !important;
+                border: none !important;
+              }
+
+              .flag-dropdown .selected-flag {
+                background-color: #1B2735 !important;
+              }
+
+              .flag-dropdown .selected-flag .flag {
+                background-color: transparent !important;
+              }
+
+              .custom-dropdown {
+                background-color: white !important;
+                color: black !important;
+              }
+
+              .custom-dropdown .country {
+                color: black !important;
+              }
+
+              .custom-dropdown .country:hover,
+              .custom-dropdown .country.highlight {
+                background-color: #f0f0f0 !important;
+              }
+
+              .custom-dropdown input {
+                background-color: #fff !important;
+                color: #000 !important;
+                border: 1px solid #ccc;
+                padding: 8px;
+                margin: 8px;
+                border-radius: 6px;
+              }
+            `}</style>
+            
+           {/* Policy Dates */}
+<section>
+  <h2 className="text-xl font-semibold mb-4">Policy Dates</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="flex flex-col">
+      <label className="mb-1 text-sm font-medium">Policy Start Date</label>
+      <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg w-96" />
+    </div>
+    <div className="flex flex-col">
+      <label className="mb-1 text-sm font-medium">Policy Expiry Date</label>
+      <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg w-96" />
+    </div>
+    <div className="flex flex-col">
+      <label className="mb-1 text-sm font-medium">Claim Settlement Date</label>
+      <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg w-96" />
+    </div>
+  </div>
+</section>
 
             {/* Access Details */}
             <section>
@@ -277,7 +458,7 @@ const AddAccidentInsurance = () => {
           className="bg-teal-400 text-[#0f172a] font-semibold px-6 py-2 rounded hover:bg-teal-300"
           onClick={() => {
             setShowModal(false);
-            navigate("/insurance-investment-details");
+            navigate("/accident-insurance-details");
           }}
         >
           View All MF Investments

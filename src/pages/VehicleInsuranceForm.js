@@ -459,7 +459,7 @@ const VehicleInsuranceForm = () => {
           className="bg-teal-400 text-[#0f172a] font-semibold px-6 py-2 rounded hover:bg-teal-300"
           onClick={() => {
             setShowModal(false);
-            navigate("/insurance-investment-details");
+            navigate("/vehicle-insurance-details");
           }}
           
         >

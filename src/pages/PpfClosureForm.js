@@ -45,6 +45,20 @@ const PpfClosureForm = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div className="flex flex-col">
                   <label className="mb-1 text-sm font-medium">PPF Account Number</label>
+                  <select className=" p-3 bg-[#1B2735] text-white rounded">
+              <option>Mr. Bankim Doshi</option>
+              <option>Mrs. Nita Doshi</option>
+              <option>Mr. Rashesh Doshi</option>
+              <option>Mrs. Jagruti Doshi</option>
+              <option>Bankim Doshi HUF</option>
+              <option>Rashesh Doshi HUF</option>
+              <option>Mrs. Pritika Doshi</option>
+              <option>Mr. Krishna Doshi</option>
+              <option>Talent Corner HR Services Pvt Ltd.</option>
+            </select>
+                </div>
+                <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-medium">PPF Account Number</label>
                   <input className="bg-[#1B2735] text-white p-3 rounded-lg" />
                 </div>
                 <div className="flex flex-col">
@@ -77,7 +91,7 @@ const PpfClosureForm = () => {
             <div>
               <h3 className="text-xl font-semibold mb-4">Payment Mode</h3>
               <div className="flex flex-col sm:w-1/2">
-                <label className="mb-1 text-sm font-medium">Select Payment Mode</label>
+                <label className="mb-1 text-sm font-medium">Mode Of Payment</label>
                 <select className="bg-[#1B2735] text-white p-3 rounded-lg">
                   <option>Bank Transfer</option>
                   <option>Cash</option>
@@ -98,7 +112,7 @@ const PpfClosureForm = () => {
                 <div className="text-gray-300">Click to Upload</div>
               </label>
 
-              <label className="block mb-2 text-sm font-medium">Upload Bank Credit Proof if required</label>
+              <label className="block mb-2 text-sm font-medium">Upload Bank Credit Proof </label>
               <label className="relative flex flex-col items-center justify-center bg-[#2C3A4B] border-2 border-dashed border-gray-600 h-36 rounded-lg cursor-pointer hover:bg-[#364759] transition">
                 <input type="file" hidden />
                 <div className="text-4xl text-[#3B9B8F] font-bold mb-1">+</div>

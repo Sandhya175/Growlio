@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import Sidebar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
+import { FaUser } from 'react-icons/fa';
 
-// Context should be defined outside the component
 const InvestorContext = React.createContext({
   fullName: "Bankim Doshi",
   dob: "1985-05-20",
@@ -13,12 +13,20 @@ const InvestorContext = React.createContext({
   permanentAddress: "123 Akruti Apartments, Mumbai"
 });
 
+
 function PpfForm() {
   const investorData = useContext(InvestorContext);
-  const navigate = useNavigate();  // ✅ move outside useState!
+  const navigate = useNavigate();  
 
+  useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+          setUsername(storedUsername);
+        }
+      }, []);
+  const [username, setUsername] = useState('');
   const [formData, setFormData] = useState({
-    fullName: "",
+    nameofinvestor: "",
     dob: "",
     mobile: "",
     email: "",
@@ -60,7 +68,7 @@ function PpfForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted", formData);
-    setShowPopup(true); // show popup after clicking Record Investment
+    setShowPopup(true); 
   };
 
   const closePopup = () => {
@@ -69,17 +77,18 @@ function PpfForm() {
 
   return (
     <div className="min-h-screen bg-[#0D1520] text-white flex">
+      {/* Sidebar */}
       <Sidebar />
-      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden ml-60">
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+
         {/* Topbar */}
-        <div className="px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center">
+         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
           <div className="flex items-center gap-4">
-            <p className="text-white text-lg">Welcome {formData.fullName}!</p>
-            <img
-              src="https://i.pravatar.cc/60?img=1"
-              className="w-12 h-12 rounded-full border-2 border-white"
-              alt="Profile"
-            />
+            <p className="text-white text-lg">Welcome {username}!</p>
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
           </div>
         </div>
 
@@ -91,21 +100,44 @@ function PpfForm() {
             <section>
               <h3 className="font-semibold text-lg mb-4">Personal Information</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {["fullName", "dob", "mobile", "email", "pan"].map((field) => (
-                  <div key={field} className="flex flex-col">
-                    <label className="mb-1 text-sm capitalize">{field.replace(/([A-Z])/g, " $1")}</label>
-                    <input
-                      type={field === "dob" ? "date" : field === "email" ? "email" : "text"}
-                      name={field}
-                      value={formData[field]}
-                      readOnly
-                      className="bg-[#1B2735] text-white p-3 rounded-lg"
-                    />
-                  </div>
-                ))}
-              </div>
-            </section>
+  {/* Name of Investor Dropdown */}
+  <div className="flex flex-col">
+    <label className="mb-1 text-sm">Name of Investor</label>
+    <select
+      name="nameofinvestor"
+      value={formData.nameofinvestor}
+      onChange={handleChange}
+      className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
+    >
+      <option>Mr. Bankim Doshi</option>
+      <option>Mrs. Nita Doshi</option>
+      <option>Mr. Rashesh Doshi</option>
+      <option>Mrs. Jagruti Doshi</option>
+      <option>Bankim Doshi HUF</option>
+      <option>Rashesh Doshi HUF</option>
+      <option>Mrs. Pritika Doshi</option>
+      <option>Mr. Krishna Doshi</option>
+      <option>Talent Corner HR Services Pvt Ltd.</option>
+    </select>
+  </div>
 
+  {/* Remaining Fields */}
+  {["dob", "mobile", "email", "pan"].map((field) => (
+    <div key={field} className="flex flex-col">
+      <label className="mb-1 text-sm">
+        {field === "dob" ? "Date of Birth" : field.replace(/([A-Z])/g, " $1")}
+      </label>
+      <input
+        type={field === "dob" ? "date" : field === "email" ? "email" : "text"}
+        name={field}
+        value={formData[field]}
+        readOnly
+        className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
+      />
+    </div>
+  ))}
+</div>
+</section>
             {/* Address Details */}
             <section>
               <h3 className="font-semibold text-lg mb-4">Address Details</h3>
@@ -131,7 +163,7 @@ function PpfForm() {
 
             {/* Bank Details */}
             <section>
-              <h3 className="font-semibold text-lg mb-4">Bank Details</h3>
+              <h3 className="font-semibold text-xl mb-4">Bank Details</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {["bankName", "branchName", "accountNumber", "ifscCode"].map((field) => (
                   <div key={field} className="flex flex-col">
@@ -149,16 +181,16 @@ function PpfForm() {
             {/* Upload Documents */}
             <section>
               <h3 className="font-semibold text-lg mb-4">Upload Documents</h3>
+              <label className="text-gray-300">Click to Upload PPF Account Opening Receipt (PDF)</label>
               <label className="relative flex flex-col items-center justify-center bg-[#2C3A4B] border-2 border-dashed border-gray-600 h-48 rounded-lg cursor-pointer hover:bg-[#364759] transition">
                 <input type="file" name="document" accept=".pdf" hidden onChange={handleChange} />
                 <div className="text-4xl text-[#3B9B8F] font-bold mb-2">+</div>
-                <div className="text-gray-300">Click to Upload PPF Account Opening Receipt (PDF)</div>
               </label>
             </section>
 
             {/* Declarations */}
             <section>
-              <h3 className="font-semibold text-lg mb-4">Declarations</h3>
+              <h3 className="font-semibold text-xl mb-4">Declarations</h3>
               <label className="block mb-2">
                 <input type="checkbox" name="acceptTerms" onChange={handleChange} className="mr-2" />
                 I hereby accept the terms and conditions of the PPF scheme.

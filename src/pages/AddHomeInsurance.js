@@ -1,29 +1,38 @@
 import Sidebar from "../components/Sidebar";
-import React, { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import { FaEye, FaEyeSlash,FaUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const AddHomeInsurancePage = () => {
   const [showPassword, setShowPassword] = useState(false);
  const [showModal, setShowModal] = useState(false);  
-  const years = Array.from({ length: 151 }, (_, i) => 1940 + i);
     const navigate = useNavigate();
-
+    const [username, setUsername] = useState('');
+    const [guardianPhone, setGuardianPhone] = useState("");
+useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+          setUsername(storedUsername);
+        }
+      }, []);
   return (
-    <div className="flex w-screen max-w-full overflow-x-hidden bg-gray-900 text-white min-h-screen">
+    <div className="min-h-screen bg-[#0D1520] text-white flex">
+      {/* Sidebar */}
       <Sidebar />
-      <div className="flex flex-col flex-1 bg-gray-900 overflow-x-hidden ml-60">
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+
         {/* Topbar */}
-        <div className="sticky top-0 z-40 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center">
-  <div className="flex items-center gap-4">
-    <p className="text-white text-lg">Welcome Bankim Doshi!</p>
-    <img
-      src="https://i.pravatar.cc/60?img=1"
-      className="w-12 h-12 rounded-full border-2 border-white"
-      alt="Profile"
-    />
-  </div>
-</div>
+         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
+          <div className="flex items-center gap-4">
+            <p className="text-white text-lg">Welcome {username}!</p>
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
+          </div>
+        </div>
 
 
         {/* Main Content */}
@@ -34,44 +43,80 @@ const AddHomeInsurancePage = () => {
   e.preventDefault();
   setShowModal(true);
 }}>
-            {/* Policy Overview */}
-            <section>
-              <h2 className="text-xl font-semibold mb-4">Policy Overview</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {[
-                  { label: "Name of Investor" },
-                  { label: "Type of Insurance", value: "Home Insurance", disabled: true },
-                  { label: "Insurance Company Name", type: "select", options: ["Insurance Companies"] },
-                  { label: "Property Type", type: "select", options: ["House", "Apartment", "Villa", "Condo"] },
-                  { label: "Construction Year", type: "text" },
-                  { label: "Property Value", type: "text" },
-                  { label: "Property Address" },
-                  { label: "Policy Number" },
-                  {
-                    label: "Policy Term (in Years)",
-                    type: "select",
-                    options: years.map((y) => String(y)),
-                  },
-                ].map(({ label, value, disabled, type, options }) => (
-                  <div key={label} className="flex flex-col">
-                    <label className="mb-1 text-sm font-medium">{label}</label>
-                    {type === "select" ? (
-                      <select className="bg-[#1B2735] text-white p-3 rounded-lg w-full">
-                        {options.map((opt) => (
-                          <option key={opt}>{opt}</option>
-                        ))}
-                      </select>
-                    ) : (
-                      <input
-                        className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
-                        defaultValue={value}
-                        disabled={disabled}
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
+         
+         <section>
+  <h2 className="text-xl font-semibold mb-4">Policy Overview</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {[
+      {
+        label: "Name of Investor",
+        type: "select",
+        options: [
+          "Mr. Bankim Doshi",
+          "Mrs. Nita Doshi",
+          "Mr. Rashesh Doshi",
+          "Mrs. Jagruti Doshi",
+          "Bankim Doshi HUF",
+          "Rashesh Doshi HUF",
+          "Mrs. Pritika Doshi",
+          "Mr. Krishna Doshi",
+          "Talent Corner HR Services Pvt Ltd."
+        ],
+      },
+      { label: "Type of Insurance", value: "Home Insurance", disabled: true },
+      {
+        label: "Insurance Company Name",
+        type: "select",
+        options: ["Insurance Companies"],
+      },
+      {
+        label: "Property Type",
+        type: "select",
+        options: ["House", "Apartment", "Villa", "Condo"],
+      },
+      {
+        label: "Contruction Year",
+        type: "select",
+        options: ["Retail"],
+      },
+      { label: "Property Value", type: "text" },
+      { label: "Property Address", type: "textarea" },
+      { label: "Policy Number" },
+      {
+        label: "Policy Term (in Years)",
+        type: "select",
+        options: Array.from({ length: 51 }, (_, i) => String(2000 + i)),
+      },
+    ].map(({ label, value, disabled, type, options }) => (
+      <div
+        key={label}
+        className={`flex flex-col ${label === "Property Address" ? "rows={3}" : ""}`}
+      >
+        <label className="mb-1 text-sm font-medium">{label}</label>
+
+        {type === "select" ? (
+          <select className="bg-[#1B2735] text-white p-3 rounded-lg w-full">
+            {options.map((opt) => (
+              <option key={opt}>{opt}</option>
+            ))}
+          </select>
+        ) : type === "textarea" ? (
+          <textarea
+            rows={6}
+            className="bg-[#1B2735] text-white p-3 rounded-lg w-full resize-none"
+            placeholder="Enter address"
+          />
+        ) : (
+          <input
+            className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
+            defaultValue={value}
+            disabled={disabled}
+          />
+        )}
+      </div>
+    ))}
+  </div>
+</section>
 
             {/* Coverage & Benefits */}
             <section>
@@ -108,6 +153,16 @@ const AddHomeInsurancePage = () => {
                     <option>Yes</option>
                   </select>
                 </div>
+                 <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-medium">Assets Covered</label>
+                  <select className="bg-[#1B2735] text-white p-3 rounded-lg w-full">
+                    <option>Furniture</option>                   
+                  </select>
+                </div>
+                <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-medium">Structure Coverage Value</label>
+                  <input className="bg-[#1B2735] text-white p-3 rounded-lg w-full" />
+                </div>
               </div>
             </section>
 
@@ -139,33 +194,154 @@ const AddHomeInsurancePage = () => {
               </div>
             </section>
 
-            {/* Nominee Details */}
+            {/* Nominee & Guardian Section */}
+            <div className="col-span-3 mt-10">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-semibold">Nominee Details</h2>
+                <button className="flex items-center gap-2 bg-orange-400 hover:bg-orange-300 text-black font-medium px-4 py-2 rounded">
+                  <span className="text-xl">+</span>
+                  Add Nominee
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-medium">Nominee Name</label>
+                  <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+                </div>
+                <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-medium">Relationship with Account Holder</label>
+                  <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+                </div>
+                <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-medium">Date of Birth</label>
+                  <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+                <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-medium">Percentage of Share</label>
+                  <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <label className="mb-1 text-sm font-medium">Address</label>
+                <textarea className="bg-[#1B2735] text-white p-3 rounded-lg w-full h-24"></textarea>
+              </div>
+
+              <div className="mt-10">
+                <h2 className="text-xl font-semibold mb-4">Guardian Details (if nominee is a minor)</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="flex flex-col">
+                    <label className="mb-1 text-sm font-medium">Name of Guardian</label>
+                    <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="mb-1 text-sm font-medium">Relationship with Nominee</label>
+                    <input type="text" className="bg-[#1B2735] text-white p-3 rounded-lg" />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="mb-1 text-sm font-medium">Contact Number of Guardian</label>
+                    <PhoneInput
+                      country="in"
+                      value={guardianPhone}
+                      onChange={setGuardianPhone}
+                      inputProps={{
+                        name: "guardianPhone",
+                        required: true,
+                        className: "bg-[#1B2735] text-white rounded-lg w-full",
+                      }}
+                      containerClass="w-full mb-4"
+                      buttonClass="!bg-[#1B2735] !border-none !rounded-l-lg"
+                      dropdownClass="custom-dropdown"
+                      inputStyle={{
+                        borderRadius: 0,
+                        border: "none",
+                        width: "100%",
+                        backgroundColor: "#1B2735",
+                        padding: "0.75rem",
+                        color: "white",
+                      }}
+                      enableSearch={true}
+                    />
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <label className="mb-1 text-sm font-medium">Address</label>
+                  <textarea className="bg-[#1B2735] text-white p-3 rounded-lg w-full h-24"></textarea>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <h2 className="text-xl font-semibold mb-4">Upload Documents</h2>
+                <label className="block mb-2 text-sm font-medium">Nominee's ID Proof (PDF/Image)</label>
+                <label className="relative flex flex-col items-center justify-center bg-[#2C3A4B] border-2 border-dashed border-gray-600 h-48 rounded-lg cursor-pointer hover:bg-[#364759] transition">
+                  <input type="file" accept=".pdf, image/*" hidden />
+                  <div className="text-4xl text-[#3B9B8F] font-bold mb-2">+</div>
+                  <div className="text-gray-300">Click to Upload</div>
+                </label>
+              </div>
+            </div>
+
+            <style>{`
+              .flag-dropdown {
+                background-color: #1B2735 !important;
+                border: none !important;
+              }
+
+              .flag-dropdown .selected-flag {
+                background-color: #1B2735 !important;
+              }
+
+              .flag-dropdown .selected-flag .flag {
+                background-color: transparent !important;
+              }
+
+              .custom-dropdown {
+                background-color: white !important;
+                color: black !important;
+              }
+
+              .custom-dropdown .country {
+                color: black !important;
+              }
+
+              .custom-dropdown .country:hover,
+              .custom-dropdown .country.highlight {
+                background-color: #f0f0f0 !important;
+              }
+
+              .custom-dropdown input {
+                background-color: #fff !important;
+                color: #000 !important;
+                border: 1px solid #ccc;
+                padding: 8px;
+                margin: 8px;
+                border-radius: 6px;
+              }
+            `}</style>
+            
+           {/* Policy Dates */}
 <section>
-  <h2 className="text-xl font-semibold mb-4">Nominee Details</h2>
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <h2 className="text-xl font-semibold mb-4">Policy Dates</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
     <div className="flex flex-col">
-      <label className="mb-1 text-sm font-medium">Nominee Name</label>
-      <input className="bg-[#1B2735] text-white p-3 rounded-lg w-full" />
+      <label className="mb-1 text-sm font-medium">Policy Start Date</label>
+      <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg w-96" />
     </div>
     <div className="flex flex-col">
-      <label className="mb-1 text-sm font-medium">Relationship to Policyholder</label>
-      <input className="bg-[#1B2735] text-white p-3 rounded-lg w-full" />
+      <label className="mb-1 text-sm font-medium">Policy Expiry Date</label>
+      <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg w-96" />
     </div>
     <div className="flex flex-col">
-      <label className="mb-1 text-sm font-medium">Insurance Agent/Advisor Contact</label>
-      <input className="bg-[#1B2735] text-white p-3 rounded-lg w-full" />
+      <label className="mb-1 text-sm font-medium">Claim Settlement Date</label>
+      <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg w-96" />
     </div>
   </div>
 </section>
 
-            {/* Policy Dates */}
-            <section>
-              <h2 className="text-xl font-semibold mb-4">Policy Dates</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg w-full" placeholder="Policy Start Date" />
-                <input type="date" className="bg-[#1B2735] text-white p-3 rounded-lg w-full" placeholder="Policy Expiry Date" />
-              </div>
-            </section>
 
             {/* Access Details */}
 <section>
@@ -213,43 +389,43 @@ const AddHomeInsurancePage = () => {
   </div>
 </section>
 
-            {/* Upload Documents */}
-            <section>
-              <h2 className="text-xl font-semibold mb-4">Upload Documents</h2>
-              <div className="space-y-6">
-                {["Upload Insurance Document", "Upload Property Proof"].map((label) => (
-                  <label
-                    key={label}
-                    className="relative flex flex-col items-center justify-center bg-[#2C3A4B] border-2 border-dashed border-gray-600 h-48 rounded-lg cursor-pointer hover:bg-[#364759] transition"
-                  >
-                    <input type="file" hidden />
-                    <div className="text-4xl text-[#3B9B8F] font-bold mb-2">+</div>
-                    <div className="text-gray-300">{label}</div>
-                  </label>
-                ))}
-              </div>
-            </section>
+           {/* Upload Documents */}
+<section>
+  <h2 className="text-xl font-semibold mb-4">Upload Documents</h2>
 
-         {/* Status */}
-<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-  <div className="flex flex-col">
-    <label className="mb-1 text-sm font-medium">Status</label>
-    <select className="bg-[#1B2735] text-white p-2 rounded-lg w-3/4">
-      <option>Active</option>
-      <option>Expired</option>
-      <option>Pending</option>
-    </select>
-  </div>
-</div>
+  {["Upload Insurance Document", "Upload Property Proof"].map((label, index) => (
+    <div key={index} className="mb-6">
+      {/* Label above the upload box */}
+      <label className="mb-1 text-sm font-medium block">{label}</label>
+      
+      {/* Upload box */}
+      <label className="relative flex flex-col items-center justify-center bg-[#2C3A4B] border-2 border-dashed border-gray-600 h-48 rounded-lg cursor-pointer hover:bg-[#364759] transition">
+        <input type="file" accept="application/pdf" hidden />
+        <div className="text-4xl text-[#3B9B8F] font-bold mb-2">+</div>
+        <div className="text-gray-300">Click to upload PDF</div>
+      </label>
+    </div>
+  ))}
+</section>
 
-            {/* Submit Button */}
+            {/* Status */}
+            <div className="w-1/3">
+              <label className="mb-1 text-sm font-medium">Status</label>
+              <select className="bg-[#1B2735] text-white p-3 rounded-lg w-full">
+                <option>Active</option>
+                <option>Inactive</option>
+              </select>
+            </div>
+
+             {/* Submit Button */}
             <div className="col-span-3 flex justify-center mt-6">
-              <button
-                type="submit"
-                className="bg-[#3B9B8F] text-[#E6E6E6] font-medium px-8 py-3 rounded-md hover:bg-[#2f7a6f] transition-colors"
-              >
-                Record Investment
-              </button>
+            <button
+  type="button"
+  onClick={() => setShowModal(true)}
+  className="bg-[#3B9B8F] hover:bg-[#2f7a6f] px-6 py-3 rounded-md font-semibold text-white"
+>
+  Record Investment
+</button>
             </div>
           </form>
         </div>
@@ -286,7 +462,7 @@ const AddHomeInsurancePage = () => {
           className="bg-teal-400 text-[#0f172a] font-semibold px-6 py-2 rounded hover:bg-teal-300"
           onClick={() => {
             setShowModal(false);
-            navigate("/insurance-investment-details");
+            navigate("/home-insurance-details");
           }}
         >
           View All MF Investments

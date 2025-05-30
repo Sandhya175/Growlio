@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
+import { FaUser } from 'react-icons/fa';
 
 const NewCommodityInvestment = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,13 @@ const NewCommodityInvestment = () => {
 
   const [showPopup, setShowPopup] = useState(false); 
   const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+          setUsername(storedUsername);
+        }
+      }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,21 +41,21 @@ const NewCommodityInvestment = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-[#0D1520] text-white flex">
-        <Sidebar />
+     <div className="min-h-screen bg-[#0D1520] text-white flex">
+      {/* Sidebar */}
+      <Sidebar />
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
 
-        <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden ml-60">
-          {/* Topbar */}
-          <div className="px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center">
-            <div className="flex items-center gap-4">
-              <p className="text-white text-lg">Welcome Bankim Doshi!</p>
-              <img
-                src="https://i.pravatar.cc/60?img=1"
-                className="w-12 h-12 rounded-full border-2 border-white"
-                alt="Profile"
-              />
+        {/* Topbar */}
+         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
+          <div className="flex items-center gap-4">
+            <p className="text-white text-lg">Welcome {username}!</p>
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
             </div>
           </div>
+        </div>
 
           {/* Page Content */}
           <div className="flex-1 p-6 md:p-10">
@@ -58,13 +66,20 @@ const NewCommodityInvestment = () => {
             <div className="space-y-10">
               <section>
                 <h2 className="text-xl font-semibold mb-4">Commodity Details</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="flex flex-col">
-                    <label className="mb-1 text-sm font-medium">Name of Investor</label>
-                    <input
-                      type="text"
-                      className="bg-[#1B2735] text-white p-3 rounded-lg w-full"
-                    />
+                   <label className="block mb-1 text-white">Name of Investor</label>
+  <select className="w-full p-2 bg-[#1B2735] text-white p-3 rounded" >
+    <option>Mr. Bankim Doshi</option>
+    <option>Mrs. Nita Doshi</option>
+    <option>Mr. Rashesh Doshi</option>
+    <option>Mrs. Jagruti Doshi</option>
+    <option>Bankim Doshi HUF</option>
+    <option>Rashesh Doshi HUF</option>
+    <option>Mrs. Pritika Doshi</option>
+    <option>Mr. Krishna Doshi</option>
+    <option>Talent Corner HR Services Pvt Ltd.</option>
+  </select>
                   </div>
 
                   <div className="flex flex-col">
@@ -147,7 +162,7 @@ const NewCommodityInvestment = () => {
 
               <section>
                 <h2 className="text-xl font-semibold mb-4">Storage & Ownership</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="flex flex-col">
                     <label className="mb-1 text-sm font-medium">Storage Type</label>
                     <select className="bg-[#1B2735] text-white p-3 rounded-lg w-full">
@@ -178,7 +193,9 @@ const NewCommodityInvestment = () => {
 
               <section>
                 <h2 className="text-xl font-semibold mb-4">Upload Documents</h2>
+                 <label className="mb-1 text-sm font-medium">Upload Proof Of Purchase(PDF/Image)</label>
                 <label className="relative flex flex-col items-center justify-center bg-[#2C3A4B] border-2 border-dashed border-gray-600 h-48 rounded-lg cursor-pointer hover:bg-[#364759] transition">
+                  
                   <input
                     type="file"
                     accept="application/pdf,image/*"

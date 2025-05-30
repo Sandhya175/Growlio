@@ -1,7 +1,8 @@
 // src/pages/PpfContributionForm.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
+import { FaUser } from 'react-icons/fa';
 
 
 const PpfContributionForm = () => {
@@ -12,24 +13,31 @@ const PpfContributionForm = () => {
     setShowPopup(true); // open popup on submit
   };
   const navigate = useNavigate();
-
+const [username, setUsername] = useState('');
+useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+          setUsername(storedUsername);
+        }
+      }, []);
   const closePopup = () => {
     setShowPopup(false);
   };
 
   return (
-    <div className="flex w-screen max-w-full overflow-x-hidden bg-gray-900 text-white min-h-screen">
+    <div className="min-h-screen bg-[#0D1520] text-white flex">
+      {/* Sidebar */}
       <Sidebar />
-      <div className="flex flex-col flex-1 bg-gray-900 overflow-x-hidden ml-60">
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+
         {/* Topbar */}
-        <div className="px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center">
+         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
           <div className="flex items-center gap-4">
-            <p className="text-white text-lg">Welcome Bankim Doshi!</p>
-            <img
-              src="https://i.pravatar.cc/60?img=1"
-              className="w-12 h-12 rounded-full border-2 border-white"
-              alt="Profile"
-            />
+            <p className="text-white text-lg">Welcome {username}!</p>
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
           </div>
         </div>
 
@@ -41,7 +49,23 @@ const PpfContributionForm = () => {
             {/* Basic Details */}
             <div>
               <h3 className="text-xl font-semibold mb-4">Basic Details</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+            <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-medium">PPF Account Holders Name</label>
+            <select className=" p-3 bg-[#1B2735] text-white rounded">
+              <option>Mr. Bankim Doshi</option>
+              <option>Mrs. Nita Doshi</option>
+              <option>Mr. Rashesh Doshi</option>
+              <option>Mrs. Jagruti Doshi</option>
+              <option>Bankim Doshi HUF</option>
+              <option>Rashesh Doshi HUF</option>
+              <option>Mrs. Pritika Doshi</option>
+              <option>Mr. Krishna Doshi</option>
+              <option>Talent Corner HR Services Pvt Ltd.</option>
+            </select>
+          </div>
+
                 <div className="flex flex-col">
                   <label className="mb-1 text-sm font-medium">PPF Account Number</label>
                   <input

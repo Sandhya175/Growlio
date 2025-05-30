@@ -55,108 +55,154 @@ const AddPropertyPurchase = () => {
           </h1>
 
           <form className="max-w-full" onSubmit={handleSubmit}>
-            {/* Ownership Details */}
-            <h2 className="text-lg font-semibold mb-6">Ownership Details</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label className="block mb-2">Name of Seller</label>
-                <input type="text" className={inputClass} />
-              </div>
-              <div>
-                <label className="block mb-2">Property Type</label>
-                <select className={inputClass}>
-                  <option>Flat</option>
-                  <option>Plot</option>
-                  <option>Villa</option>
-                  <option>Commercial</option>
-                  <option>Others</option>
-                </select>
-              </div>
-            </div>
+          {/* Ownership Details */}
+<h2 className="text-lg font-semibold mb-6">Ownership Details</h2>
 
-            <div className="mb-6">
-              <label className="block mb-2">Full Property Address</label>
-              <textarea rows="3" className={inputClass}></textarea>
-            </div>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 w-full">
+  <div className="w-full">
+    <label className="block mb-2">Name of Seller</label>
+    <select className="w-full p-3 bg-[#1B2735] text-white rounded">
+      <option>Mr. Bankim Doshi</option>
+      <option>Mrs. Nita Doshi</option>
+      <option>Mr. Rashesh Doshi</option>
+      <option>Mrs. Jagruti Doshi</option>
+      <option>Bankim Doshi HUF</option>
+      <option>Rashesh Doshi HUF</option>
+      <option>Mrs. Pritika Doshi</option>
+      <option>Mr. Krishna Doshi</option>
+      <option>Talent Corner HR Services Pvt Ltd.</option>
+    </select>
+  </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-              <div>
-                <label className="block mb-2">City</label>
-                <input type="text" className={inputClass} />
-              </div>
-              <div>
-                <label className="block mb-2">State</label>
-                <input type="text" className={inputClass} />
-              </div>
-              <div>
-                <label className="block mb-2">Country</label>
-                <input type="text" className={inputClass} />
-              </div>
-              <div>
-                <label className="block mb-2">Date of Purchase</label>
-                <input type="date" className={inputClass} />
-              </div>
-              <div>
-                <label className="block mb-2">Purchase Value (in ₹)</label>
-                <input type="number" className={inputClass} />
-              </div>
-              <div>
-                <label className="block mb-2">Name of Builder</label>
-                <input type="text" className={inputClass} />
-              </div>
-              <div>
-                <label className="block mb-2">Mode of Ownership</label>
-                <select className={inputClass}>
-                  <option>Single</option>
-                  <option>Joint</option>
-                  <option>Inherited</option>
-                </select>
-              </div>
-            </div>
+  <div className="w-full">
+    <label className="block mb-2">Property Type</label>
+    <select className="w-full p-3 bg-[#1B2735] text-white rounded">
+      <option>Flat</option>
+      <option>Plot</option>
+      <option>Villa</option>
+      <option>Commercial</option>
+      <option>Others</option>
+    </select>
+  </div>
+</div>
 
-            {/* Legal & Documentation */}
-            <h2 className="text-lg font-semibold mb-6">Legal & Documentation</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-              <div>
-                <label className="block mb-2">Property Registration Number</label>
-                <input type="text" className={inputClass} />
-              </div>
-              <div>
-                <label className="block mb-2">Registration Date</label>
-                <input type="date" className={inputClass} />
-              </div>
-              <div>
-                <label className="block mb-2">Property ID/Survey Number</label>
-                <input type="text" className={inputClass} />
-              </div>
-              <div>
-                <label className="block mb-2">Loan Availed?</label>
-                <select
-                  className={inputClass}
-                  value={loanAvailed}
-                  onChange={handleLoanAvailedChange}
-                >
-                  <option>Yes</option>
-                  <option>No</option>
-                </select>
-              </div>
-              <div>
-                <label className="block mb-2">Loan Amount (if applicable)</label>
-                <input
-                  type="number"
-                  className={inputClass}
-                  disabled={loanAvailed === "No"}
-                />
-              </div>
-              <div>
-                <label className="block mb-2">Bank Name (if loaned)</label>
-                <input
-                  type="text"
-                  className={inputClass}
-                  disabled={loanAvailed === "No"}
-                />
-              </div>
-            </div>
+{/* Secondary Owner Section */}
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 items-end">
+  <div>
+    <label className="block mb-2">Secondary Owner</label>
+    <select className="w-full p-3 bg-[#1B2735] text-white rounded">
+      <option>Mr. Bankim Doshi</option>
+      <option>Mrs. Nita Doshi</option>
+      <option>Mr. Rashesh Doshi</option>
+      <option>Mrs. Jagruti Doshi</option>
+      <option>Bankim Doshi HUF</option>
+      <option>Rashesh Doshi HUF</option>
+      <option>Mrs. Pritika Doshi</option>
+      <option>Mr. Krishna Doshi</option>
+      <option>Talent Corner HR Services Pvt Ltd.</option>
+    </select>
+  </div>
+  <div>
+    <label className="block mb-2">Percentage Share</label>
+    <input type="text" className="w-full p-3 bg-[#1B2735] text-white rounded" />
+  </div>
+ <div className="flex items-end justify-start md:pl-20">
+  <button className="bg-[#FBBF24] text-black px-4 py-2 rounded w-full md:w-auto">
+    + Add Owner
+  </button>
+</div>
+
+</div>
+
+{/* Property Address */}
+<div className="mb-6">
+  <label className="block mb-2">Full Property Address (Start with Property Name)</label>
+  <textarea
+    rows="4"
+    className="w-full p-3 bg-[#1B2735] text-white rounded"
+  ></textarea>
+</div>
+
+{/* Rest of the Inputs */}
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+  <div>
+    <label className="block mb-2">City</label>
+    <input type="text" className={inputClass} />
+  </div>
+  <div>
+    <label className="block mb-2">State</label>
+    <input type="text" className={inputClass} />
+  </div>
+  <div>
+    <label className="block mb-2">Country</label>
+    <input type="text" className={inputClass} />
+  </div>
+  <div>
+    <label className="block mb-2">Date of Purchase</label>
+    <input type="date" className={inputClass} />
+  </div>
+  <div>
+    <label className="block mb-2">Purchase Value (in ₹)</label>
+    <input type="number" className={inputClass} />
+  </div>
+  <div>
+    <label className="block mb-2">Name of Builder</label>
+    <input type="text" className={inputClass} />
+  </div>
+  <div>
+    <label className="block mb-2">Mode of Ownership</label>
+    <select className={inputClass}>
+      <option>Single</option>
+      <option>Joint</option>
+      <option>Inherited</option>
+    </select>
+  </div>
+</div>
+
+{/* Legal & Documentation */}
+<h2 className="text-lg font-semibold mb-6">Legal & Documentation</h2>
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+  <div>
+    <label className="block mb-2">Property Registration Number</label>
+    <input type="text" className={inputClass} />
+  </div>
+  <div>
+    <label className="block mb-2">Registration Date</label>
+    <input type="date" className={inputClass} />
+  </div>
+  <div>
+    <label className="block mb-2">Property ID/Survey Number</label>
+    <input type="text" className={inputClass} />
+  </div>
+  <div>
+    <label className="block mb-2">Loan Availed?</label>
+    <select
+      className={inputClass}
+      value={loanAvailed}
+      onChange={handleLoanAvailedChange}
+    >
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+  <div>
+    <label className="block mb-2">Loan Amount (if applicable)</label>
+    <input
+      type="number"
+      className={inputClass}
+      disabled={loanAvailed === "No"}
+    />
+  </div>
+  <div>
+    <label className="block mb-2">Bank Name (if loaned)</label>
+    <input
+      type="text"
+      className={inputClass}
+      disabled={loanAvailed === "No"}
+    />
+  </div>
+</div>
+
 
             {/* Upload Section */}
             <h2 className="text-lg font-semibold mb-6">Upload Documents</h2>

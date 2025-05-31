@@ -12,6 +12,16 @@ function Sidebar() {
   const [isAddOnsOpen, setIsAddOnsOpen] = useState(false);
 const isAddOnsSection = location.pathname.startsWith('/comparison-study'); 
 
+const reportPages = [
+  '/reports',
+  '/axis-bank-dashboard',
+  '/all-bank-accounts',
+  '/onhold',
+  '/matured-deposit-details',
+  
+];
+
+const isReportSection = reportPages.includes(location.pathname);
 
   const handleLogout = () => {
     // You can add actual logout logic here
@@ -76,9 +86,15 @@ const isAddOnsSection = location.pathname.startsWith('/comparison-study');
             <i className="fa-solid fa-wrench mr-3"></i> Taxation
           </Link>
 
-          <Link to="/reports" className={`flex items-center px-6 py-2 hover:bg-[#334155] hover:text-[#7effef] transition-colors duration-200 ${isActive('/reports') ? 'bg-[#334155] text-[#7effef]' : ''}`}>
-            <i className="fa-solid fa-chart-pie mr-3"></i> Reports
-          </Link>
+      <Link 
+  to="/reports"  
+  className={`flex items-center px-6 py-2 hover:bg-[#334155] hover:text-[#7effef] transition-colors duration-200 ${
+    isReportSection ? 'bg-[#334155] text-[#7effef]' : ''
+  }`}
+>
+  <i className="fa-solid fa-chart-pie mr-3"></i> Reports
+</Link>
+
 
           {/* Add-ons with Dropdown */}
 <div className="px-6">

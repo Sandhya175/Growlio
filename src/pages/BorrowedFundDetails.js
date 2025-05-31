@@ -1,10 +1,11 @@
-
+import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { FaUser ,FaDownload} from "react-icons/fa";
 import { MdEdit, MdDelete } from 'react-icons/md';
 
 const BorrowedFundDetails = () => {
+   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   useEffect(() => {
         const storedUsername = localStorage.getItem('username');
@@ -279,9 +280,12 @@ const borrowings = [
             <button className="bg-[#00CDB4] hover:bg-[#00b39d] text-black px-6 py-2 rounded-md font-semibold">
               Record More Borrowings
             </button>
-            <button className="bg-transparent border border-white text-white px-6 py-2 rounded-md font-semibold">
-              Go to Borrowings Dashboard 
-            </button>
+             <button
+      onClick={() => navigate('/borrowings-dashboard')}
+      className="bg-transparent border border-white text-white px-6 py-2 rounded-md font-semibold"
+    >
+      Go to Borrowings Dashboard
+    </button>
           </div>
         </div>
       </div>

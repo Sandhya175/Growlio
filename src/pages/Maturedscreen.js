@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { FaEdit, FaTrash, FaDownload } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaDownload,FaUser } from 'react-icons/fa';
 import Sidebar from '../components/Sidebar';
 import axisLogo from "../assets/bank_logos/axis.png";
 
 const Maturedscreen = () => {
-  const [showModal] = useState(false);
-  const navigate = useNavigate(); 
 
+  const navigate = useNavigate(); 
+const [username, setUsername] = useState('');
+useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+          setUsername(storedUsername);
+        }
+      }, []);
   const handleBack = () => {
     navigate(-1);
   };
@@ -47,12 +53,18 @@ const Maturedscreen = () => {
 
   return (
     <div className="min-h-screen bg-[#0D1520] text-white flex">
+        {/* Sidebar */}
       <Sidebar />
-      <div className={`flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60 ${showModal ? 'blur-sm pointer-events-none' : ''}`}>
-        <div className="px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center sticky top-0 z-50">
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+
+        {/* Topbar */}
+         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
           <div className="flex items-center gap-4">
-            <p className="text-white text-lg">Welcome Bankim Doshi!</p>
-            <img src="https://i.pravatar.cc/60?img=1" className="w-12 h-12 rounded-full border-2 border-white" alt="Profile" />
+            <p className="text-white text-lg">Welcome {username}!</p>
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
           </div>
         </div>
 
@@ -73,7 +85,7 @@ const Maturedscreen = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
-              <h1 className="text-2xl font-bold">MATURED TRANSACTIONS</h1>
+              <h1 className="text-2xl font-bold">FIXED DEPOSITE DETAILS</h1>
             </div>
 
             <div className="flex flex-col gap-1 mb-4">

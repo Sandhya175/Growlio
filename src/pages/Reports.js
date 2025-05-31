@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+import { FaUser } from 'react-icons/fa';
+
 import {
   FaUniversity,
   FaChartBar,
@@ -10,40 +12,47 @@ import {
   FaHome,
   FaStamp,
 } from "react-icons/fa";
-import { GiReceiveMoney } from "react-icons/gi"; 
+import { FaHandHoldingUsd } from "react-icons/fa";
 
 function Reports() {
   const navigate = useNavigate();
-
+const [username, setUsername] = useState('');
+useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+          setUsername(storedUsername);
+        }
+      }, []);
   const investmentOptions = [
-    { name: "Bank", icon: <FaUniversity />, route: "/report-bank" },
-    { name: "Stocks", icon: <FaChartBar />, route: "/choose-company" },
+    { name: "Bank", icon: <FaUniversity />, route: "/axis-bank-dashboard" },
+    { name: "Stocks", icon: <FaChartBar />, route: "/stock-dashboard" },
     { name: "Mutual Funds", icon: <FaDice />, route: "/choose-mutual-fund-action" },
     { name: "Insurance", icon: <FaUserShield />, route: "/instrument-setup/insurance" },
     { name: "Commodities", icon: <FaCoins />, route: "/commodity-action" },
     { name: "Properties", icon: <FaHome />, route: "/choose-property-action" },
     { name: "PPF", icon: <FaStamp />, route: "/ppf-action" },
-    { name: "Borrowing", icon: <GiReceiveMoney />, route: "/add-borrowed-fund" }, 
+    { name: "Borrowing", icon: <FaHandHoldingUsd />, route: "/add-borrowed-fund" }, 
   ];
 
   return (
-    <div className="flex w-screen max-w-full overflow-x-hidden bg-gray-900 text-white min-h-screen">
+  <div className="min-h-screen bg-[#0D1520] text-white flex">
+      {/* Sidebar */}
       <Sidebar />
-      <div className="flex flex-col flex-1 bg-gray-900 overflow-x-hidden">
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+
         {/* Topbar */}
-        <div className="px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center">
+         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
           <div className="flex items-center gap-4">
-            <p className="text-white text-lg">Welcome Bankim Doshi</p>
-            <img
-              src="https://i.pravatar.cc/60?img=1"
-              className="w-12 h-12 rounded-full border-2 border-white"
-              alt="Profile"
-            />
+            <p className="text-white text-lg">Welcome {username}!</p>
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="pl-64 p-8 overflow-x-hidden">
+        <div className=" p-8 overflow-x-hidden">
           <h1 className="text-3xl font-bold mb-8">Reports</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {investmentOptions.map((option, index) => (

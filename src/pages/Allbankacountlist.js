@@ -227,9 +227,9 @@ const statusColors = {
         defaultValue="all"
       >
         <option value="all">All Banks</option>
-        <option value="hdfc">HDFC Bank</option>
-        <option value="axis">Axis Bank</option>
-        <option value="icici">ICICI Bank</option>
+        <option value="hdfc">Fixed Deposite</option>
+        <option value="axis">Recurring Deposit</option>
+        <option value="icici">All Deposits</option>
       </select>
     </div>
   </div>
@@ -436,7 +436,7 @@ const statusColors = {
             </button>
             <button
       className="bg-transparent border border-white px-6 py-2 rounded font-semibold"
-      onClick={() => navigate('axis/bank-dashboard')}
+      onClick={() => navigate('/axis-bank-dashboard')}
     >
       Go to Bank Dashboard
     </button>

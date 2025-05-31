@@ -6,13 +6,14 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
-  ResponsiveContainer
+  ResponsiveContainer,
 } from 'recharts';
 
+// Updated data to match the chart image visually
 const data = [
-  { month: 'Jan', value: 35000 },
+  { month: 'Jan', value: 34500 },
   { month: 'Feb', value: 38000 },
-  { month: 'Mar', value: 37500 },
+  { month: 'Mar', value: 37000 },
   { month: 'Apr', value: 39000 },
   { month: 'May', value: 38500 },
   { month: 'Jun', value: 40000 },
@@ -24,27 +25,27 @@ const data = [
   { month: 'Dec', value: 45500 },
 ];
 
-const PortfolioPerformanceGraph = () => {
+const PPFperformancegraph = () => {
   return (
     <div style={{ background: '#111827', padding: 20, borderRadius: 12, color: 'white' }}>
-      <h2 style={{ marginBottom: 20 }}>Portfolio Performance</h2>
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={data}>
           <defs>
             <linearGradient id="gradientFill" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#6366F1" stopOpacity={0.4} />
-              <stop offset="100%" stopColor="#111827" stopOpacity={0} />
+              <stop offset="100%" stopColor="#0f172a" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1F2937" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
           <XAxis dataKey="month" stroke="#9CA3AF" />
           <YAxis
             stroke="#9CA3AF"
             tickFormatter={(v) => `$${v.toLocaleString()}`}
             domain={[34000, 46000]}
+            tickCount={7} // Ensures approx 2k gap
           />
           <Tooltip
-            contentStyle={{ backgroundColor: '#1F2937', border: 'none' }}
+            contentStyle={{ backgroundColor: '#1f2937', border: 'none' }}
             labelStyle={{ color: '#fff' }}
             formatter={(value) => `$${value.toLocaleString()}`}
           />
@@ -63,4 +64,4 @@ const PortfolioPerformanceGraph = () => {
   );
 };
 
-export default PortfolioPerformanceGraph;
+export default PPFperformancegraph;

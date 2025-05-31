@@ -1,10 +1,11 @@
-
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { FaUser ,FaDownload} from "react-icons/fa";
 import { MdEdit, MdDelete } from 'react-icons/md';
 
 const PPFWithdrawalDetails = () => {
+   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   useEffect(() => {
         const storedUsername = localStorage.getItem('username');
@@ -208,9 +209,12 @@ const PPFWithdrawalDetails = () => {
             <button className="bg-[#00CDB4] hover:bg-[#00b39d] text-black px-6 py-2 rounded-md font-semibold">
               Download PDF
             </button>
-            <button className="bg-transparent border border-white text-white px-6 py-2 rounded-md font-semibold">
-              Go to PPF Dashboard 
-            </button>
+           <button
+  onClick={() => navigate("/ppf-dashboard")}
+  className="bg-transparent border border-white text-white px-6 py-2 rounded-md font-semibold hover:bg-white hover:text-black transition-colors"
+>
+  Go to PPF Dashboard
+</button>
           </div>
         </div>
       </div>

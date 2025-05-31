@@ -102,6 +102,13 @@ import Dividenddetails from './pages/Dividenddetails';
 import IncomTaxForm from './pages/IncomTaxForm';
 import DividendForm from './pages/DividendForm';
 import Incometaxrecords from './pages/Incometaxrecords';
+import MFdashboard from "./pages/MFdashboard"; 
+import Insurancedashboard from "./pages/Insurancedashboard"; 
+import AllInsurancesPage from './pages/AllInsurancesPage';
+import PPFdashboard from "./pages/PPFdashboard"; 
+import Propertiesdashboard from "./pages/Propertiesdashboard"; 
+import Borrowingsdashboard from "./pages/Borrowingsdashboard"; 
+import Commoditiesdashboard from './pages/Commoditiesdashboard';
 
 function App() {
   return (
@@ -209,6 +216,13 @@ function App() {
       <Route path="/incometax" element={<IncomTaxForm />} />
       <Route path="/dividend-form" element={<DividendForm />} />
       <Route path="/income-tax-records" element={<Incometaxrecords />} />
+      <Route path="/mf-dashboard" element={<MFdashboard />} />
+      <Route path="/insurance-dashboard" element={<Insurancedashboard />} />
+      <Route path="/all-insurances" element={<AllInsurancesPage />} />
+      <Route path="/ppf-dashboard" element={<PPFdashboard />} />
+      <Route path="/properties-dashboard" element={<Propertiesdashboard />} />
+      <Route path="/borrowings-dashboard" element={<Borrowingsdashboard />} />
+      <Route path="/commodities-dashboard" element={<Commoditiesdashboard />} />
 
 
     </Routes>

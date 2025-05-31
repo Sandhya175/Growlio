@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaUser } from 'react-icons/fa';
 import Sidebar from "../components/Sidebar";
+import { useNavigate } from "react-router-dom";
 
 function Comparisonstudy() {
   const [investment, setInvestment] = useState({
@@ -11,7 +12,8 @@ function Comparisonstudy() {
     mutualFundPrice: '',
   });
   const [username, setUsername] = useState('');
-
+const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
     if (storedUsername) {
@@ -155,15 +157,71 @@ function Comparisonstudy() {
   </div>
 </section>
 
-<div className="flex justify-center mb-12">
- <button className="bg-teal-400 hover:bg-teal-400 text-black font-semibold px-6 py-2 rounded w-96 mx-auto mb-10 block">
-  Calculate
-</button>
-  </div>
+<div className="flex justify-center mb-12 pb-10">
+  <button
+    type="button"
+    onClick={() => setShowModal(true)}
+    className="bg-[#3B9B8F] hover:bg-[#2f7a6f] px-6 py-2 font-semibold text-white"
+  >
+    Calculate
+  </button>
+</div>
+
         </main> 
       </div>
-    </div>
-   
+    
+      { showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+          <div className="bg-[#1e293b] text-white rounded-xl p-8 w-[600px] relative shadow-lg">
+            <button
+              className="absolute top-4 right-4 text-white text-xl"
+              onClick={() => setShowModal(false)}
+            >
+              ×
+            </button>
+            <h2 className="text-2xl font-bold mb-4 text-center">
+             Comparison Study Results
+            </h2>
+            <p className="text-center mb-6">
+              Your Results has been recorded successfully!
+            </p>
+            <div className="bg-[#334155] p-4 rounded-lg mb-6">
+              <div className="flex justify-between py-1">
+                <span className="font-medium">Expected Results</span>
+                <span>12%</span>
+              </div>
+              <div className="flex justify-between py-1">
+                <span className="font-medium">Risk </span>
+                <span>2%</span>
+              </div>
+              <div className="flex justify-between py-1">
+                <span className="font-medium">Investment Duration</span>
+                <span>5 years</span>
+              </div>
+               <div className="flex justify-between py-1">
+                <span className="font-medium">Net % Return </span>
+                <span>61%</span>
+              </div>
+               <div className="flex justify-between py-1">
+                <span className="font-medium">Final Value </span>
+                <span>₹ 16,10,000</span>
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <button
+                className="bg-teal-400 text-[#0f172a] font-semibold px-6 py-2 rounded hover:bg-teal-300"
+                onClick={() => {
+                  setShowModal(false);
+                  navigate("/comparison-study");
+                }}
+              >
+                Start new calculation
+              </button>
+            </div>
+          </div>
+        </div>
+)}   
+</div>
   );
 }
 

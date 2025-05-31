@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import {FaUser,FaDownload} from "react-icons/fa";
 import { MdEdit, MdDelete } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
 
 const Homeinsuranceinvestmentdetails = () => {
-
+  const navigate = useNavigate();
 const [username, setUsername] = useState('');
 useEffect(() => {
         const storedUsername = localStorage.getItem('username');
@@ -395,9 +396,12 @@ useEffect(() => {
             <button className="bg-[#3B9B8F] hover:bg-[#2f7a6f] px-6 py-3 rounded-md font-semibold text-white">
               Download PDF
             </button>
-            <button className="bg-transparent border border-white text-white px-6 py-2 rounded-md font-semibold">
-              Go to Insurance Dashboard
-            </button>
+             <button
+      className="bg-transparent border border-white text-white px-6 py-2 rounded-md font-semibold"
+      onClick={() => navigate('/insurance-dashboard')}
+    >
+      Go to Insurance Dashboard
+    </button>
           </div>
         </div>
       </div>

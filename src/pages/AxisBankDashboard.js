@@ -24,6 +24,7 @@ const chartData = [
   { month: "Dec", value: 4100 },
 ];
 
+
 function CustomMayLabel(props) {
   const { x, y, index, value } = props;
   if (chartData[index]?.month === "May") {
@@ -152,8 +153,6 @@ const handleBankChange = (e) => {
     ▼
   </div>
 </div>
-
-
 
           {/* Overview Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

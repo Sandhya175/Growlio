@@ -2,8 +2,11 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import { MdEdit, MdDelete } from "react-icons/md";
 import { FaDownload } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const MutualFundHoldings = () => {
+  const navigate = useNavigate();
+
   const mutualFunds = [
     {
       nameOfInvestor: "Mrs. Nita Doshi",
@@ -341,9 +344,13 @@ const MutualFundHoldings = () => {
             <button className="bg-[#00CDB4] hover:bg-[#00b39d] text-black px-6 py-2 rounded-md font-semibold">
               Download PDF
             </button>
-            <button className="bg-transparent border border-white text-white px-6 py-2 rounded-md font-semibold">
-              Go to MF Dashboard
-            </button>
+            <button
+  onClick={() => navigate('/mf-dashboard')}
+  className="bg-transparent border border-white text-white px-6 py-2 rounded-md font-semibold"
+>
+  Go to MF Dashboard
+</button>
+
           </div>
         </div>
       </div>

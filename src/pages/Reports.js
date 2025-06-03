@@ -11,6 +11,7 @@ import {
   FaCoins,
   FaHome,
   FaStamp,
+  FaFileInvoiceDollar,
 } from "react-icons/fa";
 import { FaHandHoldingUsd } from "react-icons/fa";
 
@@ -32,6 +33,7 @@ useEffect(() => {
     { name: "Properties", icon: <FaHome />, route: "/properties-dashboard" },
     { name: "PPF", icon: <FaStamp />, route: "/ppf-dashboard" },
     { name: "Borrowing", icon: <FaHandHoldingUsd />, route: "/borrowings-dashboard" }, 
+    { name: "Taxation", icon: <FaFileInvoiceDollar />, route: "/taxation-dashboard" },
   ];
 
   return (
@@ -57,13 +59,14 @@ useEffect(() => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {investmentOptions.map((option, index) => (
               <div
-                key={index}
-                className="flex flex-col items-center justify-center p-6 rounded-lg bg-[#1e293b] hover:bg-[#334155] transition cursor-pointer"
-                onClick={() => option.route && navigate(option.route)} 
-              >
-                <div className="text-4xl mb-4">{option.icon}</div>
-                <div className="text-lg font-semibold">{option.name}</div>
-              </div>
+  key={index}
+  className="flex flex-col items-center justify-center p-6 rounded-lg bg-[#1e293b] hover:bg-[#334155] hover:text-orange-300 hover:border-l-4 border-transparent hover:border-orange-400 transition-all duration-200 ease-in-out cursor-pointer"
+  onClick={() => option.route && navigate(option.route)}
+>
+  <div className="text-4xl mb-4">{option.icon}</div>
+  <div className="text-lg font-semibold">{option.name}</div>
+</div>
+
             ))}
           </div>
         </div>

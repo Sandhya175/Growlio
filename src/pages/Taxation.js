@@ -6,7 +6,7 @@ import Sidebar from "../components/Sidebar";
 import { FaUser } from 'react-icons/fa';
 
 const tileClass =
-  "bg-[#1e293b] hover:bg-[#334155] transition p-6 rounded-lg text-white flex flex-col items-center justify-center text-center cursor-pointer h-40";
+  "bg-[#1e293b] hover:bg-[#334155] transition p-6 rounded-lg text-white flex flex-col items-center justify-center text-center cursor-pointer h-40 border-l-4 border-transparent hover:border-orange-400";
 
 const Taxation = () => {
   const navigate = useNavigate();
@@ -65,51 +65,50 @@ useEffect(() => {
 
             {/* Grid of Tiles: 2 per row = 3 rows */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <button
-      onClick={() => navigate("/short-term-capital-gain")}
-      className={tileClass + " cursor-pointer text-left w-full"}
-    >
-      <FaChartBar className="text-3xl mb-2" />
-      Short-Term Capital Gain
-    </button>
-              <button
-      onClick={() => navigate("/record-long-term-capital-gain")}
-      className={tileClass + " cursor-pointer text-left w-full"}
-    >
-      <LineChart className="text-3xl mb-2" />
-      Long-Term Capital Gain
-    </button>
-              <button
-      onClick={() => navigate("/record-gst")}
-      className={tileClass + " cursor-pointer text-left w-full"}
-    >
-      <FaReceipt className="text-3xl mb-2" />
-      GST
-    </button>
-               <button
-      onClick={() => navigate("/tds-entry")}
-      className={tileClass + " cursor-pointer text-left w-full"}
-    >
-      <FaTags className="text-3xl mb-2" />
-      TDS
-    </button>
-    <button
-      onClick={() => navigate("/dividend-form")}
-      className={tileClass + " cursor-pointer text-left w-full"}
-    >
-      <FaCoins classname="text-3xl mb-2" />
-       Dividends
-    </button>
-             
-                <button
-      onClick={() => navigate("/incometax")}
-      className={tileClass + " cursor-pointer text-left w-full"}
-    >
-      <FaFileInvoiceDollar className="text-3xl mb-2" />
-      Income Tax
-    </button>
-          
-            </div>
+  <button
+    onClick={() => navigate("/short-term-capital-gain")}
+    className={tileClass + " w-full"}
+  >
+    <FaChartBar className="text-3xl mb-2" />
+    Short-Term Capital Gain
+  </button>
+  <button
+    onClick={() => navigate("/record-long-term-capital-gain")}
+    className={tileClass + " w-full"}
+  >
+    <LineChart className="text-3xl mb-2" />
+    Long-Term Capital Gain
+  </button>
+  <button
+    onClick={() => navigate("/record-gst")}
+    className={tileClass + " w-full"}
+  >
+    <FaReceipt className="text-3xl mb-2" />
+    GST
+  </button>
+  <button
+    onClick={() => navigate("/tds-entry")}
+    className={tileClass + " w-full"}
+  >
+    <FaTags className="text-3xl mb-2" />
+    TDS
+  </button>
+  <button
+    onClick={() => navigate("/dividend-form")}
+    className={tileClass + " w-full"}
+  >
+    <FaCoins className="text-3xl mb-2" />
+    Dividends
+  </button>
+  <button
+    onClick={() => navigate("/incometax")}
+    className={tileClass + " w-full"}
+  >
+    <FaFileInvoiceDollar className="text-3xl mb-2" />
+    Income Tax
+  </button>
+</div>
+
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const InsuranceInvestmentDetails = () => {
   const navigate = useNavigate();
+  
 const [username, setUsername] = useState('');
 useEffect(() => {
         const storedUsername = localStorage.getItem('username');

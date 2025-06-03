@@ -37,33 +37,36 @@ useEffect(() => {
       }, []);
       
   return (
-    <div className="flex w-screen max-w-full overflow-x-hidden bg-gray-900 text-white min-h-screen">
-      <Sidebar />
-      <div className="flex flex-col flex-1 bg-gray-900 overflow-x-hidden">
-        {/* Topbar */}
-      {/* Topbar */}
-         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
-          <div className="flex items-center gap-4">
-            <p className="text-white text-lg">Welcome {username}!</p>
-              <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
-              <FaUser className="text-2xl" />
-            </div>
-          </div>
-        </div>
+    <div className="min-h-screen bg-[#0D1520] text-white flex">
+         {/* Sidebar */}
+         <Sidebar />
+         {/* Main Content */}
+         <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+   
+           {/* Topbar */}
+            <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
+             <div className="flex items-center gap-4">
+               <p className="text-white text-lg">Welcome {username}!</p>
+               <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+                 <FaUser className="text-2xl" />
+               </div>
+             </div>
+           </div>
 
         {/* Main Content */}
-        <div className="pl-64 p-8 overflow-x-hidden">
+        <div className=" p-8 overflow-x-hidden">
           <h1 className="text-3xl font-bold mb-8">Instrument Setup</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {investmentOptions.map((option, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center p-6 rounded-lg bg-[#1e293b] hover:bg-[#334155] transition cursor-pointer"
-                onClick={() => option.route && navigate(option.route)} 
-              >
-                <div className="text-4xl mb-4">{option.icon}</div>
-                <div className="text-lg font-semibold">{option.name}</div>
-              </div>
+             <div
+  key={index}
+  className="flex flex-col items-center justify-center p-6 rounded-lg bg-[#1e293b] hover:bg-[#334155] hover:text-orange-300 hover:border-l-4 border-transparent hover:border-orange-400 transition-all duration-200 ease-in-out cursor-pointer"
+  onClick={() => option.route && navigate(option.route)}
+>
+  <div className="text-4xl mb-4">{option.icon}</div>
+  <div className="text-lg font-semibold">{option.name}</div>
+</div>
+
             ))}
           </div>
         </div>

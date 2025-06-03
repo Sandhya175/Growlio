@@ -82,16 +82,19 @@ const InsurancePage = () => {
         <div className="flex-1 p-10">
           <h2 className="text-3xl font-bold mb-10">Type of Insurances</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {insuranceOptions.map((option, idx) => (
-              <div
-                key={idx}
-                onClick={() => handleClick(option.name)}
-                className="flex flex-col items-center justify-center p-8 rounded-lg shadow-md transition-all duration-200 cursor-pointer text-center bg-[#1B263B] hover:border hover:border-gray-600"
-              >
-                <div className="text-4xl mb-4">{option.icon}</div>
-                <div className="text-lg font-medium">{option.name}</div>
-              </div>
-            ))}
+           {insuranceOptions.map((option, idx) => (
+  <div
+    key={idx}
+    onClick={() => handleClick(option.name)}
+    className="flex flex-col items-center justify-center p-8 rounded-xl bg-[#1B263B] cursor-pointer 
+               text-center text-white text-lg font-semibold 
+               hover:text-orange-300 hover:border-l-4 hover:border-orange-300 hover:shadow-xl transition-all duration-200"
+  >
+    <div className="text-4xl mb-4">{option.icon}</div>
+    <div>{option.name}</div>
+  </div>
+))}
+
           </div>
         </div>
       </div>

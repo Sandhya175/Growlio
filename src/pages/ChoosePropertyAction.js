@@ -23,13 +23,11 @@ const ChoosePropertyAction = () => {
     }
   };
   
+const buttonStyle = (action) =>
+  `w-full px-6 py-6 rounded-xl text-lg font-semibold text-left transition-all duration-200 text-white bg-[#1B2735] hover:border-l-4 hover:border-orange-400 hover:text-orange-300 hover:shadow-xl ${
+    selectedAction === action ? "border-l-4 border-orange-400 text-orange-300" : ""
+  }`;
 
-  const buttonStyle = (action) =>
-    `px-6 py-5 rounded-xl text-lg font-semibold text-center transition text-white bg-[#1B2735] hover:bg-[#253142] ${
-      selectedAction === action
-        ? "border-l-4 border-[#F9A24B] text-[#F9A24B]"
-        : ""
-    }`;
 
   return (
     <div className="min-h-screen bg-[#0D1520] text-white flex">

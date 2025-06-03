@@ -47,22 +47,24 @@ function ChooseMutualFundAction() {
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-col space-y-4">
-           <button
-  className="w-96 flex items-center bg-gray-800 text-white py-8 rounded-lg hover:bg-gray-700 transition pl-6 text-left text-lg"
-  onClick={() => navigate("/mutual-fund-form")}
->
-  New Mutual Fund Investment
-</button>
+<div className="flex flex-col space-y-4">
+  <button
+    onClick={() => navigate("/mutual-fund-form")}
+    className="w-96 px-6 py-8 bg-[#1F2A40] text-white rounded-xl text-left text-lg font-semibold
+               hover:text-orange-300 hover:border-l-4 hover:border-orange-300 hover:shadow-xl transition"
+  >
+    New Mutual Fund Investment
+  </button>
 
+  <button
+    onClick={() => navigate("/mutual-fund-redeem")}
+    className="w-96 px-6 py-8 bg-[#1F2A40] text-white rounded-xl text-left text-lg font-semibold
+               hover:text-orange-300 hover:border-l-4 hover:border-orange-300 hover:shadow-xl transition"
+  >
+    New Mutual Fund Redemption
+  </button>
+</div>
 
-            <button
-              className="w-96 flex items-center bg-gray-800 text-white py-8 rounded-lg hover:bg-gray-700 transition pl-6 text-left text-lg"
-              onClick={() => navigate("/mutual-fund-redeem")}
-            >
-              New Mutual Fund Redemption
-            </button>
-          </div>
         </div>
       </div>
     </div>

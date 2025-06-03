@@ -6,7 +6,6 @@ import "../App.css";
 import 'react-phone-input-2/lib/style.css';
 import PhoneInput from 'react-phone-input-2';
 
-// InputField Component
 const InputField = ({ label, type = "text", placeholder, required }) => {
   const [showPassword, setShowPassword] = useState(false);
   const isPassword = type === "password";
@@ -41,7 +40,6 @@ const InputField = ({ label, type = "text", placeholder, required }) => {
   );
 };
 
-// ✅ SelectField Component
 const SelectField = ({ label, options, required }) => (
   <div className="w-full">
     <label className="block mb-1 text-sm font-medium text-white">
@@ -82,7 +80,6 @@ const Section = ({ title, children, action }) => (
   </div>
 );
 
-
 // Main Component
 const FamilyMemberDetailsForm = () => {
   const navigate = useNavigate();
@@ -106,22 +103,41 @@ const FamilyMemberDetailsForm = () => {
     }
   };
 
+const handleBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="min-h-screen bg-[#0D1520] text-white flex">
       <Sidebar />
-      <div className="flex-1 flex flex-col ml-60">
+
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+
         {/* Topbar */}
-         <div className="px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
-                  <div className="flex items-center gap-4">
-                    <p className="text-white text-lg">Welcome {username}!</p>
-                    <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
-                      <FaUser className="text-2xl" />
-                    </div>
-                  </div>
-                </div>
+        <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
+          <div className="flex items-center gap-4">
+            <p className="text-white text-lg">Welcome {username}!</p>
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
+          </div>
+        </div>
+    
+{/* Back Button & Page Title */}
+        <div className="flex items-center mt-6 mb-6">
+          <button
+            onClick={handleBack}
+            className="mr-4 text-white hover:text-gray-400 transition"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <h2 className="text-2xl font-bold"> FAMILY MEMBER DETAILS FORM</h2>
+        </div>
 
         <div className="p-6 md:p-10 space-y-12">
-          <h1 className="text-2xl font-bold text-left">FAMILY MEMBER DETAILS FORM</h1>
 
           {/* Profile Image Upload */}
           <div className="flex justify-center">

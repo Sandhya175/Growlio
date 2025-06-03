@@ -191,13 +191,19 @@ const taxationData = [
 
 
           {/* Add New Record */}
-          <div className="flex justify-center mt-6">
+             <div className="flex justify-center mt-6 gap-6">
             <button
               className="bg-teal-400 text-black py-3 px-8 rounded-lg font-semibold hover:bg-teal-300 transition"
               onClick={() => navigate('/incometax')}
             >
               Add New Record
             </button>
+            <button
+      className="bg-transparent border border-white py-3 px-8  rounded font-semibold"
+      onClick={() => navigate('/taxation-dashboard')}
+    >
+      Go to Taxation Dashboard
+    </button>
           </div>
 
         </div>

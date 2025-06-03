@@ -76,25 +76,40 @@ const BankDetails = () => {
             <div className="flex flex-col gap-4 pl-0 pr-16">
              <button
   onClick={handleNewBankAccount}
-  className="bg-[#1B2735] hover:bg-[#253142] text-white px-6 py-6 rounded-xl text-lg font-semibold text-left transition"
+  className="
+    bg-[#1B2735]
+    hover:border-l-4 hover:border-orange-300 hover:shadow-xl
+    text-white hover:text-orange-300
+    px-6 py-6 rounded-xl text-lg font-semibold text-left transition
+  "
 >
   New Bank Account
 </button>
 
+<button
+  onClick={handleNewRecurringDeposit}
+  className="
+    bg-[#1B2735]
+    hover:border-l-4 hover:border-orange-300 hover:shadow-xl
+    text-white hover:text-orange-300
+    px-6 py-6 rounded-xl text-lg font-semibold text-left transition
+  "
+>
+  New Recurring Deposit Account
+</button>
 
-              <button
-                onClick={handleNewRecurringDeposit}
-                className="bg-[#1B2735] hover:bg-[#253142] text-white px-6 py-6 rounded-xl text-lg font-semibold text-left transition"
-              >
-                New Recurring Deposit Account
-              </button>
+<button
+  onClick={handleNewFixedDeposit}
+  className="
+    bg-[#1B2735]
+    hover:border-l-4 hover:border-orange-300 hover:shadow-xl
+    text-white hover:text-orange-300
+    px-6 py-6 rounded-xl text-lg font-semibold text-left transition
+  "
+>
+  New Fixed Deposit Account
+</button>
 
-              <button
-                onClick={handleNewFixedDeposit}
-                className="bg-[#1B2735] hover:bg-[#253142] text-white px-6 py-6 rounded-xl text-lg font-semibold text-left transition"
-              >
-                New Fixed Deposit Account
-              </button>
 
             </div>
           </div>

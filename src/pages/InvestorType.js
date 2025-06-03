@@ -18,6 +18,8 @@ const InvestorType = () => {
     }
   }, []);
 
+  const buttonStyle = `py-7 px-6 rounded-lg bg-gray-700 text-white text-xl font-semibold text-left hover:text-orange-300 hover:border-l-4 hover:border-orange-400 transition-all duration-200`;
+
   return (
     <div className="flex w-screen max-w-full overflow-x-hidden bg-[#0c1320] text-white min-h-screen">
       {/* Sidebar */}
@@ -63,19 +65,21 @@ const InvestorType = () => {
           {/* Buttons */}
           <div className="flex flex-col gap-8 w-full max-w-xl">
             <button
-              className="py-7 rounded-lg bg-gray-700 text-white text-xl font-semibold hover:bg-gray-600 transition-all"
+              className={buttonStyle}
               onClick={() => navigate("/primary-member")}
             >
               Lead Family Member
             </button>
+
             <button
-              className="py-7 rounded-lg bg-gray-700 text-white text-xl font-semibold hover:bg-gray-600 transition-all"
+              className={buttonStyle}
               onClick={() => navigate("/family-member-details")}
             >
               Family Member
             </button>
+
             <button
-              className="py-7 rounded-lg bg-gray-700 text-white text-xl font-semibold hover:bg-gray-600 transition-all"
+              className={buttonStyle}
               onClick={() => navigate("/business-entity-details")}
             >
               Business Entity

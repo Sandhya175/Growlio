@@ -5,6 +5,8 @@ import Sidebar from "../components/Sidebar";
 const PpfAction = () => {
   const navigate = useNavigate();
 
+   const buttonStyle = `w-full px-6 py-6 rounded-xl text-lg font-semibold text-left transition-all duration-200 text-white bg-[#1B2735] hover:border-l-4 hover:border-orange-400 hover:text-orange-300 hover:shadow-xl`;
+   
   const handleBack = () => {
     navigate(-1);
   };
@@ -67,40 +69,25 @@ const PpfAction = () => {
 <h2 className="text-2xl font-bold">Choose PPF Action</h2>
           </div>
 
-          {/* PPF Action Buttons */}
+           {/* PPF Action Buttons */}
           <div className="flex flex-col gap-6 max-w-md">
-            <button
-              onClick={goToPpfForm}
-              className="bg-[#1B2735] hover:bg-[#253142] text-white px-6 py-6 rounded-xl text-lg font-semibold text-left transition"
-            >
+            <button onClick={goToPpfForm} className={buttonStyle}>
               PPF Account Opening Form
             </button>
 
-            <button
-              onClick={goToPpfContribution}
-              className="bg-[#1B2735] hover:bg-[#253142] text-white px-6 py-6 rounded-xl text-lg font-semibold text-left transition"
-            >
+            <button onClick={goToPpfContribution} className={buttonStyle}>
               PPF Contribution Form
             </button>
 
-            <button
-              onClick={goToPpfNomination}
-              className="bg-[#1B2735] hover:bg-[#253142] text-white px-6 py-6 rounded-xl text-lg font-semibold text-left transition"
-            >
+            <button onClick={goToPpfNomination} className={buttonStyle}>
               PPF Nomination Form
             </button>
 
-            <button
-              onClick={goToPpfPartialWithdrawal}
-              className="bg-[#1B2735] hover:bg-[#253142] text-white px-6 py-6 rounded-xl text-lg font-semibold text-left transition"
-            >
+            <button onClick={goToPpfPartialWithdrawal} className={buttonStyle}>
               PPF Partial Withdrawal Form
             </button>
 
-            <button
-              onClick={goToPpfClosure}
-              className="bg-[#1B2735] hover:bg-[#253142] text-white px-6 py-6 rounded-xl text-lg font-semibold text-left transition"
-            >
+            <button onClick={goToPpfClosure} className={buttonStyle}>
               PPF Closure/Maturity Form
             </button>
           </div>

@@ -64,20 +64,21 @@ const ChooseStockAction = () => {
           </div>
 
           <div className="flex flex-col gap-6 w-full max-w-md">
-            {actions.map((action, idx) => (
-              <button
-                key={idx}
-                onClick={() => navigate(action.path)}
-                className={`py-8 px-8 rounded text-lg font-semibold transition-all duration-200
-                  ${
-                    action.highlighted
-                      ? "bg-[#1F2A40] border-l-4 border-orange-400 text-orange-400"
-                      : "bg-[#1F2A40] text-white hover:bg-[#273449]"
-                  }`}
-              >
-                {action.label}
-              </button>
-            ))}
+           {actions.map((action, idx) => (
+  <button
+    key={idx}
+    onClick={() => navigate(action.path)}
+    className="
+      bg-[#1F2A40]
+      hover:border-l-4 hover:border-orange-300 hover:shadow-xl
+      text-white hover:text-orange-300
+      px-8 py-8 rounded-xl text-lg font-semibold text-left transition
+    "
+  >
+    {action.label}
+  </button>
+))}
+
           </div>
         </div>
       </div>

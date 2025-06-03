@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../src/assets/logo.png';
 
 function Sidebar() {
+  const navigate = useNavigate();
   const location = useLocation();
   const [isMasterDataOpen, setIsMasterDataOpen] = useState(false);
 
@@ -31,8 +32,9 @@ const reportPages = [
 const isReportSection = reportPages.includes(location.pathname);
 
   const handleLogout = () => {
-    // You can add actual logout logic here
-    window.location.href = '/login';
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    navigate('/login');
   };
 
   return (

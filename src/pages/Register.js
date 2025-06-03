@@ -35,7 +35,7 @@ function Register() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Registration failed');
+        throw new Error(data.error || 'Registration failed! Please enter a password with more than 6 characters and try again!');
       }
 
       localStorage.setItem('token', data.token);

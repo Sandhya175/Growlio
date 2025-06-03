@@ -69,11 +69,11 @@ function Dashboard() {
     fetchData();
   }, [navigate, selectedMember]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    navigate('/login');
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('username');
+  //   navigate('/login');
+  // };
 
   return (
     <div className="min-h-screen bg-[#0D1520] text-white flex">
@@ -85,12 +85,12 @@ function Dashboard() {
           <div className="flex items-center gap-4">
             <p className="text-white text-lg">Welcome {username}!</p>
             <img src="https://i.pravatar.cc/60?img=1" className="w-12 h-12 rounded-full border-2 border-white" alt="Profile" />
-            <button
+            {/* <button
               onClick={handleLogout}
               className="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition"
             >
               Logout
-            </button>
+            </button> */}
           </div>
         </div>
 

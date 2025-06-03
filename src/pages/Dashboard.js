@@ -36,7 +36,7 @@ function Dashboard() {
       }
 
       try {
-        const response = await fetch(`http://localhost:8080/api/members/dashboard?member=${encodeURIComponent(selectedMember)}`, {
+        const response = await fetch(`https://growliobackend.onrender.com/api/members/dashboard?member=${encodeURIComponent(selectedMember)}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'

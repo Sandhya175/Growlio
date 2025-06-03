@@ -111,6 +111,7 @@ import Borrowingsdashboard from "./pages/Borrowingsdashboard";
 import Commoditiesdashboard from './pages/Commoditiesdashboard';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+import Taxationdashboard from './pages/Taxationdashboard';
 import './App.css';
 
 
@@ -229,7 +230,7 @@ function App() {
       <Route path="/commodities-dashboard" element={<Commoditiesdashboard />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
-
+      <Route path="/taxation-dashboard" element={<Taxationdashboard />} />
 
     </Routes>
   );

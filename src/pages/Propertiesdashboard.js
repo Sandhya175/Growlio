@@ -126,7 +126,7 @@ const Propertiesdashboard = () => {
   <div className="flex justify-between items-center mb-4">
     <h2 className="text-xl font-semibold">Property Sale Details</h2>
     <button
-      onClick={() => navigate('/property-sale-details')}
+      onClick={() => navigate('/property-detail')}
       className="text-[#F7A600] text-sm font-medium"
     >
       View All
@@ -171,7 +171,7 @@ const Propertiesdashboard = () => {
   <div className="flex justify-between items-center mb-4">
     <h2 className="text-xl font-semibold">Rental Agreement Details</h2>
     <button
-      onClick={() => navigate('/rental-agreement-details')}
+      onClick={() => navigate('/add-rental-property')}
       className="text-[#F7A600] text-sm font-medium"
     >
       View All
@@ -219,7 +219,7 @@ const Propertiesdashboard = () => {
   <div className="flex justify-between items-center mb-4">
     <h2 className="text-xl font-semibold">Property Purchase Details</h2>
     <button
-      onClick={() => navigate('/property-purchase-details')}
+      onClick={() => navigate('/all-property-purchases')}
       className="text-[#F7A600] text-sm font-medium"
     >
       View All

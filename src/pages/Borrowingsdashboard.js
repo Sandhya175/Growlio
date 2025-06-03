@@ -126,7 +126,7 @@ const Borrowingsdashboard = () => {
   <div className="flex justify-between items-center mb-4">
     <h2 className="text-xl font-semibold">Borrowings Details</h2>
     <button
-      onClick={() => navigate('/borrowings-dashboard')}
+      onClick={() => navigate('/linked-borrowings')}
       className="text-[#F7A600] text-sm font-medium"
     >
       View All

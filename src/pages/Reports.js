@@ -26,12 +26,12 @@ useEffect(() => {
   const investmentOptions = [
     { name: "Bank", icon: <FaUniversity />, route: "/axis-bank-dashboard" },
     { name: "Stocks", icon: <FaChartBar />, route: "/stock-dashboard" },
-    { name: "Mutual Funds", icon: <FaDice />, route: "/choose-mutual-fund-action" },
-    { name: "Insurance", icon: <FaUserShield />, route: "/instrument-setup/insurance" },
-    { name: "Commodities", icon: <FaCoins />, route: "/commodity-action" },
-    { name: "Properties", icon: <FaHome />, route: "/choose-property-action" },
-    { name: "PPF", icon: <FaStamp />, route: "/ppf-action" },
-    { name: "Borrowing", icon: <FaHandHoldingUsd />, route: "/add-borrowed-fund" }, 
+    { name: "Mutual Funds", icon: <FaDice />, route: "/mf-dashboard" },
+    { name: "Insurance", icon: <FaUserShield />, route: "/insurance-dashboard" },
+    { name: "Commodities", icon: <FaCoins />, route: "/commodities-dashboard" },
+    { name: "Properties", icon: <FaHome />, route: "/properties-dashboard" },
+    { name: "PPF", icon: <FaStamp />, route: "/ppf-dashboard" },
+    { name: "Borrowing", icon: <FaHandHoldingUsd />, route: "/borrowings-dashboard" }, 
   ];
 
   return (

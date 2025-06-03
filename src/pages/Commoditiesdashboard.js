@@ -116,7 +116,7 @@ const Commoditiesdashboard = () => {
   <div className="flex justify-between items-center mb-4">
     <h2 className="text-xl font-semibold">Commodity Investment Details</h2>
     <button
-      onClick={() => navigate('/commodities-dashboard')}
+      onClick={() => navigate('/commodity-investments')}
       className="text-[#F7A600] text-sm font-medium"
     >
       View All
@@ -164,7 +164,7 @@ const Commoditiesdashboard = () => {
   <div className="flex justify-between items-center mb-4">
     <h2 className="text-xl font-semibold">Commodity Sale Details</h2>
     <button
-      onClick={() => navigate('/commodities-dashboard')}
+      onClick={() => navigate('/commodity-sale-details')}
       className="text-[#F7A600] text-sm font-medium"
     >
       View All

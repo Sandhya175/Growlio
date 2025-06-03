@@ -174,7 +174,7 @@ const Insurancedashboard = () => {
   <div className="flex justify-between items-center mb-4">
     <h2 className="text-xl font-semibold">Overall Insurances</h2>
     <button
-      onClick={() => navigate('/insurance-details')}
+      onClick={() => navigate('/insurance-investment-details')}
       className="text-[#F7A600] text-sm font-medium"
     >
       View All

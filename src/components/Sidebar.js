@@ -18,6 +18,13 @@ const reportPages = [
   '/all-bank-accounts',
   '/onhold',
   '/matured-deposit-details',
+  '/stock-dashboard',
+  '/stock-holdings',
+  '/stocksale-information',
+  '/intraday-tradings',
+  '/fo-details-table',
+  '/insurance-investment-details',
+  '/insurance-dashboard',
   
 ];
 

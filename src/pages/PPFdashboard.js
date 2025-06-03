@@ -116,7 +116,7 @@ const PPFdashboard = () => {
   <div className="flex justify-between items-center mb-4">
     <h2 className="text-xl font-semibold">PPF Details</h2>
    <button
-        onClick={() => navigate('/mutual-fund-holdings')}
+        onClick={() => navigate('/ppf-accounts')}
         className="text-[#F7A600] text-sm font-medium"
       >
         View All

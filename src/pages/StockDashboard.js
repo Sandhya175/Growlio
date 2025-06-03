@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import PieChart from "../components/PieChart";
 import PortfolioPerformanceGraph from '../components/PortfolioPerformanceGraph';
 import { Info, DollarSign, Calendar, BarChart2 } from 'lucide-react';
 import { Wallet, TrendingUp, Banknote } from "lucide-react";
+import { FaUser } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const StockDashboard = () => {
   // Sample data for PieChart matching your sector allocation
@@ -15,25 +17,30 @@ const StockDashboard = () => {
     { label: "Energy", value: 7, color: "#ef4444" },
     { label: "Others", value: 3, color: "#f3f4f6" }
   ];
+const [username, setUsername] = useState('');
+useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+          setUsername(storedUsername);
+        }
+      }, []);
 
   const [showInfo, setShowInfo] = useState(false);
-
+ const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-[#0D1520] text-white flex">
       {/* Sidebar */}
       <Sidebar />
+   {/* Main Content */}
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
 
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col bg-[#0D1520] ml-60">
         {/* Topbar */}
-        <div className="px-8 py-6 bg-[#1B2735] flex justify-end items-center">
+         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
           <div className="flex items-center gap-4">
-            <p className="text-white text-lg">Welcome Bankim Doshi!</p>
-            <img
-              src="https://i.pravatar.cc/60?img=1"
-              className="w-12 h-12 rounded-full border-2 border-white"
-              alt="Profile"
-            />
+            <p className="text-white text-lg">Welcome {username}!</p>
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
           </div>
         </div>
 
@@ -171,9 +178,12 @@ const StockDashboard = () => {
 <div className="bg-[#1B2735] p-6 rounded-lg text-white">
   <div className="flex justify-between items-center mb-4">
     <h2 className="text-xl font-semibold">Stock Holdings</h2>
-    <button onClick={() => console.log('View All clicked')} className="text-[#F7A600] text-sm font-medium">
-  View All
-</button>
+     <button 
+      onClick={() => navigate('/stock-holdings')} 
+      className="text-[#F7A600] text-sm font-medium"
+    >
+      View All
+    </button>
   </div>
   <div className="border border-gray-600 rounded-md overflow-hidden">
     <table className="w-full text-left text-sm">
@@ -213,9 +223,12 @@ const StockDashboard = () => {
 <div className="bg-[#1B2735] p-6 rounded-lg text-white">
   <div className="flex justify-between items-center mb-4">
     <h2 className="text-xl font-semibold">Stock Sales</h2>
-    <button onClick={() => console.log('View All clicked')} className="text-[#F7A600] text-sm font-medium">
-  View All
-</button>
+     <button 
+      onClick={() => navigate('/stocksale-information')} 
+      className="text-[#F7A600] text-sm font-medium"
+    >
+      View All
+    </button>
   </div>
   <div className="border border-gray-600 rounded-md overflow-hidden">
     <table className="w-full text-left text-sm">
@@ -255,8 +268,8 @@ const StockDashboard = () => {
 <div className="bg-[#1B2735] p-6 rounded-lg text-white">
   <div className="flex justify-between items-center mb-4">
     <h2 className="text-xl font-semibold">Intraday Tradings</h2>
-    <button
-      onClick={() => console.log('View All Intraday Tradings')}
+    <button 
+      onClick={() => navigate('/intraday-tradings')} 
       className="text-[#F7A600] text-sm font-medium"
     >
       View All
@@ -300,8 +313,8 @@ const StockDashboard = () => {
 <div className="bg-[#1B2735] p-6 rounded-lg text-white">
   <div className="flex justify-between items-center mb-4">
     <h2 className="text-xl font-semibold">Future & Options</h2>
-    <button
-      onClick={() => console.log('View All Futures & Options')}
+     <button 
+      onClick={() => navigate('/fo-details-table')} 
       className="text-[#F7A600] text-sm font-medium"
     >
       View All

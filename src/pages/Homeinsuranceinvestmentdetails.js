@@ -14,6 +14,29 @@ useEffect(() => {
         }
       }, []);
 
+       const handleInsuranceTypeChange = (e) => {
+    const selectedType = e.target.value;
+    if (selectedType === "Health Insurance") {
+      navigate('/health-insurance-details');
+    } else if (selectedType === "Life Insurance") {
+      navigate('/insurance-investment-details');
+    } else if (selectedType === "Vehicle Insurance") {
+      navigate('/vehicle-insurance-details');
+    } else if (selectedType === "Property Insurance") {
+      navigate('/property-insurance-details');
+    } else if (selectedType === "Travel Insurance") {
+      navigate('/travel-insurance-details');
+    } else if (selectedType === "Business Insurance") {
+      navigate('/business-insurance-details');
+    } else if (selectedType === "Home Insurance") {
+      navigate('/home-insurance-details');
+    } else if (selectedType === "Accident Insurance") {
+      navigate('/accident-insurance-details');
+    } else if (selectedType === "Other Insurance") {
+      navigate('/other-insurance-details');
+    }
+  };
+      
   return (
     <div className="flex w-screen max-w-full bg-gray-900 text-white h-screen overflow-hidden">
       {/* Fixed Sidebar */}
@@ -75,19 +98,21 @@ useEffect(() => {
               </select>
             </div>
 
-            {/* Filter by Nominee Name */}
             <div className="flex flex-col">
               <label className="text-sm text-gray-400 mb-1">Filter by Type of Insurance</label>
-              <select className="bg-[#1B2735] text-white p-3 rounded-lg min-w-[22rem]">
-                <option>Life</option>
-                <option>Health</option>
-                <option>Vehicle</option>
-                <option>Property</option>
-                <option>Travel</option>
-                <option>Business</option>
-                <option>Home</option>
-                <option>Accident</option>
-                <option>Other</option>
+              <select
+                className="bg-[#1B2735] text-white p-3 rounded-lg min-w-[22rem]"
+                onChange={handleInsuranceTypeChange}
+              >
+                <option value="Life Insurance">Life Insurance</option>
+                <option value="Health Insurance">Health Insurance</option>
+                <option value="Vehicle Insurance">Vehicle Insurance</option>
+                <option value="Property Insurance">Property Insurance</option>
+                <option value="Travel Insurance">Travel Insurance</option>
+                <option value="Business Insurance">Business Insurance</option>
+                <option value="Home Insurance">Home Insurance</option>
+                <option value="Accident Insurance">Accident Insurance</option>
+                <option value="Other Insurance">Other Insurance</option>
               </select>
             </div>
           </div>

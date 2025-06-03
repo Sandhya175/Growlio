@@ -109,6 +109,10 @@ import PPFdashboard from "./pages/PPFdashboard";
 import Propertiesdashboard from "./pages/Propertiesdashboard"; 
 import Borrowingsdashboard from "./pages/Borrowingsdashboard"; 
 import Commoditiesdashboard from './pages/Commoditiesdashboard';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
+import './App.css';
+
 
 function App() {
   return (
@@ -223,6 +227,8 @@ function App() {
       <Route path="/properties-dashboard" element={<Propertiesdashboard />} />
       <Route path="/borrowings-dashboard" element={<Borrowingsdashboard />} />
       <Route path="/commodities-dashboard" element={<Commoditiesdashboard />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
 
 
     </Routes>

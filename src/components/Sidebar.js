@@ -3,8 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../src/assets/logo.png';
 
 function Sidebar() {
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
   const [isMasterDataOpen, setIsMasterDataOpen] = useState(false);
 
   const isActive = (path) => location.pathname === path;

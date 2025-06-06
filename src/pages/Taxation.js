@@ -20,17 +20,17 @@ useEffect(() => {
       }, []);
       
   return (
-    <div className="flex min-h-screen bg-[#0f172a] text-white">
+   <div className="min-h-screen bg-[#0D1520] text-white flex">
       {/* Sidebar */}
       <Sidebar />
-
       {/* Main Content */}
-      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden">
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+
         {/* Topbar */}
-        <div className="px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center">
+         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
           <div className="flex items-center gap-4">
             <p className="text-white text-lg">Welcome {username}!</p>
-              <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
               <FaUser className="text-2xl" />
             </div>
           </div>

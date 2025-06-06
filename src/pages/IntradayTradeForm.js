@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
+import { FaUser } from 'react-icons/fa';
 
 export default function IntradayFormSection() {
   const [showModal, setShowModal] = useState(false);
@@ -9,6 +10,7 @@ export default function IntradayFormSection() {
     setShowModal(true);
   };
 const navigate = useNavigate();
+  const username = localStorage.getItem('username');
 
   const closeModal = () => {
     setShowModal(false);
@@ -19,15 +21,14 @@ const navigate = useNavigate();
       <Sidebar />
 
       <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+
         {/* Topbar */}
-        <div className="px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center sticky top-0 z-50">
+        <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
           <div className="flex items-center gap-4">
-            <p className="text-white text-lg">Welcome Bankim Doshi!</p>
-            <img
-              src="https://i.pravatar.cc/60?img=1"
-              className="w-12 h-12 rounded-full border-2 border-white"
-              alt="Profile"
-            />
+            <p className="text-white text-lg">Welcome {username}!</p>
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
           </div>
         </div>
 

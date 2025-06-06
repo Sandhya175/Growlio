@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+import { FaUser } from 'react-icons/fa';
 
 const ChooseStockAction = () => {
-  const [showModal] = useState(false);
+
   const navigate = useNavigate();
 
   const actions = [
@@ -12,28 +13,24 @@ const ChooseStockAction = () => {
     { label: "New Intraday", path: "/intra-trade-form" },
     { label: "New Future & Options", path: "/new-future-and-option" },
   ];
-
+const username = localStorage.getItem('username');
   const handleBack = () => {
     navigate(-1);
   };
 
   return (
-    <div className="min-h-screen bg-[#0D1520] text-white flex">
+     <div className="min-h-screen bg-[#0D1520] text-white flex">
       <Sidebar />
-      <div
-        className={`flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60 ${
-          showModal ? "blur-sm pointer-events-none" : ""
-        }`}
-      >
+
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+
         {/* Topbar */}
-        <div className="px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center sticky top-0 z-50">
+        <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
           <div className="flex items-center gap-4">
-            <p className="text-white text-lg">Welcome Bankim Doshi!</p>
-            <img
-              src="https://i.pravatar.cc/60?img=1"
-              className="w-12 h-12 rounded-full border-2 border-white"
-              alt="Profile"
-            />
+            <p className="text-white text-lg">Welcome {username}!</p>
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
           </div>
         </div>
 

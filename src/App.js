@@ -228,9 +228,10 @@ function App() {
       <Route path="/properties-dashboard" element={<Propertiesdashboard />} />
       <Route path="/borrowings-dashboard" element={<Borrowingsdashboard />} />
       <Route path="/commodities-dashboard" element={<Commoditiesdashboard />} />
+      <Route path="/taxation-dashboard" element={<Taxationdashboard />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/taxation-dashboard" element={<Taxationdashboard />} />
+
 
     </Routes>
   );

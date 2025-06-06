@@ -15,7 +15,9 @@ const MutualFundRedeem = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [guardianPhone, setGuardianPhone] = useState("");
-
+ const handleBack = () => {
+    navigate(-1);
+  };
 useEffect(() => {
         const storedUsername = localStorage.getItem('username');
         if (storedUsername) {
@@ -24,27 +26,40 @@ useEffect(() => {
       }, []);
 
   return (
-    <div className="flex w-screen max-w-full overflow-x-hidden bg-gray-900 text-white min-h-screen">
+    <div className="min-h-screen bg-[#0D1520] text-white flex">
       <Sidebar />
 
-      {/* Main Content */}
-      <div className="flex flex-col flex-1 bg-gray-900 overflow-x-hidden ml-60">
-      <div className="space-y-8">
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+
         {/* Topbar */}
-         <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
+        <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
           <div className="flex items-center gap-4">
             <p className="text-white text-lg">Welcome {username}!</p>
-              <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
               <FaUser className="text-2xl" />
             </div>
           </div>
         </div>
 
-        {/* Content */}
-        <div className="p-6">
-          <h1 className="text-2xl font-bold mb-8">REDEEM MUTUAL FUND INVESTMENT</h1>
+ {/* Back Button & Page Title */}
+        <div className="flex items-center mt-6 mb-6">
+          <button
+            onClick={handleBack}
+            className="mr-4 text-white hover:text-gray-400 transition"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <h2 className="text-2xl font-bold">REDEEM MUTUAL FUND INVESTMENT</h2>
+        </div>
 
-         
+       {/* Main Content */}
+        <div className="flex-1 p-10">
+            <div className="space-y-8">
+
+      
           {/* Investor & Mutual Fund Details */}
           <div className="mb-8">
             <h2 className="text-xl font-semibold mb-4">Investor & Mutual Fund Details</h2>
@@ -412,7 +427,9 @@ useEffect(() => {
               </button>
           </div>
         </div>
-      </div>
+         </div>
+        </div>
+    
         {/* Popup Modal */}
         {showModal && (
   <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
@@ -460,11 +477,9 @@ useEffect(() => {
       </div>
     </div>
   </div> 
-)}
-    </div>
-    </div>
-
+  )}
+  </div>
   );
-}
+};
 
 export default MutualFundRedeem;

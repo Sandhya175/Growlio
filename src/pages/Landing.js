@@ -27,8 +27,8 @@ function Landing() {
             alt="Illustration of investment dashboard"
             className="w-full max-w-[680px] h-auto"
             src={heroImage}
-            width="480"
-            height="320"
+            width="800"
+            height="600"
           />
         </section>
       </main>

@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from 'react-router-dom'; // Added useLocation
 import Sidebar from '../components/Sidebar';
 import OverviewCard from '../components/OverviewCard';
 import PieChart from '../components/PieChart';
 import '../styles/Dashboard.scss';
+import { FaUser } from 'react-icons/fa';
 
 const members = [
   'Bankim Doshi',
@@ -22,9 +23,9 @@ function Dashboard() {
   const [selectedMember, setSelectedMember] = useState(members[0]);
   const [overviewData, setOverviewData] = useState([]);
   const [transactions, setTransactions] = useState([]);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(''); // Added for error handling
   const navigate = useNavigate();
-  const location = useLocation(); // Added useLocation to access route state
+  const location = useLocation(); // Added for welcome message
   const welcomeMessage = location.state?.welcomeMessage; // Get welcome message from state
 
   useEffect(() => {
@@ -36,7 +37,7 @@ function Dashboard() {
       }
 
       try {
-        const response = await fetch(`https://growliobackend.onrender.com/api/members/dashboard?member=${encodeURIComponent(selectedMember)}`, {
+        const response = await fetch(`https://growliobackend.onrender.com/api/auth/dashboard?member=${encodeURIComponent(selectedMember)}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -67,31 +68,52 @@ function Dashboard() {
     }
 
     fetchData();
-  }, [navigate, selectedMember]);
+  }, [navigate, selectedMember]); // Fetch data when selectedMember changes
 
-  // const handleLogout = () => {
-  //   localStorage.removeItem('token');
-  //   localStorage.removeItem('username');
-  //   navigate('/login');
-  // };
+  const handleBack = () => {
+    navigate(-1);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    navigate('/login');
+  };
 
   return (
     <div className="min-h-screen bg-[#0D1520] text-white flex">
       <Sidebar />
-      <div className="flex-1 flex flex-col ml-60">
+
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+
         {/* Topbar */}
-        <div className="px-8 py-6 bg-gray-800 flex justify-between items-center shadow-md">
-          <h1 className="text-2xl font-bold">Dashboard</h1>
+        <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
           <div className="flex items-center gap-4">
             <p className="text-white text-lg">Welcome {username}!</p>
-            <img src="https://i.pravatar.cc/60?img=1" className="w-12 h-12 rounded-full border-2 border-white" alt="Profile" />
-            {/* <button
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
+            <button
               onClick={handleLogout}
               className="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition"
             >
               Logout
-            </button> */}
+            </button>
           </div>
+        </div>
+
+        {/* Back Button & Page Title */}
+        <div className="flex items-center mt-6 mb-6 px-8">
+          <button
+            onClick={handleBack}
+            className="mr-4 text-white hover:text-gray-400 transition"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <h2 className="text-2xl font-bold">Portfolio Overview</h2>
         </div>
 
         {/* Main Content */}
@@ -102,7 +124,6 @@ function Dashboard() {
             </div>
           )}
           {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-          <h2 className="text-2xl font-bold mb-6">Portfolio Overview</h2>
 
           {/* Overview Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
@@ -121,6 +142,7 @@ function Dashboard() {
           {/* Asset Distribution */}
           <div className="bg-[#1B2A3B] rounded-lg p-6 mb-8">
             <div className="flex flex-wrap justify-between items-start gap-6">
+
               {/* Filter Dropdown */}
               <div className="flex flex-col gap-2 min-w-[180px]">
                 <label className="text-sm font-medium">Filter by</label>
@@ -135,7 +157,8 @@ function Dashboard() {
                     ))}
                   </select>
                   <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2"
+                      viewBox="0 0 24 24">
                       <path d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
@@ -186,6 +209,7 @@ function Dashboard() {
               </Link>
             </div>
 
+            {/* Table Header */}
             <div className="grid grid-cols-5 text-[#B0B0B0] text-sm font-medium px-4 py-2">
               <div>Asset</div>
               <div>Type</div>
@@ -194,6 +218,7 @@ function Dashboard() {
               <div>Status</div>
             </div>
 
+            {/* Transactions List */}
             <div className="space-y-3 mt-2">
               {transactions.map((txn, index) => (
                 <div
@@ -201,7 +226,7 @@ function Dashboard() {
                   className="grid grid-cols-5 items-center bg-[#15202B] rounded-lg px-4 py-3 text-white text-sm shadow-sm"
                 >
                   <div className="flex items-center gap-2 font-semibold">
-                    <span className="text-xl">{txn.icon || ''}</span>
+                    <span className="text-xl">{txn.icon || ''}</span> {/* Add icon if provided by backend */}
                     {txn.asset}
                   </div>
                   <div className="text-white font-medium">{txn.type}</div>

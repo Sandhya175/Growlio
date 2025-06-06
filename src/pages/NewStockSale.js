@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+import { FaUser } from 'react-icons/fa';
 
 const NewStockSale = () => {
   const [date, setDate] = useState(null);
@@ -10,6 +11,7 @@ const NewStockSale = () => {
   const [showModal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
+  const username = localStorage.getItem('username');
 
   const totalSaleValue =
     (parseFloat(cost) || 0) +
@@ -24,26 +26,42 @@ const NewStockSale = () => {
     setShowModal(false);
   };
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   return (
-    <div className="min-h-screen w-screen overflow-hidden bg-[#0D1520] text-white flex">
+    <div className="min-h-screen bg-[#0D1520] text-white flex">
       <Sidebar />
 
-      <div className="flex-1 flex flex-col bg-[#0D1520] ml-60">
+      <div className="flex-1 flex flex-col bg-gray-900 overflow-x-hidden overflow-y-auto h-screen ml-60">
+
         {/* Topbar */}
-        <div className="px-8 py-6 bg-[#1B2735] shadow-md flex justify-end items-center sticky top-0 z-50">
+        <div className="sticky top-0 z-50 px-8 py-6 bg-gray-800 shadow-md flex justify-end items-center w-full">
           <div className="flex items-center gap-4">
-            <p className="text-white text-lg">Welcome Bankim Doshi!</p>
-            <img
-              src="https://i.pravatar.cc/60?img=1"
-              className="w-12 h-12 rounded-full border-2 border-white"
-              alt="Profile"
-            />
+            <p className="text-white text-lg">Welcome {username}!</p>
+            <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
+              <FaUser className="text-2xl" />
+            </div>
           </div>
+        </div>
+        
+        {/* Back Button & Page Title */}
+        <div className="flex items-center mt-6 mb-6">
+          <button
+            onClick={handleBack}
+            className="mr-4 text-white hover:text-gray-400 transition"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <h2 className="text-2xl font-bold"> Add New Stock Sale Information</h2>
         </div>
 
         {/* Main Content */}
         <main className="flex-1 p-6 md:p-10">
-          <h1 className="text-2xl font-bold mb-8">Add New Stock Sale Information</h1>
 
           {/* Stock Info */}
           <section className="space-y-6 mb-10">

@@ -74,11 +74,11 @@ function Dashboard() {
     navigate(-1);
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    navigate('/login');
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('username');
+  //   navigate('/login');
+  // };
 
   return (
     <div className="min-h-screen bg-[#0D1520] text-white flex">
@@ -93,12 +93,12 @@ function Dashboard() {
             <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white text-black">
               <FaUser className="text-2xl" />
             </div>
-            <button
+            {/* <button
               onClick={handleLogout}
               className="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition"
             >
               Logout
-            </button>
+            </button> */}
           </div>
         </div>
 
